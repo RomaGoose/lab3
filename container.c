@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
-#define MemCheckExit(x) do {if(x == NULL) exit(1);} while (0);
-#define MemCheckReturn(x) do {if(x == NULL) return NULL;} while (0);
+#define MemCheckExit(x) do {if(x == NULL) exit(1);} while (0)
 
 typedef struct _Research {int n;} Research;
 typedef struct _Node Node;
@@ -20,7 +19,7 @@ typedef struct _DLList {
 
 DLList* init_DLList(){
     DLList* new = malloc(sizeof(DLList));
-    if(new == NULL) exit(1);
+    MemCheckExit(new);
     new->head = NULL;
     new->tail = NULL;
     new->size = 0;
@@ -53,7 +52,7 @@ void* get_element(size_t index, DLList* list){ return (void*)(get_node(index, li
 
 void insert_start(void* info, DLList* list){
     Node* new_node = malloc(sizeof(Node));
-    if(new_node == NULL) exit(1);
+    MemCheckExit(new_node);
     
     new_node->next = list->head;
     new_node->prev = NULL;
@@ -71,9 +70,8 @@ void insert_start(void* info, DLList* list){
 
 void insert_end(void* info, DLList* list){
     Node* new_node = malloc(sizeof(Node));
-    if(new_node == NULL) exit(1);
+    MemCheckExit(new_node);
 
-    
     new_node->next = NULL;
     new_node->prev = list->tail;
     new_node->info = (Research *)info;
