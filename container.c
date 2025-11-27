@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdint-gcc.h>
 
 #define MemCheckExit(x) do {if(x == NULL) exit(1);} while (0)
 
