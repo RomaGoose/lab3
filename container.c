@@ -1,11 +1,11 @@
 #include <stdlib.h>
+#include <stdint-gcc.h>
 
 #define MemCheckExit(x) do {if(x == NULL) exit(1);} while (0)
 
-typedef struct _Research {int n;} Research;
 typedef struct _Node Node;
 typedef struct _Node {
-    Research* info;
+    void* info;
     Node* next;
     Node* prev;
 } Node;
@@ -15,14 +15,16 @@ typedef struct _DLList {
     Node* head;
     Node* tail;
     size_t size;
+    size_t element_size;
 }DLList;
 
-DLList* init_DLList(){
+DLList* init_DLList(size_t element_size){
     DLList* new = malloc(sizeof(DLList));
     MemCheckExit(new);
     new->head = NULL;
     new->tail = NULL;
     new->size = 0;
+    new->element_size = element_size;
     return new;
 }
 
@@ -46,7 +48,16 @@ static Node* get_node(size_t index, DLList* list) {
 size_t get_size(DLList* list) { return list->size; }
 void* get_head(DLList* list) { return (void*)list->head; }
 void* get_tail(DLList* list) { return (void*)list->tail; }
-void* get_element(size_t index, DLList* list){ return (void*)(get_node(index, list)->info); }
+void* get_element(size_t index, DLList* list){ return get_node(index, list)->info; }
+
+void kill_list(DLList* list){
+    Node* tmp;
+    for(Node* node = list->head; node != NULL; node = tmp){
+        tmp = node->next;
+        free(node);
+    }
+    free(list);
+}
 
 #pragma region inserts
 
@@ -56,7 +67,7 @@ void insert_start(void* info, DLList* list){
     
     new_node->next = list->head;
     new_node->prev = NULL;
-    new_node->info = (Research *)info;
+    new_node->info = info;
 
     if(list->size != 0)
         list->head->prev = new_node;
@@ -74,7 +85,7 @@ void insert_end(void* info, DLList* list){
 
     new_node->next = NULL;
     new_node->prev = list->tail;
-    new_node->info = (Research *)info;
+    new_node->info = info;
 
     if(list->size != 0)
         list->tail->next = new_node;
@@ -95,7 +106,7 @@ void insert_(size_t index, void* info, DLList* list){
     MemCheckExit(new);
 
     Node* old = get_node(index, list);
-    new->info = (Research *)info;
+    new->info = info;
 
     new->next = old;       //связки нового
     new->prev = old->prev;
@@ -152,11 +163,123 @@ void remove_(size_t index, DLList* list){
 
 #pragma endregion
 
-void kill_list(DLList* list){
-    Node* tmp;
-    for(Node* node = list->head; node != NULL; node = tmp){
-        tmp = node->next;
-        free(node);
+#pragma region swaps
+
+static void swap_adjacent(size_t index_1, size_t index_2, DLList* list);
+static void swap_distant(size_t index_1, size_t index_2, DLList* list);
+
+void swap(size_t index_1, size_t index_2, DLList* list){
+    if(index_1 == index_2) return;
+    
+    if(index_1 > index_2){
+        size_t tmp_index = index_1;
+        index_1 = index_2;
+        index_2 = tmp_index;
     }
-    free(list);
+
+    if(index_2 - index_1 == 1) {
+        swap_adjacent(index_1, index_2, list); 
+        return;
+    }
+    else{
+        swap_distant(index_1, index_2, list);
+        return;
+    }
 }
+
+static void swap_adjacent(size_t index_1, size_t index_2, DLList* list){
+    Node* node_1 = get_node(index_1, list);
+    Node tmp_1 = *node_1;
+    Node* node_2 = get_node(index_2, list);
+
+
+    if (node_1->prev == NULL)
+        list->head = node_2;
+    else 
+        node_1->prev->next = node_2;
+    
+    node_1->next = node_2->next;
+    node_1->prev = node_2;
+
+
+    if (node_2->next == NULL)
+        list->tail = node_1;
+    else
+        node_2->next->prev = node_1;
+
+    node_2->next = node_1;
+    node_2->prev = tmp_1.prev;
+}
+
+static void swap_distant(size_t index_1, size_t index_2, DLList* list){
+    Node* node_1 = get_node(index_1, list);
+    Node tmp_1 = *node_1;
+    Node* node_2 = get_node(index_2, list);
+
+
+    if(node_1->prev == NULL)
+        list->head = node_2;
+    else
+        node_1->prev->next = node_2;
+
+    node_1->next = node_2->next;      
+    node_1->prev = node_2->prev;
+
+
+    if(node_2->next == NULL)         
+        list->tail = node_1;
+    else 
+        node_2->next->prev = node_1;
+    
+    node_2->prev->next = node_1;
+    
+    node_2->next = tmp_1.next;        
+    node_2->prev = tmp_1.prev;
+}
+
+#pragma endregion
+
+#pragma region converts and memory
+
+static void copy_element(void* src, void* destination, size_t size){
+    size_t num_of_16bytes = size/16;
+    size_t remainder_bytes = size%16;
+
+    for(size_t i = 0; i < num_of_16bytes; ++i)
+        *((__uint128_t*)destination + i) = *((__uint128_t*)src + i);
+    
+    destination = (__uint128_t*)destination + num_of_16bytes;
+    src = (__uint128_t*)src + num_of_16bytes;
+
+    for(size_t i = 0; i < remainder_bytes; ++i)
+        *((char*)destination + i) = *((char*)src + i);
+    
+}
+
+void* convert_list_to_array(DLList* list){
+    void* arr = malloc((list->size)*(list->element_size));
+    MemCheckExit(arr);
+
+    size_t bit_size = list->element_size;
+    
+    for(size_t i = 0; i < list->size; ++i){
+        copy_element(get_element(i, list), (char*)arr + (list->element_size)*i, list->element_size);
+    }
+
+    return arr;
+}
+
+DLList* convert_array_to_list(void* arr, size_t count, size_t element_size){
+    DLList* list = init_DLList(element_size);
+
+    for(size_t i = 0; i < count; ++i){
+        void* new_info = malloc(element_size);
+        copy_element((char*)arr + element_size*i, new_info, element_size);
+        insert_end(new_info, list);
+    }
+
+    return list;
+}
+
+#pragma endregion 
+
