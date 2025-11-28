@@ -1,0 +1,1 @@
+int cmp(void* left, void* right);
