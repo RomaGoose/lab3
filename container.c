@@ -1,6 +1,11 @@
 #include <stdlib.h>
+#include <stdio.h>
 
-#define MemCheckExit(x) do {if(x == NULL) exit(1);} while (0)
+#define MemCheckExit(x) do {                               \
+    if(x == NULL) {                                        \
+        fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
+        exit(1);                                           \
+    }} while (0)
 
 typedef struct _Node Node;
 typedef struct _Node {
@@ -9,7 +14,6 @@ typedef struct _Node {
     Node* prev;
 } Node;
 
-typedef struct _DLList DLList;
 typedef struct _DLList {
     Node* head;
     Node* tail;
@@ -28,7 +32,7 @@ DLList* init_DLList(size_t element_size){
 }
 
 static Node* get_node(size_t index, DLList* list) {
-    if (index > list->size) return NULL;
+    if (index >= list->size) return NULL;
     
     Node* curr_node;
     if (index > list->size / 2) {
@@ -49,12 +53,19 @@ void* get_head(DLList* list) { return (void*)list->head; }
 void* get_tail(DLList* list) { return (void*)list->tail; }
 void* get_element(size_t index, DLList* list){ return get_node(index, list)->info; }
 
-void kill_list(DLList* list){
+void clear_list(DLList* list){
     Node* tmp;
     for(Node* node = list->head; node != NULL; node = tmp){
         tmp = node->next;
         free(node);
     }
+    list->head = NULL;
+    list->tail = NULL;
+    list->size = 0;
+}
+
+void kill_list(DLList* list){
+    clear_list(list);
     free(list);
 }
 
@@ -282,3 +293,39 @@ DLList* convert_array_to_list(void* arr, size_t count, size_t element_size){
 
 #pragma endregion 
 
+#pragma region iterator
+
+typedef struct _Iterator {
+    DLList* list;
+    //size_t size;
+    size_t pos;
+} Iterator;
+
+int next(Iterator* i){
+    if (++i->pos >= i->list->size) return 1;
+    return 0;
+}
+
+size_t get_pos(Iterator* i) {return i->pos;}
+
+void* get(Iterator* i){
+    return get_element(i->pos, i->list);
+}
+
+void set(void* value, Iterator* i){
+    get_node(i->pos, i->list)->info = value;
+}
+
+Iterator* begin(DLList* list){
+    Iterator* i = malloc(sizeof(Iterator));
+    MemCheckExit(i);
+
+    i->list = list;
+    i->pos = 0;
+
+    return i;
+}
+
+void end(Iterator* i) { free(i); }
+
+#pragma endregion

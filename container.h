@@ -14,8 +14,18 @@ void insert_(size_t index, void* info, DLList* list);
 void remove_start(DLList* list);
 void remove_end(DLList* list);
 void remove_(size_t index, DLList* list);
+void clear_list(DLList* list);
 void kill_list(DLList* list);
 
 void swap(size_t index_1, size_t index_2, DLList* list);
 void* convert_list_to_array(DLList* list);
 DLList* convert_array_to_list(void* arr, size_t count, size_t element_size);
+
+
+typedef struct _Iterator Iterator;
+int next(Iterator* i);
+size_t get_pos(Iterator* i);
+void* get(Iterator* i);
+void set(void* value, Iterator* i);
+Iterator* begin(DLList* list);
+void end(Iterator* i);

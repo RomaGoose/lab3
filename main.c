@@ -10,18 +10,19 @@ int main(){
     Research r1 = {.n = 5, .name = "baboon"};
     Research r2 = {.n = 7, .name = "australopithecus"};
     Research r3 = {.n = 9, .name = "123456789012345678"};
+    Research new = {.n = 10, .name = "set"};
     
     insert_start(&r1, list);
     insert_end(&r2, list);
     insert_(0, &r3, list);
-
-    printf("array: \n%d\n%d\n%d\n --- \n",  ((Research*)get_element(0, list))->n, 
+/*
+    printf("list: \n%d\n%d\n%d\n --- \n", ((Research*)get_element(0, list))->n, 
                                     ((Research*)get_element(1, list))->n, 
                                     ((Research*)get_element(2, list))->n);
                            
     swap(0, 1, list);
     
-    printf("swapped: \n%d\n%d\n%d\n --- \n",   ((Research*)get_element(0, list))->n, 
+    printf("swapped: \n%d\n%d\n%d\n ---\n array:\n",   ((Research*)get_element(0, list))->n, 
                                         ((Research*)get_element(1, list))->n, 
                                         ((Research*)get_element(2, list))->n);
 
@@ -37,10 +38,24 @@ int main(){
         printf("%d -- %s\n", ((Research*)get_element(i, copy_list))->n, ((Research*)get_element(i, copy_list))->name);
     }
 
+    clear_list(copy_list);
+
+    insert_start(&r3, copy_list);
+    insert_(0, &r2, copy_list);
+
+    kill_list(copy_list);
 
     remove_(1, list);
     remove_end(list);
     remove_start(list);
+    */
+    
+    Iterator* i;
+    for(i = begin(list); get_pos(i) < get_size(list);next(i)){
+        if (get_pos(i)==1) set(&new, i);
+        printf("%d %s\n", ((Research*)get(i))->name);
+    }
+    end(i);
 
     kill_list(list);
     puts("success");
