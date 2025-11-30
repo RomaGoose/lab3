@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MemCheckExit(x) do {                               \
+#define mem_check_exit(x) do {                               \
     if(x == NULL) {                                        \
         fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
         exit(1);                                           \
@@ -23,7 +23,7 @@ typedef struct _DLList {
 
 DLList* init_DLList(size_t element_size){
     DLList* new = malloc(sizeof(DLList));
-    MemCheckExit(new);
+    mem_check_exit(new);
     new->head = NULL;
     new->tail = NULL;
     new->size = 0;
@@ -73,7 +73,7 @@ void kill_list(DLList* list){
 
 void insert_start(void* info, DLList* list){
     Node* new_node = malloc(sizeof(Node));
-    MemCheckExit(new_node);
+    mem_check_exit(new_node);
     
     new_node->next = list->head;
     new_node->prev = NULL;
@@ -91,7 +91,7 @@ void insert_start(void* info, DLList* list){
 
 void insert_end(void* info, DLList* list){
     Node* new_node = malloc(sizeof(Node));
-    MemCheckExit(new_node);
+    mem_check_exit(new_node);
 
     new_node->next = NULL;
     new_node->prev = list->tail;
@@ -113,7 +113,7 @@ void insert_(size_t index, void* info, DLList* list){
     if (index == list->size-1) {insert_end(info, list); return;}
 
     Node* new = malloc(sizeof(Node));
-    MemCheckExit(new);
+    mem_check_exit(new);
 
     Node* old = get_node(index, list);
     new->info = info;
@@ -268,7 +268,7 @@ static void copy_element(void* src, void* destination, size_t size){
 
 void* convert_list_to_array(DLList* list){
     void* arr = malloc((list->size)*(list->element_size));
-    MemCheckExit(arr);
+    mem_check_exit(arr);
 
     size_t bit_size = list->element_size;
     
@@ -318,7 +318,7 @@ void set(void* value, Iterator* i){
 
 Iterator* begin(DLList* list){
     Iterator* i = malloc(sizeof(Iterator));
-    MemCheckExit(i);
+    mem_check_exit(i);
 
     i->list = list;
     i->pos = 0;

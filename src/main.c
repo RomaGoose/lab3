@@ -1,13 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
 #include "container.h"
 #include "article.h"
 #include "selection_sort.h"
 
 typedef struct _Article {int n; char name[20];} Article;
+void parse_args(int argc, char** argv);
+int main(int argc, char** argv){
+    setlocale(LC_ALL, "RU_ru.UTF-8");
 
-int main(){
     //DLList* list = init_DLList(sizeof(Article));
     Article r1 = {.n = 7, .name = "baboon"};
     Article r2 = {.n = 7, .name = "australopithecus"};
@@ -63,7 +66,7 @@ int main(){
     }
     end(i);
     */
-
+    /*
     Iterator* i;
     Article* a;
     puts("list:");
@@ -79,6 +82,9 @@ int main(){
         a = get(i);
         printf("%d - %s \n", a->n, a->name);
     }
+    */
+
+    parse_args(argc, argv);
 
     kill_list(list);
     puts("success");

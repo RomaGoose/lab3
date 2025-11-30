@@ -1,11 +1,12 @@
 CC=gcc
 TARGET=lab3.exe
+CFLAGS=-g
 
 SRCDIR=src
 OBJDIR=build
 INCLUDEDIR=includes
 
-SRC=main.c container.c article.c selection_sort.c 
+SRC=main.c container.c article.c selection_sort.c parse_args.c
 OBJ=$(SRC:%.c=%.o)
 
 SRCS=$(SRC:%=$(SRCDIR)/%)
