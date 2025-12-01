@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#define LONG_NAME_OFFSET 3
+#define MAX_F_ARGC 8
 #define mem_check_exit(x) do {                             \
     if(x == NULL) {                                        \
         fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
@@ -13,14 +13,14 @@
 
 typedef enum { ASC, DESC } sort_type_tag;
 typedef enum {
-    GEN = 1,
+    GEN,
     PRINT,
     SORT,
     TYPE,
     IN,
     OUT,
 
-    END = 0
+    END
 } arg_tag;
 
 typedef struct _State {
@@ -60,35 +60,35 @@ static void process_arg(Argument* a, void* value, State* state);
 static void process_state(State* state);
 static char** format_argv(int argc, char** argv);
 void parse_args(int argc, char** argv){
-    char** fargv = format_argv(argc, argv);
-
     if (argc == 1){
         help_all();
         exit(1);
     }
+    
+    char** fargv = format_argv(argc, argv);
     
     State* state = malloc(sizeof(state));
     state->task = END;
     state->input = stdin;
     state->output = stdout;
 
-    char arg_is_found, prev_is_arg = 0;
+    char arg_is_found, value_expected = 0;
     Argument* a;
     for(size_t i = 1; fargv[i] != NULL; ++i){
         arg_is_found = 0;
-        if(fargv[i][0] == '-'){
+        if(fargv[i][0] == '-' && value_expected == 0){
             for(a = arguments; a->tag != END; ++a){
                 if(a->name == fargv[i][1]|| strcmp(a->long_name, &fargv[i][2]) == 0){
                     arg_is_found = 1;
-                    prev_is_arg = 1;
+                    value_expected = a->tag == PRINT || a->tag == SORT ? 0 : 1;
                     process_arg(a, fargv[i+1], state);
                     break;
                 }
             }
-            if (!arg_is_found) {help_arg(a); exit(1);}
+            if (!arg_is_found) {help_all(); exit(1);}
         }
         else{
-            if(prev_is_arg) prev_is_arg = 0;
+            if(value_expected) value_expected = 0;
             else{
             puts("Ошибка аргументов командной строки");
             help_all();
@@ -97,37 +97,11 @@ void parse_args(int argc, char** argv){
         }
     }
 
+    for(size_t i = 0; fargv[i] != NULL; ++i) free(fargv[i]);
+    free(fargv);
     process_state(state);
+    free(state);
 }
-
-/* попытки выпросиьт нормальный тип сортировки 
-            char new_value[5];
-            char got_type = 0;
-            int sec = scanf("Введено некорректное значение для аргумента type\n"
-                                "Введите снова: %s\n", new_value);
-            if(strcmp(new_value, "desc") == 0){
-                state->task_value.sort_type = DESC;
-                got_type = 1;
-                break;
-            }
-            if(strcmp(new_value, "asc") == 0){
-                got_type = 1;
-                break;
-            }
-            while (got_type == 0){
-                clear();
-                puts("Опять мимо\n");
-                help_arg(arguments + TYPE);
-                sec = scanf("Введите снова: %s\n", new_value);
-                if(strcmp(new_value, "desc") == 0){
-                    state->task_value.sort_type = DESC;
-                    got_type = 1;
-                    break;
-                }
-                if(strcmp(new_value, "asc") == 0){
-                    got_type = 1;
-                }
-            }*/
 
 static size_t str_to_ull(char* str);
 static void process_arg(Argument* a, void* value, State* state){    
@@ -140,14 +114,8 @@ static void process_arg(Argument* a, void* value, State* state){
 
             size_t N = str_to_ull(value);
             if(N==0){
-                int sec = scanf("Введено некорректное значение для аргумента generate\n"
-                                "Введите снова: %llu\n", N);
-                while (sec != 1){
-                    clear();
-                    puts("Опять мимо\n");
-                    help_arg(arguments + GEN);
-                    sec = scanf("Введите снова: %llu\n", N);
-                }
+                puts("Введено некорректное значение аргумента generate");
+                exit(1);
             }
             state->task = GEN;
             state->task_value.N = N;
@@ -171,6 +139,10 @@ static void process_arg(Argument* a, void* value, State* state){
             break;
         }
         case TYPE:{
+            if(state->task != SORT){
+                puts("Выбор типа сортировки, в то время, как режим работы не сортировка.");
+                exit(1);
+            }
             if(strcmp(value, "desc") == 0 || *(char* )value == 'D'){
                 state->task_value.sort_type = DESC;
                 break;
@@ -215,7 +187,7 @@ static void process_arg(Argument* a, void* value, State* state){
                 else if(*(char*)value == '"'){
                     state->output = fopen((char* )value + 1, "w");
                     if (state->output == NULL){
-                         puts("Введено некорректное название файла для вывода");
+                        puts("Введено некорректное название файла для вывода");
                         help_arg(arguments + IN);
                         exit(1);
                     }
@@ -245,22 +217,22 @@ static void process_state(State* state){
 
 static char* copy_str_trim(char* src, char divider);
 static char** format_argv(int argc, char** argv){
-    char** f_argv = malloc((argc+1)*sizeof(char*));
+    char** f_argv = malloc((MAX_F_ARGC+1)*sizeof(char*));
     mem_check_exit(f_argv);
-    f_argv[0] = argv[0];
+    f_argv[0] = strdup(argv[0]);
     unsigned char found_splits = 0;
     for(size_t s = 1; s < argc; ++s){
-        f_argv[s+found_splits] = argv[s];
-        for(size_t c = LONG_NAME_OFFSET; argv[s][c] != '\0'; ++c){
+        f_argv[s+found_splits] = strdup(argv[s]);
+        for(size_t c = 0; argv[s][c] != '\0'; ++c){
             if(argv[s][c] == '='){
+                free(f_argv[s+found_splits]);
                 f_argv[s+found_splits] = copy_str_trim(argv[s], '=');
+                
                 ++found_splits;
-                f_argv = realloc(f_argv, (argc+found_splits+1)*sizeof(char*));
-                mem_check_exit(f_argv);
                 if(argv[s][c+1] == '"')
-                    f_argv[s+found_splits] = copy_str_trim(&argv[s][c+1], '"');
+                    f_argv[s+found_splits] = copy_str_trim(&argv[s][c+2], '"');
                 else
-                    f_argv[s+found_splits] = &argv[s][c+1];
+                    f_argv[s+found_splits] = strdup(&argv[s][c+1]);
             }
         }
     }
