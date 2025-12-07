@@ -67,7 +67,7 @@ void parse_args(int argc, char** argv){
     
     char** fargv = format_argv(argc, argv);
     
-    State* state = malloc(sizeof(state));
+    State* state = malloc(sizeof(State));
     state->task = END;
     state->input = stdin;
     state->output = stdout;
@@ -198,10 +198,13 @@ static void process_arg(Argument* a, void* value, State* state){
     }
 }
 
+void generate(size_t N, FILE* output);
 static void process_state(State* state){
     switch (state->task){
         case GEN:{
-            fprintf(state->output, "Сгенерировал %d записей", state->task_value.N);
+            generate(state->task_value.N, state->output);
+            fprintf(state->output, "\nСгенерировал %d записей\n", state->task_value.N);
+            puts("Generated");
             break;
         }
         case SORT:{
