@@ -1,4 +1,5 @@
 #include "container.h"
+
 void sel_sort(DLList* list, int (*cmp)(void* l, void*r)){
     Iterator* i;
     size_t list_size = get_size(list);

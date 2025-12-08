@@ -6,7 +6,7 @@ SRCDIR=src
 OBJDIR=build
 INCLUDEDIR=includes
 
-SRC=main.c container.c article.c selection_sort.c parse_args.c generate.c
+SRC=main.c container.c article.c selection_sort.c parse_args.c generate.c io.c
 OBJ=$(SRC:%.c=%.o)
 
 SRCS=$(SRC:%=$(SRCDIR)/%)

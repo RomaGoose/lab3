@@ -6,6 +6,7 @@
 #include <locale.h>
 
 #include "article.h"
+#include "inout.h"
 
 #define WORDLIST_LEN 378343
 #define WORDLIST_PATH "wordlists/words.txt"
@@ -13,10 +14,6 @@
 #define SURNLIST_LEN 99072
 #define SURNLIST_PATH "wordlists/surnames.txt"
 #define MAX_SURN_LEN 18*2
-
-#define MAX_ARTICLE_NAME_LEN 120*2
-#define MAX_MAGAZINE_NAME_LEN 48*2
-#define MAX_INITIALS_LEN 12
 
 #define MAX_WORD_NUM(size) size/7
 
@@ -27,18 +24,6 @@
     }} while (0)
 
 typedef enum _wordlist_t { WORDS, SURNS } wordlist_t;
-
-typedef struct _Article {
-    char article_name[MAX_ARTICLE_NAME_LEN];
-    char author_surname[MAX_SURN_LEN];
-    char author_initials[MAX_INITIALS_LEN];
-    char magazine[MAX_MAGAZINE_NAME_LEN];
-    uint16_t year;
-    uint16_t mag_vol;
-    uint16_t pages;
-    uint16_t citations;
-    uint8_t in_RSCI;
-} Article;
 
 static char* word_gen(uint8_t size, char** wordlist){
     int word_num = rand() % (MAX_WORD_NUM(size)) + 1;
@@ -137,26 +122,18 @@ void generate(size_t N, FILE* output){
         free(art_name);
         free(mag_name);
 
-        fprintf(output, "%s,%s,%s,%s,%d,%d,%d,%d,%d\n",
-            tmp->article_name,
-            tmp->author_initials,
-            tmp->author_surname,
-            tmp->magazine,
-            tmp->citations,
-            tmp->pages,
-            tmp->year,
-            tmp->in_RSCI,
-            tmp->mag_vol);
+        print_csv(tmp, output);  
+        
         // fprintf(output, "name: %s\ninit: %s\nsurn: %s\nmag: %s\ncit: %d\npages: %d\nyear: %d\nrcsi: %d\nmagvol: %d\n\n",
         //     tmp->article_name,
-        //     tmp->author_initials,
         //     tmp->author_surname,
+        //     tmp->author_initials,
         //     tmp->magazine,
-        //     tmp->citations,
-        //     tmp->pages,
         //     tmp->year,
-        //     tmp->in_RSCI,
-        //     tmp->mag_vol);
+        //     tmp->mag_vol,
+        //     tmp->pages,
+        //     tmp->citations,
+        //     tmp->in_RSCI);
     }
 
     free(tmp);

@@ -2,13 +2,14 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "inout.h"
+
 #define MAX_F_ARGC 8
 #define mem_check_exit(x) do {                             \
     if(x == NULL) {                                        \
         fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
         exit(1);                                           \
     }} while (0)
-#define ASCII_OFFSET 48 
 #define clear() do{char c; while((c=getchar())!=EOF && c != '\n');} while(0)
 
 typedef enum { ASC, DESC } sort_type_tag;
@@ -103,7 +104,6 @@ void parse_args(int argc, char** argv){
     free(state);
 }
 
-static size_t str_to_ull(char* str);
 static void process_arg(Argument* a, void* value, State* state){    
     switch(a->tag){
         case GEN:{
@@ -203,8 +203,7 @@ static void process_state(State* state){
     switch (state->task){
         case GEN:{
             generate(state->task_value.N, state->output);
-            fprintf(state->output, "\nСгенерировал %d записей\n", state->task_value.N);
-            puts("Generated");
+            puts("Успешно сгенерировал");
             break;
         }
         case SORT:{
@@ -212,7 +211,10 @@ static void process_state(State* state){
             break;
         }
         case PRINT:{
-            fprintf(state->output, "Запринтил чето");
+            Article* a = malloc(sizeof(Article));
+            char buff[MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN]; // запас на экранирование кавычек
+            scan_csv(a, state->input, buff);
+            print_csv(a, state->output);
             break;
         }
     }
@@ -241,19 +243,6 @@ static char** format_argv(int argc, char** argv){
     }
     f_argv[argc + found_splits] = NULL;
     return f_argv;
-}
-
-static size_t str_to_ull(char* str){
-    size_t ull = 0;
-
-    for (char* c = str; *c != '\0'; ++c){
-        if(*c < 48 || *c > 57 || c == NULL){
-            return 0;
-        }
-        ull = 10*ull + *(c) - ASCII_OFFSET;
-    }
-    
-    return ull;
 }
 
 static char* copy_str_trim(char* src, char divider){
