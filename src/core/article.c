@@ -2,13 +2,12 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#include "article.h"
+#include "article_internal.h"
 
 int cmp(void* left, void* right){
     Article* l = (Article*)left;
     Article* r = (Article*)right;
 
-    
     if(l->citations == r->citations){
         if(l->in_RSCI == r->in_RSCI){
             if(l->year == r->year){
@@ -23,3 +22,5 @@ int cmp(void* left, void* right){
         }return l->in_RSCI - r->in_RSCI;
     }return l->citations - r->citations;
 }
+
+int cmp_d(void* left, void* right){ return -cmp(left, right); }

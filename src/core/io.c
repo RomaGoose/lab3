@@ -5,37 +5,9 @@
 #include <wchar.h>
 #include <locale.h>
 
-#include "article.h"
+#include "article_internal.h"
 #include "container.h"
-
-#define err_exit(err_message) do {\
-        fprintf(stderr, "%s", err_message);\
-        exit(1);} while (0) 
-
-#define mem_check_exit(x) do {                             \
-    if(x == NULL) {                                        \
-        fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
-        exit(1);                                           \
-    }} while (0)
-
-#define ASCII_DIGITS_OFFSET 48 
-#define MAX_INPUT_LEN MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN
-                                    // ^^^^ запас на экранирование кавычек
-#define MAX_NAME_WIDTH 40
-#define MAX_MAGAZINE_WIDTH 30
-
-
-typedef enum {
-        NAME,
-        SURN,
-        INIT,
-        MAGNAME,
-        YEAR,
-        MAGVOL,
-        PAGES,
-        CIT,
-        RSCI
-    } field_tag;
+#include "inout_internal.h"
 
 
 static void print_field_csv(char* field, FILE* output){
@@ -79,7 +51,9 @@ void print_csv(DLList* list, FILE* output){
 }
 
 static int scanline_csv(Article* a, FILE* input, char* buff);
-void scan_csv(DLList* list, FILE* input){
+DLList* scan_csv(FILE* input){
+    DLList* list = init_DLList(sizeof(Article));
+
     Article* a;
     
     char buff[MAX_INPUT_LEN];
@@ -91,6 +65,8 @@ void scan_csv(DLList* list, FILE* input){
         a = malloc(sizeof(Article));
     }
     free(a);
+
+    return list;
 }
 
 static size_t count_digits(size_t n) {

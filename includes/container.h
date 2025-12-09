@@ -1,5 +1,7 @@
 #pragma once
+
 #include <stdlib.h>
+
 
 typedef struct _DLList DLList;
 
@@ -16,7 +18,6 @@ void remove_end(DLList* list);
 void remove_(size_t index, DLList* list);
 void clear_list(DLList* list);
 void kill_list(DLList* list);
-
 void swap(size_t index_1, size_t index_2, DLList* list);
 void* convert_list_to_array(DLList* list);
 DLList* convert_array_to_list(void* arr, size_t count, size_t element_size);

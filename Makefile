@@ -2,33 +2,32 @@ CC=gcc
 TARGET=lab3.exe
 CFLAGS=-c -g 
 
-SRCDIR=src
-OBJDIR=build
+SRCDIR=src/
+OBJDIR=build/
 INCLUDEDIR=includes
 
-SRC=main.c container.c article.c selection_sort.c parse_args.c generate.c io.c
-OBJ=$(SRC:%.c=%.o)
+SRC=app/main.c container/container.c core/article.c sort/selection_sort.c app/parse_args.c core/generate.c core/io.c
+OBJ=$(SRC:%.c=$(OBJDIR)%.o)
 
-SRCS=$(SRC:%=$(SRCDIR)/%)
-OBJS=$(OBJ:%=$(OBJDIR)/%)
-
-DELOBJS=OBJS
-CLEANCMD=rm -f
-MKDIRCMD=mkdir -p $(OBJDIR)
-
-ifeq ($(OS),Windows_NT)
- 	DELOBJS=$(OBJ:%=$(OBJDIR)\\%)
-	CLEANCMD=del /f
-	MKDIRCMD=if not exist $(OBJDIR) mkdir $(OBJDIR)
-endif
-
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJ)
 	$(CC) $^ -o $@
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR) 
-	$(CC) $(CFLAGS) -I$(INCLUDEDIR) $^ -o $@
+$(OBJDIR)%.o: $(SRCDIR)%.c | $(OBJDIR) 
+	$(CC) $(CFLAGS) -I$(INCLUDEDIR) $< -o $@
 
-.PHONY: clean cleanall printaaa
+
+WINOBJDIR=$(subst /,\,$(OBJDIR))
+WINOBJ=$(subst /,\,$(OBJ))
+ifeq ($(OS),Windows_NT)
+	MKDIRCMD=if not exist $(WINOBJDIR) mkdir $(WINOBJDIR)app $(WINOBJDIR)container $(WINOBJDIR)core $(WINOBJDIR)sort
+	CLEANCMD=del /f /q
+else
+	MKDIRCMD=mkdir -p $(OBJDIR)app $(OBJDIR)container $(OBJDIR)core $(OBJDIR)sort
+    CLEANCMD=rm -f
+endif
+	
+
+.PHONY: clean cleanall $(OBJDIR)
 
 $(OBJDIR):
 	$(MKDIRCMD)
@@ -37,4 +36,4 @@ clean:
 	$(CLEANCMD) $(TARGET)
 	
 cleanall: clean
-	$(CLEANCMD) $(DELOBJS)
+	$(CLEANCMD) $(WINOBJ)

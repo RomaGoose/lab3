@@ -4,4 +4,5 @@
 build
 wordlists/oldwords.txt
 wordlists/oldsurnames.txt
+wordlists/wordsOEM.txt
 wordlists/fixing_list.c

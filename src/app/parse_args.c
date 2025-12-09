@@ -1,47 +1,8 @@
-#include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
 #include "inout.h"
+#include "parse_args.h"
 
-#define MAX_F_ARGC 8
-#define mem_check_exit(x) do {                             \
-    if(x == NULL) {                                        \
-        fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
-        exit(1);                                           \
-    }} while (0)
-#define clear() do{char c; while((c=getchar())!=EOF && c != '\n');} while(0)
-
-typedef enum { ASC, DESC } sort_type_tag;
-typedef enum {
-    GEN,
-    PRINT,
-    SORT,
-    TYPE,
-    IN,
-    OUT,
-
-    END
-} arg_tag;
-
-typedef struct _State {
-    arg_tag task;
-    union {
-        size_t N;
-        sort_type_tag sort_type;
-    } task_value;
-    FILE* input;
-    FILE* output;
-} State;
-
-typedef struct _Argument {
-    arg_tag tag;
-    const char* long_name;
-    char name;
-    const char* long_arg_value;
-    const char* short_arg_value;
-    const char* description;
-} Argument;
 
 static Argument arguments[] = {
     {GEN, "generate", 'g', " <N>", " <N>", "Генерирация и вывод N записей"},
@@ -198,7 +159,6 @@ static void process_arg(Argument* a, void* value, State* state){
     }
 }
 
-void generate(size_t N, FILE* output);
 static void process_state(State* state){
     switch (state->task){
         case GEN:{
@@ -211,20 +171,8 @@ static void process_state(State* state){
             break;
         }
         case PRINT:{
-            // Article* a = malloc(sizeof(Article));
-            // char buff[MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN]; // запас на экранирование кавычек
-            // scanline_csv(a, state->input, buff);
-            
-            // DLList* list = init_DLList(sizeof(Article));
-            // insert_end(a, list);
-            // print_table(list, state->output);
-            
-            DLList* list = init_DLList(sizeof(Article));
-            scan_csv(list, state->input);
+            DLList* list = scan_csv(state->input);
             print_table(list, state->output);
-            // print_csv(list, state->output);
-            // printline_csv(get_element(0, list), state->output);
-            // printline_csv(get_element(1, list), state->output);
             kill_list(list);
             break;
         }
