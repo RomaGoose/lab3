@@ -2,14 +2,28 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
+#include <locale.h>
 
 #include "article.h"
+#include "container.h"
 
 #define err_exit(err_message) do {\
         fprintf(stderr, "%s", err_message);\
         exit(1);} while (0) 
 
-#define ASCII_OFFSET 48 
+#define mem_check_exit(x) do {                             \
+    if(x == NULL) {                                        \
+        fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
+        exit(1);                                           \
+    }} while (0)
+
+#define ASCII_DIGITS_OFFSET 48 
+#define MAX_INPUT_LEN MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN
+                                    // ^^^^ запас на экранирование кавычек
+#define MAX_NAME_WIDTH 40
+#define MAX_MAGAZINE_WIDTH 30
+
 
 typedef enum {
         NAME,
@@ -38,7 +52,7 @@ static void print_field_csv(char* field, FILE* output){
     else fprintf(output, "%s", field);
 }
 
-void print_csv(Article* a, FILE* output){
+void printline_csv(Article* a, FILE* output){
     char article_name[MAX_ARTICLE_NAME_LEN+2];
     char magazine[MAX_MAGAZINE_NAME_LEN+2];
     if(strchr(a->article_name, ',') != NULL){
@@ -57,6 +71,90 @@ void print_csv(Article* a, FILE* output){
         a->in_RSCI);
 }
 
+void print_csv(DLList* list, FILE* output){
+    Iterator* i;
+    for(i = begin(list); get_pos(i) < get_size(list); next(i))
+        printline_csv(get(i), output);
+    end(i);
+}
+
+static int scanline_csv(Article* a, FILE* input, char* buff);
+void scan_csv(DLList* list, FILE* input){
+    Article* a;
+    
+    char buff[MAX_INPUT_LEN];
+    
+    a = malloc(sizeof(Article));
+    while(scanline_csv(a, input, buff) != -1){
+        mem_check_exit(a);
+        insert_end(a, list);
+        a = malloc(sizeof(Article));
+    }
+    free(a);
+}
+
+static size_t count_digits(size_t n) {
+    int d = 0;
+    while (n!=0){
+        d++;
+        n /= 10;
+    }
+    return d;
+}
+
+void print_table(DLList* list, FILE* output){
+    
+    size_t max_num_len = count_digits(get_size(list));
+
+    fwprintf(output, L" %*ls %-40.40ls %-23.23ls %-30.30ls %-4ls %-5ls %-5ls %-6ls %-4ls\n", 
+        max_num_len, L" ", 
+        L"Название статьи", 
+        L"Первый автор", 
+        L"Название журнала",
+        L"Год",
+        L"Том",
+        L"Стр",
+        L"Цитир",
+        L"РИНЦ");
+
+
+    Article* a;
+    Iterator* i;
+    wchar_t name[MAX_ARTICLE_NAME_LEN];
+    wchar_t sur[MAX_SURN_LEN];
+    wchar_t init[MAX_INITIALS_LEN];
+    wchar_t mag[MAX_MAGAZINE_NAME_LEN];
+
+    for(i = begin(list); get_pos(i) < get_size(list); next(i)){
+        a = get(i);
+
+        mbstowcs(name, a->article_name, MAX_ARTICLE_NAME_LEN);
+        mbstowcs(sur, a->author_surname, MAX_SURN_LEN);
+        mbstowcs(init, a->author_initials, MAX_INITIALS_LEN);
+        mbstowcs(mag, a->magazine, MAX_MAGAZINE_NAME_LEN);
+
+        if(wcslen(name) > MAX_NAME_WIDTH){
+            wcsncpy(name + MAX_NAME_WIDTH - 3, L"...", 3);
+            name[MAX_NAME_WIDTH] = L'\0';
+        }
+        if(wcslen(mag) > MAX_MAGAZINE_WIDTH){
+            wcsncpy(mag + MAX_MAGAZINE_WIDTH - 3, L"...", 3);
+            mag[MAX_MAGAZINE_WIDTH] = L'\0';
+        }
+        
+        fwprintf(output, L" %*llu %-40.40ls %ls %ls%*ls %-30.30ls %*d %*d %*d %*d %-4ls\n", 
+            max_num_len, get_pos(i) + 1, 
+            name, 
+            sur, 
+            init, 23 - wcslen(sur) - wcslen(init) - 1, L" ",
+            mag,
+            4, a->year,
+            5, a->mag_vol,
+            5, a->pages,
+            6, a->citations,
+            a->in_RSCI ? L"YES" : L"NO");
+    }
+}
 static uint8_t count_char(char* str, char character){
     uint8_t count = 0;
     while(*str){
@@ -73,15 +171,16 @@ size_t str_to_ull(char* str){
         if(*c < 48 || *c > 57 || c == NULL){
             return 0;
         }
-        ull = 10*ull + *(c) - ASCII_OFFSET;
+        ull = 10*ull + *(c) - ASCII_DIGITS_OFFSET;
     }
     
     return ull;
 }
 
-void scan_csv(Article* a, FILE* input, char* buff){
-    fgets(buff, MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN, input);// запас на экранирование кавычек
-
+static int scanline_csv(Article* a, FILE* input, char* buff){
+    if(fgets(buff, MAX_INPUT_LEN, input)==NULL)
+        return -1;                    
+    
     if(count_char(buff, ',') < NUM_OF_FIELDS - 1)
         err_exit("Некорректный ввод данных: недостаточно полей");
     if(count_char(buff, ',') > NUM_OF_FIELDS - 1 && count_char(buff, '"') == 0)
@@ -95,7 +194,7 @@ void scan_csv(Article* a, FILE* input, char* buff){
     uint8_t last_is_quote = 0;
     size_t curr_index = 0;
     size_t size;
-    for(size_t i = 0; i < MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN; ++i){
+    for(size_t i = 0; i < MAX_INPUT_LEN; ++i){
         if(!buff[i]) break;
         if(buff[i] == '"') {
             if(i == 0 || buff[i-1] == ',') first_is_quote = 1;
@@ -179,7 +278,7 @@ void scan_csv(Article* a, FILE* input, char* buff){
                     break;
                 }
                 case(CIT):{
-                    if(size>5)
+                    if(size>6)
                         err_exit("Некорректный ввод данных: превышено значение цитирований");
                     if(buff[curr_index] == '0' && buff[curr_index+1] == ',') a->citations = 0;
                     else if(str_to_ull(buff+curr_index) == 0) err_exit("Некорректный ввод данных: неверное значение цитирований");
@@ -203,7 +302,5 @@ void scan_csv(Article* a, FILE* input, char* buff){
             curr_index = i+1;
         }
     }
+    return 0;
 }
-
-//alsadl k laks l,lobankov,a.f.,"ajo neg",2025,5,100,10,1
-//"alsadl k ""laks"" l",lobankov,a.f.,"ajo neg",2025,5,100,10,1

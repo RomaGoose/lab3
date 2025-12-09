@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define mem_check_exit(x) do {                               \
+#define mem_check_exit(x) do {                             \
     if(x == NULL) {                                        \
         fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
         exit(1);                                           \

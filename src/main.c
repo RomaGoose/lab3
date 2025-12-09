@@ -6,23 +6,9 @@
 #include "article.h"
 #include "selection_sort.h"
 
-typedef struct _Article {int n; char name[20];} Article;
 void parse_args(int argc, char** argv);
 int main(int argc, char** argv){
-    setlocale(LC_ALL, "RU_ru.UTF-8");
-
-    //DLList* list = init_DLList(sizeof(Article));
-    Article r1 = {.n = 7, .name = "baboon"};
-    Article r2 = {.n = 7, .name = "australopithecus"};
-    Article r3 = {.n = 9, .name = "123456789012345678"};
-    Article new = {.n = 10, .name = "set"};
-    
-    // insert_start(&r1, list);
-    // insert_end(&r3, list);
-    // insert_(0, &r2, list);
-
-    Article arts[] = {r2,new,r3,r1};
-    DLList* list = convert_array_to_list(arts, 4, sizeof(arts[0]));
+    setlocale(LC_ALL, "ru_RU.UTF-8");
 
 /*
     printf("list: \n%d\n%d\n%d\n --- \n", ((Article*)get_element(0, list))->n, 
@@ -86,7 +72,6 @@ int main(int argc, char** argv){
 
     parse_args(argc, argv);
 
-    kill_list(list);
     puts("success");
     return 0;
 }

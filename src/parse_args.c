@@ -211,10 +211,21 @@ static void process_state(State* state){
             break;
         }
         case PRINT:{
-            Article* a = malloc(sizeof(Article));
-            char buff[MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN]; // запас на экранирование кавычек
-            scan_csv(a, state->input, buff);
-            print_csv(a, state->output);
+            // Article* a = malloc(sizeof(Article));
+            // char buff[MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN]; // запас на экранирование кавычек
+            // scanline_csv(a, state->input, buff);
+            
+            // DLList* list = init_DLList(sizeof(Article));
+            // insert_end(a, list);
+            // print_table(list, state->output);
+            
+            DLList* list = init_DLList(sizeof(Article));
+            scan_csv(list, state->input);
+            print_table(list, state->output);
+            // print_csv(list, state->output);
+            // printline_csv(get_element(0, list), state->output);
+            // printline_csv(get_element(1, list), state->output);
+            kill_list(list);
             break;
         }
     }

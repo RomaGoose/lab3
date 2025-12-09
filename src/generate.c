@@ -4,6 +4,7 @@
 #include <string.h>
 #include <time.h>
 #include <locale.h>
+#include <limits.h>
 
 #include "article.h"
 #include "inout.h"
@@ -25,14 +26,18 @@
 
 typedef enum _wordlist_t { WORDS, SURNS } wordlist_t;
 
-static char* word_gen(uint8_t size, char** wordlist){
-    int word_num = rand() % (MAX_WORD_NUM(size)) + 1;
+static uint32_t _rand(){
+    return rand()*rand();
+}
+
+static char* word_gen(size_t size, char** wordlist){
+    int word_num = _rand() % (MAX_WORD_NUM(size)) + 1;
     int cur_len = 0;
     char* tmp = malloc(size);
     mem_check_exit(tmp);
     
     for (int j = 0; j < word_num; j++) {
-        char* rand_word = wordlist[rand() % WORDLIST_LEN];
+        char* rand_word = wordlist[_rand() % WORDLIST_LEN];
         int rword_len = strlen(rand_word);
         
         if (cur_len + rword_len + (j > 0 ? 1 : 0) + 1 > size) 
@@ -95,6 +100,7 @@ static char** read_list(wordlist_t type){
 
 void generate(size_t N, FILE* output){
     srand(time(NULL));
+
     Article* tmp = malloc(sizeof(Article));
     mem_check_exit(tmp);
     char** words = read_list(WORDS);
@@ -103,37 +109,22 @@ void generate(size_t N, FILE* output){
     for(size_t i = 0; i < N; ++i){
         char* art_name = word_gen(MAX_ARTICLE_NAME_LEN, words);
         char* mag_name = word_gen(MAX_MAGAZINE_NAME_LEN, words);
-        char first_initial[3] = {[2] = '\0'};
-        char second_initial[3] = {[2] = '\0'};
-        sprintf(first_initial, "%.2s", surnames [rand() % SURNLIST_LEN]);
-        sprintf(second_initial, "%.2s", surnames[rand() % SURNLIST_LEN]);
-
+        
         strncpy(tmp->article_name, art_name, MAX_ARTICLE_NAME_LEN);
-        strncpy(tmp->author_surname, surnames[rand() % SURNLIST_LEN], MAX_SURN_LEN);
+        strncpy(tmp->author_surname, surnames[_rand() % SURNLIST_LEN], MAX_SURN_LEN);
         strncpy(tmp->magazine, mag_name, MAX_MAGAZINE_NAME_LEN);
-        sprintf(tmp->author_initials, "%s.%s.", first_initial, second_initial);
+        sprintf(tmp->author_initials, "%.2s.%.2s.", surnames[_rand() % SURNLIST_LEN], surnames[_rand()%SURNLIST_LEN]);
 
-        tmp->year = rand() % 10000;
-        tmp->mag_vol = rand() % ((1 << 16) - 1);
-        tmp->pages = rand() % ((1 << 16) - 1);
-        tmp->citations = rand() % ((1 << 16) - 1);
-        tmp->in_RSCI = rand() % 2;
+        tmp->year = _rand() % MAX_YEAR + 1;
+        tmp->mag_vol = _rand() % UINT16_MAX + 1;
+        tmp->pages = _rand() % UINT16_MAX + 1;
+        tmp->citations = _rand() % MAX_CITATIONS;
+        tmp->in_RSCI = _rand() % 2;
 
         free(art_name);
         free(mag_name);
 
-        print_csv(tmp, output);  
-        
-        // fprintf(output, "name: %s\ninit: %s\nsurn: %s\nmag: %s\ncit: %d\npages: %d\nyear: %d\nrcsi: %d\nmagvol: %d\n\n",
-        //     tmp->article_name,
-        //     tmp->author_surname,
-        //     tmp->author_initials,
-        //     tmp->magazine,
-        //     tmp->year,
-        //     tmp->mag_vol,
-        //     tmp->pages,
-        //     tmp->citations,
-        //     tmp->in_RSCI);
+        printline_csv(tmp, output); 
     }
 
     free(tmp);
