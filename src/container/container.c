@@ -38,6 +38,7 @@ void clear_list(DLList* list){
     Node* tmp;
     for(Node* node = list->head; node != NULL; node = tmp){
         tmp = node->next;
+        free(node->info);
         free(node);
     }
     list->head = NULL;
@@ -180,7 +181,7 @@ void swap(size_t index_1, size_t index_2, DLList* list){
 
 static void swap_adjacent(size_t index_1, size_t index_2, DLList* list){
     Node* node_1 = get_node(index_1, list);
-    Node tmp_1 = *node_1;
+    Node* node_1_prev = node_1->prev;
     Node* node_2 = get_node(index_2, list);
 
 
@@ -199,12 +200,13 @@ static void swap_adjacent(size_t index_1, size_t index_2, DLList* list){
         node_2->next->prev = node_1;
 
     node_2->next = node_1;
-    node_2->prev = tmp_1.prev;
+    node_2->prev = node_1_prev;
 }
 
 static void swap_distant(size_t index_1, size_t index_2, DLList* list){
     Node* node_1 = get_node(index_1, list);
-    Node tmp_1 = *node_1;
+    Node* node_1_prev = node_1->prev;
+    Node* node_1_next = node_1->next;
     Node* node_2 = get_node(index_2, list);
 
 
@@ -212,6 +214,8 @@ static void swap_distant(size_t index_1, size_t index_2, DLList* list){
         list->head = node_2;
     else
         node_1->prev->next = node_2;
+
+    node_1->next->prev = node_2;
 
     node_1->next = node_2->next;      
     node_1->prev = node_2->prev;
@@ -224,8 +228,8 @@ static void swap_distant(size_t index_1, size_t index_2, DLList* list){
     
     node_2->prev->next = node_1;
     
-    node_2->next = tmp_1.next;        
-    node_2->prev = tmp_1.prev;
+    node_2->next = node_1_next;        
+    node_2->prev = node_1_prev;
 }
 
 #pragma endregion
@@ -310,3 +314,22 @@ Iterator* begin(DLList* list){
 void end(Iterator* i) { free(i); }
 
 #pragma endregion
+
+void sel_sort(DLList* list, int (*cmp)(void* l, void*r)){
+    Iterator* i;
+    size_t list_size = get_size(list);
+    size_t pos_of_max;
+    char sorted;
+    for(size_t run = 0; run < list_size; ++run){
+        pos_of_max = 0;
+        sorted = 1;
+        i = begin(list);
+        for (next(i); get_pos(i) < list_size - run; next(i)){
+            if(cmp(get_element(pos_of_max, list), get(i)) < 0) 
+                pos_of_max = get_pos(i);
+            else sorted = 0;
+        }
+        if (sorted) return;
+        swap(pos_of_max, list_size-1 - run, list);
+    }
+}

@@ -1,12 +1,12 @@
 CC=gcc
 TARGET=lab3.exe
-CFLAGS=-c -g 
+CFLAGS=-c -g
 
 SRCDIR=src/
 OBJDIR=build/
 INCLUDEDIR=includes
 
-SRC=app/main.c container/container.c core/article.c sort/selection_sort.c app/parse_args.c core/generate.c core/io.c
+SRC=app/main.c container/container.c core/article.c app/parse_args.c core/generate.c core/io.c
 OBJ=$(SRC:%.c=$(OBJDIR)%.o)
 
 $(TARGET): $(OBJ)
@@ -19,10 +19,10 @@ $(OBJDIR)%.o: $(SRCDIR)%.c | $(OBJDIR)
 WINOBJDIR=$(subst /,\,$(OBJDIR))
 WINOBJ=$(subst /,\,$(OBJ))
 ifeq ($(OS),Windows_NT)
-	MKDIRCMD=if not exist $(WINOBJDIR) mkdir $(WINOBJDIR)app $(WINOBJDIR)container $(WINOBJDIR)core $(WINOBJDIR)sort
+	MKDIRCMD=if not exist $(WINOBJDIR) mkdir $(WINOBJDIR)app $(WINOBJDIR)container $(WINOBJDIR)core 
 	CLEANCMD=del /f /q
 else
-	MKDIRCMD=mkdir -p $(OBJDIR)app $(OBJDIR)container $(OBJDIR)core $(OBJDIR)sort
+	MKDIRCMD=mkdir -p $(OBJDIR)app $(OBJDIR)container $(OBJDIR)core 
     CLEANCMD=rm -f
 endif
 	

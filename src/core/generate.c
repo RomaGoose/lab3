@@ -8,7 +8,7 @@
 
 #include "article_internal.h"
 #include "inout_internal.h"
-#include "generate.h"
+#include "generate.h"   
 
 static uint32_t _rand(){
     return rand()*rand();

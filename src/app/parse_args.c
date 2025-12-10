@@ -2,6 +2,7 @@
 
 #include "inout.h"
 #include "parse_args.h"
+#include "article.h"
 
 
 static Argument arguments[] = {
@@ -129,7 +130,7 @@ static void process_arg(Argument* a, void* value, State* state){
                 else if(*(char*)value == '"'){
                     state->input = fopen((char* )value + 1, "r");
                     if (state->input == NULL){
-                         puts("Введено некорректное название файла для ввода");
+                        puts("Введено некорректное название файла для ввода");
                         help_arg(arguments + IN);
                         exit(1);
                     }
@@ -167,7 +168,12 @@ static void process_state(State* state){
             break;
         }
         case SORT:{
-            fprintf(state->output, "Отсортировал, код сортировки: %d", state->task_value);
+            DLList* list = scan_csv(state->input);
+            if(state->task_value.sort_type == ASC)
+                sel_sort(list, cmp);
+            else
+                sel_sort(list, cmp_d);
+            print_table(list, state->output);
             break;
         }
         case PRINT:{

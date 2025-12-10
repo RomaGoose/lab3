@@ -79,9 +79,8 @@ static size_t count_digits(size_t n) {
 }
 
 void print_table(DLList* list, FILE* output){
-    
-    size_t max_num_len = count_digits(get_size(list));
 
+    size_t max_num_len = count_digits(get_size(list));
     fwprintf(output, L" %*ls %-40.40ls %-23.23ls %-30.30ls %-4ls %-5ls %-5ls %-6ls %-4ls\n", 
         max_num_len, L" ", 
         L"Название статьи", 
@@ -93,17 +92,21 @@ void print_table(DLList* list, FILE* output){
         L"Цитир",
         L"РИНЦ");
 
-
     Article* a;
     Iterator* i;
     wchar_t name[MAX_ARTICLE_NAME_LEN];
     wchar_t sur[MAX_SURN_LEN];
     wchar_t init[MAX_INITIALS_LEN];
     wchar_t mag[MAX_MAGAZINE_NAME_LEN];
-
+    
     for(i = begin(list); get_pos(i) < get_size(list); next(i)){
-        a = get(i);
 
+        a = get(i);
+        
+        wmemset(name, L'\0', MAX_ARTICLE_NAME_LEN);
+        wmemset(sur, L'\0', MAX_SURN_LEN);
+        wmemset(init, L'\0', MAX_INITIALS_LEN);
+        wmemset(mag, L'\0', MAX_MAGAZINE_NAME_LEN);
         mbstowcs(name, a->article_name, MAX_ARTICLE_NAME_LEN);
         mbstowcs(sur, a->author_surname, MAX_SURN_LEN);
         mbstowcs(init, a->author_initials, MAX_INITIALS_LEN);
@@ -208,6 +211,7 @@ static int scanline_csv(Article* a, FILE* input, char* buff){
                         err_exit("Некорректный ввод данных: превышена длина фамилии автора");
                     strncpy(a->author_surname, buff + curr_index, size);
                     a->author_surname[MAX_SURN_LEN-1] = '\0';
+                    // puts(a->author_surname);
                     break;
                 }
                 case(INIT):{
