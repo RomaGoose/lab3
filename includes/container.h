@@ -22,6 +22,7 @@ void swap(size_t index_1, size_t index_2, DLList* list);
 void* convert_list_to_array(DLList* list);
 DLList* convert_array_to_list(void* arr, size_t count, size_t element_size);
 void sel_sort(DLList* list, int (*cmp)(void* l, void*r));
+void quick_sort(DLList* list, int (*cmp)(void* l, void*r), size_t l, size_t r);
 
 
 typedef struct _Iterator Iterator;

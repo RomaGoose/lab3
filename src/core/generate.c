@@ -90,6 +90,8 @@ void generate(size_t N, FILE* output){
     char** words = read_list(WORDS);
     char** surnames = read_list(SURNS);
 
+    fprintf(output, "%s", "\"Название статьи\",Фамилия,Инициалы,Журнал,\"Год выпуска\",Том,Страницы,Цитирования,\"В РИНЦ\"\n");
+
     for(size_t i = 0; i < N; ++i){
         char* art_name = word_gen(MAX_ARTICLE_NAME_LEN, words);
         char* mag_name = word_gen(MAX_MAGAZINE_NAME_LEN, words);

@@ -333,3 +333,19 @@ void sel_sort(DLList* list, int (*cmp)(void* l, void*r)){
         swap(pos_of_max, list_size-1 - run, list);
     }
 }
+
+void quick_sort(DLList* list, int (*cmp)(void* l, void*r), size_t l, size_t r){
+    if(l>=r) return;
+    void* pivot = get_element((l+r)/2, list);
+    size_t i = l, j = r;
+    while(i<=j){
+        while(cmp(get_element(i, list), pivot) < 0) ++i;
+        while(cmp(get_element(j, list), pivot) > 0) --j;
+        if(i<=j){
+            swap(i, j, list);
+            ++i; --j;
+        }
+    }
+    quick_sort(list, cmp, l, j);
+    quick_sort(list, cmp, i, r);
+}

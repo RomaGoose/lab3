@@ -11,7 +11,9 @@
 
 
 static void print_field_csv(char* field, FILE* output){
-    uint8_t needs_format = (strchr(field, ',') != NULL || strchr(field, '"') != NULL);
+    uint8_t needs_format = (strchr(field, ',') != NULL  || strchr(field, '"') != NULL || 
+                            strchr(field, '\t') != NULL || strchr(field, ';') != NULL || 
+                            strchr(field, ' ') != NULL);
     
     if (needs_format){
         fputc('"', output);
@@ -27,9 +29,7 @@ static void print_field_csv(char* field, FILE* output){
 void printline_csv(Article* a, FILE* output){
     char article_name[MAX_ARTICLE_NAME_LEN+2];
     char magazine[MAX_MAGAZINE_NAME_LEN+2];
-    if(strchr(a->article_name, ',') != NULL){
-
-    }
+    
     print_field_csv(a->article_name, output);
     fprintf(output, ",%s,%s,",
         a->author_surname,
@@ -45,6 +45,7 @@ void printline_csv(Article* a, FILE* output){
 
 void print_csv(DLList* list, FILE* output){
     Iterator* i;
+    fprintf(output, "%s", "\"Название статьи\",Фамилия,Инициалы,Журнал,\"Год выпуска\",Том,Страницы,Цитирования,\"В РИНЦ\"\n");
     for(i = begin(list); get_pos(i) < get_size(list); next(i))
         printline_csv(get(i), output);
     end(i);
@@ -57,7 +58,8 @@ DLList* scan_csv(FILE* input){
     Article* a;
     
     char buff[MAX_INPUT_LEN];
-    
+    fgets(buff, MAX_INPUT_LEN, input); //пропускаем шапку
+
     a = malloc(sizeof(Article));
     while(scanline_csv(a, input, buff) != -1){
         mem_check_exit(a);
@@ -159,7 +161,7 @@ size_t str_to_ull(char* str){
 static int scanline_csv(Article* a, FILE* input, char* buff){
     if(fgets(buff, MAX_INPUT_LEN, input)==NULL)
         return -1;                    
-    
+
     if(count_char(buff, ',') < NUM_OF_FIELDS - 1)
         err_exit("Некорректный ввод данных: недостаточно полей");
     if(count_char(buff, ',') > NUM_OF_FIELDS - 1 && count_char(buff, '"') == 0)

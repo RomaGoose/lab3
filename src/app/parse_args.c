@@ -169,11 +169,15 @@ static void process_state(State* state){
         }
         case SORT:{
             DLList* list = scan_csv(state->input);
+            // if(state->task_value.sort_type == ASC)
+            //     sel_sort(list, cmp);
+            // else
+            //     sel_sort(list, cmp_d);
             if(state->task_value.sort_type == ASC)
-                sel_sort(list, cmp);
+                quick_sort(list, cmp, 0, get_size(list) - 1);
             else
-                sel_sort(list, cmp_d);
-            print_table(list, state->output);
+                quick_sort(list, cmp_d, 0, get_size(list) - 1);
+            print_csv(list, state->output);
             break;
         }
         case PRINT:{
