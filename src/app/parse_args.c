@@ -10,6 +10,7 @@ static Argument arguments[] = {
     {PRINT, "print", 'P', "", "", "Cчитывает данные и выводит их в формате таблицы"},
     {SORT, "sort", 's',  "", "", "Принимает на ввод, сортирует и выводит данные"},
     {TYPE, "type", 't', "=<asc/desc>", " <A/D>", "Выбор типа сортировки: asc или A - по возрастанию, desc или D - по убыванию"},
+    {ALG, "algorithm", 'a', "=<sel/quick>", " <S/Q>", "Выбор алгоритма сортировки: sel или S - выбором, quick или Q - быстрая (Хоара)"},
     {IN, "in", 'i',  "=\"<имя_файла>\"", " <имя_файла>", "Выбор файла для данных на ввод"},
     {OUT, "out", 'o', "=\"<имя_файла>\"", " <имя_файла>", "Выбор файла для выходных данных"},
     
@@ -97,7 +98,8 @@ static void process_arg(Argument* a, void* value, State* state){
                 exit(1);
             }
             state->task = SORT;
-            state->task_value.sort_type = ASC;
+            state->task_value.sort_value.sort_type = ASC;
+            state->task_value.sort_value.sort_alg = QUICK;
             break;
         }
         case TYPE:{
@@ -106,7 +108,7 @@ static void process_arg(Argument* a, void* value, State* state){
                 exit(1);
             }
             if(strcmp(value, "desc") == 0 || *(char* )value == 'D'){
-                state->task_value.sort_type = DESC;
+                state->task_value.sort_value.sort_type = DESC;
                 break;
             }
             if(strcmp(value, "asc") == 0 || *(char* )value == 'A'){
@@ -115,6 +117,25 @@ static void process_arg(Argument* a, void* value, State* state){
             else {
                 puts("Введён некорректный тип сортировки"); 
                 help_arg(arguments + TYPE);
+                exit(1);
+            }
+            break;
+        }
+        case ALG:{
+            if(state->task != SORT){
+                puts("Выбор алгоритма сортировки, в то время, как режим работы не сортировка.");
+                exit(1);
+            }
+            if(strcmp(value, "sel") == 0 || *(char* )value == 'S'){
+                state->task_value.sort_value.sort_alg = SEL;
+                break;
+            }
+            if(strcmp(value, "quick") == 0 || *(char* )value == 'Q'){
+                break;
+            }
+            else {
+                puts("Введён некорректный тип сортировки"); 
+                help_arg(arguments + ALG);
                 exit(1);
             }
             break;
@@ -169,14 +190,18 @@ static void process_state(State* state){
         }
         case SORT:{
             DLList* list = scan_csv(state->input);
-            // if(state->task_value.sort_type == ASC)
-            //     sel_sort(list, cmp);
-            // else
-            //     sel_sort(list, cmp_d);
-            if(state->task_value.sort_type == ASC)
-                quick_sort(list, cmp, 0, get_size(list) - 1);
-            else
-                quick_sort(list, cmp_d, 0, get_size(list) - 1);
+            if(state->task_value.sort_value.sort_type == ASC){
+                if(state->task_value.sort_value.sort_alg == SEL)
+                    sel_sort(list, cmp);
+                else
+                    quick_sort(list, cmp, 0, get_size(list) - 1);
+            }
+            if(state->task_value.sort_value.sort_type == DESC){
+                if(state->task_value.sort_value.sort_alg == SEL)
+                    sel_sort(list, cmp_d);
+                else
+                    quick_sort(list, cmp_d, 0, get_size(list) - 1);
+            }
             print_csv(list, state->output);
             break;
         }

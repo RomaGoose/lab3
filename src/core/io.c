@@ -80,6 +80,16 @@ static size_t count_digits(size_t n) {
     return d;
 }
 
+static void clean_string(char *str) {
+    char *src = str, *dst = str;
+    while (*src) {
+        if ((unsigned char)*src >= 32)
+            *dst++ = *src;
+        src++;
+    }
+    *dst = '\0';
+}
+
 void print_table(DLList* list, FILE* output){
 
     size_t max_num_len = count_digits(get_size(list));
@@ -105,6 +115,10 @@ void print_table(DLList* list, FILE* output){
 
         a = get(i);
         
+        clean_string(a->author_surname);
+        clean_string(a->article_name);
+        clean_string(a->author_initials);
+        clean_string(a->magazine);
         wmemset(name, L'\0', MAX_ARTICLE_NAME_LEN);
         wmemset(sur, L'\0', MAX_SURN_LEN);
         wmemset(init, L'\0', MAX_INITIALS_LEN);
@@ -213,6 +227,9 @@ static int scanline_csv(Article* a, FILE* input, char* buff){
                         err_exit("Некорректный ввод данных: превышена длина фамилии автора");
                     strncpy(a->author_surname, buff + curr_index, size);
                     a->author_surname[MAX_SURN_LEN-1] = '\0';
+                    // for(int i = 0; a->author_surname[i]; ++i){
+                    //     fwprintf(stdout, L"%02x ", (unsigned char)a->author_surname[i]);
+                    // }
                     // puts(a->author_surname);
                     break;
                 }

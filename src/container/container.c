@@ -282,7 +282,6 @@ DLList* convert_array_to_list(void* arr, size_t count, size_t element_size){
 
 typedef struct _Iterator {
     DLList* list;
-    //size_t size;
     size_t pos;
 } Iterator;
 
@@ -343,7 +342,8 @@ void quick_sort(DLList* list, int (*cmp)(void* l, void*r), size_t l, size_t r){
         while(cmp(get_element(j, list), pivot) > 0) --j;
         if(i<=j){
             swap(i, j, list);
-            ++i; --j;
+            ++i; 
+            if (j > 0) --j; else break;
         }
     }
     quick_sort(list, cmp, l, j);

@@ -38,7 +38,10 @@ static char* word_gen(size_t size, char** wordlist){
     return tmp;
 }
 
-static char** read_list(wordlist_t type){
+static char** words;
+static char** surnames;
+
+char** read_list(wordlist_t type){
     setlocale(LC_ALL, "RU_ru.UTF-8");
     char* path;
     size_t file_len;
@@ -82,13 +85,24 @@ static char** read_list(wordlist_t type){
     return words;
 }
 
+void read_lists(){
+    words = read_list(WORDS);
+    surnames = read_list(SURNS);
+}
+void free_lists(){
+    for(size_t i = 0; i < WORDLIST_LEN; ++i)
+        free(words[i]);
+    free(words);
+    for(size_t i = 0; i < SURNLIST_LEN; ++i) 
+        free(surnames[i]);
+    free(surnames);
+}
+
 void generate(size_t N, FILE* output){
     srand(time(NULL));
 
     Article* tmp = malloc(sizeof(Article));
     mem_check_exit(tmp);
-    char** words = read_list(WORDS);
-    char** surnames = read_list(SURNS);
 
     fprintf(output, "%s", "\"Название статьи\",Фамилия,Инициалы,Журнал,\"Год выпуска\",Том,Страницы,Цитирования,\"В РИНЦ\"\n");
 
@@ -112,12 +126,5 @@ void generate(size_t N, FILE* output){
 
         printline_csv(tmp, output); 
     }
-
     free(tmp);
-    for(size_t i = 0; i < WORDLIST_LEN; ++i)
-        free(words[i]);
-    free(words);
-    for(size_t i = 0; i < SURNLIST_LEN; ++i) 
-        free(surnames[i]);
-    free(surnames);
 }

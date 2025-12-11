@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MAX_F_ARGC 8
+#define MAX_F_ARGC 10
 #define mem_check_exit(x) do {                             \
     if(x == NULL) {                                        \
         fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
@@ -12,11 +12,13 @@
 #define clear() do{char c; while((c=getchar())!=EOF && c != '\n');} while(0)
 
 typedef enum { ASC, DESC } sort_type_tag;
+typedef enum { SEL, QUICK } sort_alg_tag;
 typedef enum {
     GEN,
     PRINT,
     SORT,
     TYPE,
+    ALG,
     IN,
     OUT,
 
@@ -27,7 +29,10 @@ typedef struct _State {
     arg_tag task;
     union {
         size_t N;
-        sort_type_tag sort_type;
+        struct {
+            sort_type_tag sort_type;
+            sort_alg_tag sort_alg;
+        } sort_value;
     } task_value;
     FILE* input;
     FILE* output;
