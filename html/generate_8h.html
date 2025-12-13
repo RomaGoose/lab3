@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №3: Файл src/core/generate.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №3
+   </div>
+   <div id="projectbrief">Двусвязный список, быстрая сортировка, сортировка выбором, сравнение времени сортивроки от количества данных, структура-запись - Научная публикация</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('generate_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл generate.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+</div>
+<p><a href="generate_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a47e1ef5e6aee9637d6eb26ce75d4f8ca" id="r_a47e1ef5e6aee9637d6eb26ce75d4f8ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47e1ef5e6aee9637d6eb26ce75d4f8ca">WORDLIST_LEN</a>&#160;&#160;&#160;378343</td></tr>
+<tr class="memitem:a4d3cf18aa9ece52583e4ef95763e2d25" id="r_a4d3cf18aa9ece52583e4ef95763e2d25"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d3cf18aa9ece52583e4ef95763e2d25">WORDLIST_PATH</a>&#160;&#160;&#160;&quot;wordlists/words.txt&quot;</td></tr>
+<tr class="memitem:acd24df7121adef94ef8ff697ad56fb4f" id="r_acd24df7121adef94ef8ff697ad56fb4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd24df7121adef94ef8ff697ad56fb4f">MAX_WORD_LEN</a>&#160;&#160;&#160;32*2</td></tr>
+<tr class="memitem:ade3c590600cc48ddae33ed005b1b1104" id="r_ade3c590600cc48ddae33ed005b1b1104"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade3c590600cc48ddae33ed005b1b1104">SURNLIST_LEN</a>&#160;&#160;&#160;99072</td></tr>
+<tr class="memitem:ae7383a3b5f87129755f1864da23b88c1" id="r_ae7383a3b5f87129755f1864da23b88c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7383a3b5f87129755f1864da23b88c1">SURNLIST_PATH</a>&#160;&#160;&#160;&quot;wordlists/surnames.txt&quot;</td></tr>
+<tr class="memitem:a7525f5805e627c4539a3ad5b9c82ce6e" id="r_a7525f5805e627c4539a3ad5b9c82ce6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7525f5805e627c4539a3ad5b9c82ce6e">MAX_SURN_LEN</a>&#160;&#160;&#160;18*2</td></tr>
+<tr class="memitem:a9f07cf81cbb72d3f6e0939847ac4fba3" id="r_a9f07cf81cbb72d3f6e0939847ac4fba3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f07cf81cbb72d3f6e0939847ac4fba3">MAX_WORD_NUM</a>(size)</td></tr>
+<tr class="memdesc:a9f07cf81cbb72d3f6e0939847ac4fba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">максимальное количество слов в строке длиной size  <br /></td></tr>
+<tr class="memitem:a829a16ca440857e08eae0e3d61f3b2ee" id="r_a829a16ca440857e08eae0e3d61f3b2ee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a829a16ca440857e08eae0e3d61f3b2ee">mem_check_exit</a>(x)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:a81cf86de5404a0e9c6ec14189f070f9d" id="r_a81cf86de5404a0e9c6ec14189f070f9d"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="#a139b32e2fe5e66b97d02fd1d9b1b21aa">_wordlist_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81cf86de5404a0e9c6ec14189f070f9d">wordlist_t</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a139b32e2fe5e66b97d02fd1d9b1b21aa" id="r_a139b32e2fe5e66b97d02fd1d9b1b21aa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a139b32e2fe5e66b97d02fd1d9b1b21aa">_wordlist_t</a> { <a class="el" href="#a139b32e2fe5e66b97d02fd1d9b1b21aaa909b5c2626c6bbdbe0a9c06f536aa8bd">WORDS</a>
+, <a class="el" href="#a139b32e2fe5e66b97d02fd1d9b1b21aaa8c6c03da885b40de8a416d85a75eb4c8">SURNS</a>
+ }</td></tr>
+</table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Макросы</h2>
+<a id="a7525f5805e627c4539a3ad5b9c82ce6e" name="a7525f5805e627c4539a3ad5b9c82ce6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7525f5805e627c4539a3ad5b9c82ce6e">&#9670;&#160;</a></span>MAX_SURN_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_SURN_LEN&#160;&#160;&#160;18*2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acd24df7121adef94ef8ff697ad56fb4f" name="acd24df7121adef94ef8ff697ad56fb4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd24df7121adef94ef8ff697ad56fb4f">&#9670;&#160;</a></span>MAX_WORD_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_WORD_LEN&#160;&#160;&#160;32*2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f07cf81cbb72d3f6e0939847ac4fba3" name="a9f07cf81cbb72d3f6e0939847ac4fba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f07cf81cbb72d3f6e0939847ac4fba3">&#9670;&#160;</a></span>MAX_WORD_NUM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_WORD_NUM</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Макроопределение:</b><div class="fragment"><div class="line">size/14</div>
+</div><!-- fragment -->
+<p>максимальное количество слов в строке длиной size </p>
+
+</div>
+</div>
+<a id="a829a16ca440857e08eae0e3d61f3b2ee" name="a829a16ca440857e08eae0e3d61f3b2ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a829a16ca440857e08eae0e3d61f3b2ee">&#9670;&#160;</a></span>mem_check_exit</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mem_check_exit</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Макроопределение:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                          \</div>
+<div class="line">    if(x == NULL) {                                     \</div>
+<div class="line">    fprintf(stderr, <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;Не удалось выделить память&quot;</span>);\</div>
+<div class="line">        exit(1);                                        \</div>
+<div class="line">    }} <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ade3c590600cc48ddae33ed005b1b1104" name="ade3c590600cc48ddae33ed005b1b1104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade3c590600cc48ddae33ed005b1b1104">&#9670;&#160;</a></span>SURNLIST_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SURNLIST_LEN&#160;&#160;&#160;99072</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7383a3b5f87129755f1864da23b88c1" name="ae7383a3b5f87129755f1864da23b88c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7383a3b5f87129755f1864da23b88c1">&#9670;&#160;</a></span>SURNLIST_PATH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SURNLIST_PATH&#160;&#160;&#160;&quot;wordlists/surnames.txt&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47e1ef5e6aee9637d6eb26ce75d4f8ca" name="a47e1ef5e6aee9637d6eb26ce75d4f8ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47e1ef5e6aee9637d6eb26ce75d4f8ca">&#9670;&#160;</a></span>WORDLIST_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WORDLIST_LEN&#160;&#160;&#160;378343</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d3cf18aa9ece52583e4ef95763e2d25" name="a4d3cf18aa9ece52583e4ef95763e2d25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d3cf18aa9ece52583e4ef95763e2d25">&#9670;&#160;</a></span>WORDLIST_PATH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WORDLIST_PATH&#160;&#160;&#160;&quot;wordlists/words.txt&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Типы</h2>
+<a id="a81cf86de5404a0e9c6ec14189f070f9d" name="a81cf86de5404a0e9c6ec14189f070f9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81cf86de5404a0e9c6ec14189f070f9d">&#9670;&#160;</a></span>wordlist_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="#a139b32e2fe5e66b97d02fd1d9b1b21aa">_wordlist_t</a> <a class="el" href="#a81cf86de5404a0e9c6ec14189f070f9d">wordlist_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a139b32e2fe5e66b97d02fd1d9b1b21aa" name="a139b32e2fe5e66b97d02fd1d9b1b21aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139b32e2fe5e66b97d02fd1d9b1b21aa">&#9670;&#160;</a></span>_wordlist_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a139b32e2fe5e66b97d02fd1d9b1b21aa">_wordlist_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a139b32e2fe5e66b97d02fd1d9b1b21aaa909b5c2626c6bbdbe0a9c06f536aa8bd" name="a139b32e2fe5e66b97d02fd1d9b1b21aaa909b5c2626c6bbdbe0a9c06f536aa8bd"></a>WORDS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a139b32e2fe5e66b97d02fd1d9b1b21aaa8c6c03da885b40de8a416d85a75eb4c8" name="a139b32e2fe5e66b97d02fd1d9b1b21aaa8c6c03da885b40de8a416d85a75eb4c8"></a>SURNS&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a href="generate_8h.html">generate.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №3: Файл src/core/generate.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №3
+   </div>
+   <div id="projectbrief">Двусвязный список, быстрая сортировка, сортировка выбором, сравнение времени сортивроки от количества данных, структура-запись - Научная публикация</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('generate_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл generate.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;locale.h&gt;</code><br />
+<code>#include &lt;limits.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="article__internal_8h_source.html">article_internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inout__internal_8h_source.html">inout_internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="generate_8h_source.html">generate.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a04ca44fcfb364bac5a48d3c0c0af36f2" id="r_a04ca44fcfb364bac5a48d3c0c0af36f2"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04ca44fcfb364bac5a48d3c0c0af36f2">_rand</a> ()</td></tr>
+<tr class="memitem:a80a1598db97c9b3d56aa51ef4cca908d" id="r_a80a1598db97c9b3d56aa51ef4cca908d"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80a1598db97c9b3d56aa51ef4cca908d">word_gen</a> (size_t size, char **wordlist)</td></tr>
+<tr class="memdesc:a80a1598db97c9b3d56aa51ef4cca908d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Генерирация набора слов из wordlist, не превосходящяя по длине size.  <br /></td></tr>
+<tr class="memitem:a4fd6d5ca413811c328c750a4ecdaca21" id="r_a4fd6d5ca413811c328c750a4ecdaca21"><td class="memItemLeft" align="right" valign="top">static char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fd6d5ca413811c328c750a4ecdaca21">read_list</a> (<a class="el" href="generate_8h.html#a81cf86de5404a0e9c6ec14189f070f9d">wordlist_t</a> type)</td></tr>
+<tr class="memitem:a09324cffadf1152a7e9627f938e67232" id="r_a09324cffadf1152a7e9627f938e67232"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09324cffadf1152a7e9627f938e67232">read_lists</a> ()</td></tr>
+<tr class="memdesc:a09324cffadf1152a7e9627f938e67232"><td class="mdescLeft">&#160;</td><td class="mdescRight">Чтение данных из wordlists для генерации  <br /></td></tr>
+<tr class="memitem:aa6a164037631cf3c5fc1cb6ce926edaa" id="r_aa6a164037631cf3c5fc1cb6ce926edaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6a164037631cf3c5fc1cb6ce926edaa">free_lists</a> ()</td></tr>
+<tr class="memdesc:aa6a164037631cf3c5fc1cb6ce926edaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Очистка памяти от прочтенных данных из wordlists.  <br /></td></tr>
+<tr class="memitem:af8812accdaa4fae9cddc2c550ae78d2c" id="r_af8812accdaa4fae9cddc2c550ae78d2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8812accdaa4fae9cddc2c550ae78d2c">generate</a> (size_t N, FILE *output)</td></tr>
+<tr class="memdesc:af8812accdaa4fae9cddc2c550ae78d2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Генерация N записей в формате .csv.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:af6a98a1fc68b112067b729d620dc3070" id="r_af6a98a1fc68b112067b729d620dc3070"><td class="memItemLeft" align="right" valign="top">static char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6a98a1fc68b112067b729d620dc3070">words</a></td></tr>
+<tr class="memitem:a69de103998a4e8fa3f06c76922ded472" id="r_a69de103998a4e8fa3f06c76922ded472"><td class="memItemLeft" align="right" valign="top">static char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69de103998a4e8fa3f06c76922ded472">surnames</a></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a04ca44fcfb364bac5a48d3c0c0af36f2" name="a04ca44fcfb364bac5a48d3c0c0af36f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04ca44fcfb364bac5a48d3c0c0af36f2">&#9670;&#160;</a></span>_rand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t _rand </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6a164037631cf3c5fc1cb6ce926edaa" name="aa6a164037631cf3c5fc1cb6ce926edaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6a164037631cf3c5fc1cb6ce926edaa">&#9670;&#160;</a></span>free_lists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_lists </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Очистка памяти от прочтенных данных из wordlists. </p>
+
+</div>
+</div>
+<a id="af8812accdaa4fae9cddc2c550ae78d2c" name="af8812accdaa4fae9cddc2c550ae78d2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8812accdaa4fae9cddc2c550ae78d2c">&#9670;&#160;</a></span>generate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void generate </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>N</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Генерация N записей в формате .csv. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">N</td><td>количество записей </td></tr>
+    <tr><td class="paramname">output</td><td>поток вывода </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4fd6d5ca413811c328c750a4ecdaca21" name="a4fd6d5ca413811c328c750a4ecdaca21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd6d5ca413811c328c750a4ecdaca21">&#9670;&#160;</a></span>read_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ** read_list </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="generate_8h.html#a81cf86de5404a0e9c6ec14189f070f9d">wordlist_t</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09324cffadf1152a7e9627f938e67232" name="a09324cffadf1152a7e9627f938e67232"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09324cffadf1152a7e9627f938e67232">&#9670;&#160;</a></span>read_lists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void read_lists </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Чтение данных из wordlists для генерации </p>
+
+</div>
+</div>
+<a id="a80a1598db97c9b3d56aa51ef4cca908d" name="a80a1598db97c9b3d56aa51ef4cca908d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80a1598db97c9b3d56aa51ef4cca908d">&#9670;&#160;</a></span>word_gen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * word_gen </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **</td>          <td class="paramname"><span class="paramname"><em>wordlist</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Генерирация набора слов из wordlist, не превосходящяя по длине size. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>максимальная длина набора слов </td></tr>
+    <tr><td class="paramname">wordlist</td><td>массив строк слов </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>строка с набором слов </dd></dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a69de103998a4e8fa3f06c76922ded472" name="a69de103998a4e8fa3f06c76922ded472"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69de103998a4e8fa3f06c76922ded472">&#9670;&#160;</a></span>surnames</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char** surnames</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6a98a1fc68b112067b729d620dc3070" name="af6a98a1fc68b112067b729d620dc3070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6a98a1fc68b112067b729d620dc3070">&#9670;&#160;</a></span>words</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char** words</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a href="generate_8c.html">generate.c</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

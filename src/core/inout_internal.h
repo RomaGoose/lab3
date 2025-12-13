@@ -14,11 +14,11 @@
         exit(1);                                            \
     }} while (0)
 
-#define ASCII_DIGITS_OFFSET 48 
-#define MAX_INPUT_LEN MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN
-                                    // ^^^^ запас на экранирование кавычек
-#define MAX_NAME_WIDTH 40
-#define MAX_MAGAZINE_WIDTH 30
+#define ASCII_DIGITS_OFFSET 48 ///< разница между числом и его символом char
+#define MAX_INPUT_LEN MAX_ARTICLE_SIZE + MAX_ARTICLE_NAME_LEN + MAX_MAGAZINE_NAME_LEN ///< максимальная длина строки формата .csv с запасом на кавычки и их экранирование
+                                    
+#define MAX_NAME_WIDTH 40 ///< ширина столбца с названием статьи в таблице
+#define MAX_MAGAZINE_WIDTH 30 ///< ширина столбца с названием журнала в таблице
 
 
 typedef enum {

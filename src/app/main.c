@@ -45,7 +45,7 @@ int main(int argc, char** argv){
                 fflush(select_log);
 
                 start = clock();
-                quick_sort(list, cmp, 0, get_size(list)-1);
+                quick_sort(list, cmp);
                 end = clock();
                 fprintf(quick_log, "%u,%llu\n", data_num[d], (size_t)(end-start));
                 fflush(quick_log);

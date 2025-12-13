@@ -9,7 +9,7 @@
 #define SURNLIST_PATH "wordlists/surnames.txt"
 #define MAX_SURN_LEN 18*2
 
-#define MAX_WORD_NUM(size) size/7
+#define MAX_WORD_NUM(size) size/14 ///< максимальное количество слов в строке длиной size
 
 #define mem_check_exit(x) do {                          \
     if(x == NULL) {                                     \

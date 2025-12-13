@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №3: Файл src/app/parse_args.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №3
+   </div>
+   <div id="projectbrief">Двусвязный список, быстрая сортировка, сортировка выбором, сравнение времени сортивроки от количества данных, структура-запись - Научная публикация</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('parse__args_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл parse_args.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+</div>
+<p><a href="parse__args_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:_5FState" id="r__5FState"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___state.html">_State</a></td></tr>
+<tr class="memitem:_5FArgument" id="r__5FArgument"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___argument.html">_Argument</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a3efe624963e857bf7d208280f1094ca1" id="r_a3efe624963e857bf7d208280f1094ca1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3efe624963e857bf7d208280f1094ca1">MAX_F_ARGC</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:a3efe624963e857bf7d208280f1094ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">максимальное количество отформатированных элемнтов командной строки  <br /></td></tr>
+<tr class="memitem:a829a16ca440857e08eae0e3d61f3b2ee" id="r_a829a16ca440857e08eae0e3d61f3b2ee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a829a16ca440857e08eae0e3d61f3b2ee">mem_check_exit</a>(x)</td></tr>
+<tr class="memitem:aff606fb64ff89d5982673319bab86b19" id="r_aff606fb64ff89d5982673319bab86b19"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff606fb64ff89d5982673319bab86b19">clear</a>()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:a9eeed74b27786d43348e96f00fc4069c" id="r_a9eeed74b27786d43348e96f00fc4069c"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct___state.html">_State</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eeed74b27786d43348e96f00fc4069c">State</a></td></tr>
+<tr class="memdesc:a9eeed74b27786d43348e96f00fc4069c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние приложения. Вся информация о режиме работы приложения.  <br /></td></tr>
+<tr class="memitem:a86a7199d5794f3139c96271ebbefe225" id="r_a86a7199d5794f3139c96271ebbefe225"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct___argument.html">_Argument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86a7199d5794f3139c96271ebbefe225">Argument</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a33e556c25be40826f861be7e27acde67" id="r_a33e556c25be40826f861be7e27acde67"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33e556c25be40826f861be7e27acde67">sort_type_tag</a> { <a class="el" href="#a33e556c25be40826f861be7e27acde67a6ec9ae46a1e5c631ae04fc9c4c2d63bc">ASC</a>
+, <a class="el" href="#a33e556c25be40826f861be7e27acde67ac09f77dd64a2d5dedf24b5835d9eaa5a">DESC</a>
+ }</td></tr>
+<tr class="memitem:a0bf20992da61d12a7ef8d33932953eb4" id="r_a0bf20992da61d12a7ef8d33932953eb4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bf20992da61d12a7ef8d33932953eb4">sort_alg_tag</a> { <a class="el" href="#a0bf20992da61d12a7ef8d33932953eb4acefa2b1d137eb4f792024d302decf46c">SEL</a>
+, <a class="el" href="#a0bf20992da61d12a7ef8d33932953eb4aef079160a47f3cf267a177cc6400cf1d">QUICK</a>
+ }</td></tr>
+<tr class="memitem:a93f6016f92bd8f9693b35c8ba117c918" id="r_a93f6016f92bd8f9693b35c8ba117c918"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918">arg_tag</a> { <br />
+&#160;&#160;<a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918a64a7cd6a11249aecd21cbd3fcc7e4f28">GEN</a>
+, <a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918ab107229d44d042caa8ab8df4c8acaa1f">PRINT</a>
+, <a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918a136486a15d68351e470b6b449ae7a246">SORT</a>
+, <a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918ab47ea8bb955afd0adc0ef98517dd6084">TYPE</a>
+, <br />
+&#160;&#160;<a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918a8b66a93d2019e7854ee2910a72311618">ALG</a>
+, <a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918af3180515f5867a29932df1dc207b31ad">IN</a>
+, <a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918ac72cb4ba9e379a25e80f157177dbe2b8">OUT</a>
+, <a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918adc6f24fd6915a3f2786a1b7045406924">END</a>
+<br />
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a51139c09a6089f2944ef8ed43e4840c2" id="r_a51139c09a6089f2944ef8ed43e4840c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51139c09a6089f2944ef8ed43e4840c2">parse_args</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a51139c09a6089f2944ef8ed43e4840c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработка аргументов командной строки. Исполнение приложения  <br /></td></tr>
+</table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Макросы</h2>
+<a id="aff606fb64ff89d5982673319bab86b19" name="aff606fb64ff89d5982673319bab86b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff606fb64ff89d5982673319bab86b19">&#9670;&#160;</a></span>clear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define clear</td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Макроопределение:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span>{<span class="keywordtype">char</span> c; <span class="keywordflow">while</span>((c=getchar())!=EOF &amp;&amp; c != <span class="charliteral">&#39;\n&#39;</span>);} <span class="keywordflow">while</span>(0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3efe624963e857bf7d208280f1094ca1" name="a3efe624963e857bf7d208280f1094ca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3efe624963e857bf7d208280f1094ca1">&#9670;&#160;</a></span>MAX_F_ARGC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_F_ARGC&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>максимальное количество отформатированных элемнтов командной строки </p>
+
+</div>
+</div>
+<a id="a829a16ca440857e08eae0e3d61f3b2ee" name="a829a16ca440857e08eae0e3d61f3b2ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a829a16ca440857e08eae0e3d61f3b2ee">&#9670;&#160;</a></span>mem_check_exit</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mem_check_exit</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Макроопределение:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                             \</div>
+<div class="line">    if(x == NULL) {                                        \</div>
+<div class="line">        fprintf(stderr, <span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;UNABLE TO ALLOCATE MEMORY&quot;</span>);\</div>
+<div class="line">        exit(1);                                           \</div>
+<div class="line">    }} <span class="keywordflow">while</span> (0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Типы</h2>
+<a id="a86a7199d5794f3139c96271ebbefe225" name="a86a7199d5794f3139c96271ebbefe225"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a7199d5794f3139c96271ebbefe225">&#9670;&#160;</a></span>Argument</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct___argument.html">_Argument</a> <a class="el" href="#a86a7199d5794f3139c96271ebbefe225">Argument</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9eeed74b27786d43348e96f00fc4069c" name="a9eeed74b27786d43348e96f00fc4069c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eeed74b27786d43348e96f00fc4069c">&#9670;&#160;</a></span>State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct___state.html">_State</a> <a class="el" href="#a9eeed74b27786d43348e96f00fc4069c">State</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Состояние приложения. Вся информация о режиме работы приложения. </p>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a93f6016f92bd8f9693b35c8ba117c918" name="a93f6016f92bd8f9693b35c8ba117c918"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93f6016f92bd8f9693b35c8ba117c918">&#9670;&#160;</a></span>arg_tag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a93f6016f92bd8f9693b35c8ba117c918">arg_tag</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a93f6016f92bd8f9693b35c8ba117c918a64a7cd6a11249aecd21cbd3fcc7e4f28" name="a93f6016f92bd8f9693b35c8ba117c918a64a7cd6a11249aecd21cbd3fcc7e4f28"></a>GEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a93f6016f92bd8f9693b35c8ba117c918ab107229d44d042caa8ab8df4c8acaa1f" name="a93f6016f92bd8f9693b35c8ba117c918ab107229d44d042caa8ab8df4c8acaa1f"></a>PRINT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a93f6016f92bd8f9693b35c8ba117c918a136486a15d68351e470b6b449ae7a246" name="a93f6016f92bd8f9693b35c8ba117c918a136486a15d68351e470b6b449ae7a246"></a>SORT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a93f6016f92bd8f9693b35c8ba117c918ab47ea8bb955afd0adc0ef98517dd6084" name="a93f6016f92bd8f9693b35c8ba117c918ab47ea8bb955afd0adc0ef98517dd6084"></a>TYPE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a93f6016f92bd8f9693b35c8ba117c918a8b66a93d2019e7854ee2910a72311618" name="a93f6016f92bd8f9693b35c8ba117c918a8b66a93d2019e7854ee2910a72311618"></a>ALG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a93f6016f92bd8f9693b35c8ba117c918af3180515f5867a29932df1dc207b31ad" name="a93f6016f92bd8f9693b35c8ba117c918af3180515f5867a29932df1dc207b31ad"></a>IN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a93f6016f92bd8f9693b35c8ba117c918ac72cb4ba9e379a25e80f157177dbe2b8" name="a93f6016f92bd8f9693b35c8ba117c918ac72cb4ba9e379a25e80f157177dbe2b8"></a>OUT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a93f6016f92bd8f9693b35c8ba117c918adc6f24fd6915a3f2786a1b7045406924" name="a93f6016f92bd8f9693b35c8ba117c918adc6f24fd6915a3f2786a1b7045406924"></a>END&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a0bf20992da61d12a7ef8d33932953eb4" name="a0bf20992da61d12a7ef8d33932953eb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bf20992da61d12a7ef8d33932953eb4">&#9670;&#160;</a></span>sort_alg_tag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a0bf20992da61d12a7ef8d33932953eb4">sort_alg_tag</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a0bf20992da61d12a7ef8d33932953eb4acefa2b1d137eb4f792024d302decf46c" name="a0bf20992da61d12a7ef8d33932953eb4acefa2b1d137eb4f792024d302decf46c"></a>SEL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0bf20992da61d12a7ef8d33932953eb4aef079160a47f3cf267a177cc6400cf1d" name="a0bf20992da61d12a7ef8d33932953eb4aef079160a47f3cf267a177cc6400cf1d"></a>QUICK&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a33e556c25be40826f861be7e27acde67" name="a33e556c25be40826f861be7e27acde67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33e556c25be40826f861be7e27acde67">&#9670;&#160;</a></span>sort_type_tag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a33e556c25be40826f861be7e27acde67">sort_type_tag</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a33e556c25be40826f861be7e27acde67a6ec9ae46a1e5c631ae04fc9c4c2d63bc" name="a33e556c25be40826f861be7e27acde67a6ec9ae46a1e5c631ae04fc9c4c2d63bc"></a>ASC&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a33e556c25be40826f861be7e27acde67ac09f77dd64a2d5dedf24b5835d9eaa5a" name="a33e556c25be40826f861be7e27acde67ac09f77dd64a2d5dedf24b5835d9eaa5a"></a>DESC&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="a51139c09a6089f2944ef8ed43e4840c2" name="a51139c09a6089f2944ef8ed43e4840c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51139c09a6089f2944ef8ed43e4840c2">&#9670;&#160;</a></span>parse_args()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void parse_args </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>argc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обработка аргументов командной строки. Исполнение приложения </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>количество введенных аргументов командной строки </td></tr>
+    <tr><td class="paramname">argv</td><td>массив строк с аргументами командной строки </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_5194e5fea318fda12687127c23f8aba1.html">app</a></li><li class="navelem"><a href="parse__args_8h.html">parse_args.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

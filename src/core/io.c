@@ -9,7 +9,11 @@
 #include "container.h"
 #include "inout_internal.h"
 
-
+/**
+ * @brief форматированный вывод поля с возможными разделителями, в формате .csv
+ * @param field поле
+ * @param output поток вывода 
+ */
 static void print_field_csv(char* field, FILE* output){
     uint8_t needs_format = (strchr(field, ',') != NULL  || strchr(field, '"') != NULL || 
                             strchr(field, '\t') != NULL || strchr(field, ';') != NULL || 
@@ -26,10 +30,23 @@ static void print_field_csv(char* field, FILE* output){
     else fprintf(output, "%s", field);
 }
 
+static void clean_string(char *str) {
+    char *src = str, *dst = str;
+    while (*src) {
+        if ((unsigned char)*src >= 32)
+            *dst++ = *src;
+        src++;
+    }
+    *dst = '\0';
+}
+
 void printline_csv(Article* a, FILE* output){
-    char article_name[MAX_ARTICLE_NAME_LEN+2];
-    char magazine[MAX_MAGAZINE_NAME_LEN+2];
-    
+
+    clean_string(a->author_surname);
+    clean_string(a->article_name);
+    clean_string(a->author_initials);
+    clean_string(a->magazine);
+
     print_field_csv(a->article_name, output);
     fprintf(output, ",%s,%s,",
         a->author_surname,
@@ -47,8 +64,8 @@ void print_csv(DLList* list, FILE* output){
     Iterator* i;
     fprintf(output, "%s", "\"Название статьи\",Фамилия,Инициалы,Журнал,\"Год выпуска\",Том,Страницы,Цитирования,\"В РИНЦ\"\n");
     for(i = begin(list); get_pos(i) < get_size(list); next(i))
-        printline_csv(get(i), output);
-    end(i);
+        printline_csv(iterator_get(i), output);
+    free_iterator(i);
 }
 
 static int scanline_csv(Article* a, FILE* input, char* buff);
@@ -80,16 +97,6 @@ static size_t count_digits(size_t n) {
     return d;
 }
 
-static void clean_string(char *str) {
-    char *src = str, *dst = str;
-    while (*src) {
-        if ((unsigned char)*src >= 32)
-            *dst++ = *src;
-        src++;
-    }
-    *dst = '\0';
-}
-
 void print_table(DLList* list, FILE* output){
 
     size_t max_num_len = count_digits(get_size(list));
@@ -113,7 +120,7 @@ void print_table(DLList* list, FILE* output){
     
     for(i = begin(list); get_pos(i) < get_size(list); next(i)){
 
-        a = get(i);
+        a = iterator_get(i);
         
         clean_string(a->author_surname);
         clean_string(a->article_name);
@@ -149,7 +156,9 @@ void print_table(DLList* list, FILE* output){
             6, a->citations,
             a->in_RSCI ? L"YES" : L"NO");
     }
+    free_iterator(i);
 }
+
 static uint8_t count_char(char* str, char character){
     uint8_t count = 0;
     while(*str){
@@ -172,6 +181,13 @@ size_t str_to_ull(char* str){
     return ull;
 }
 
+/**
+ * @brief Чтение данных и заполнение ими структуры статьи из формате .csv
+ * @param a указатель на статью
+ * @param input поток ввода 
+ * @param buff буфер для чтения строки 
+ * @return -1 если достигнут конец файла, 0 в противном случае
+ */
 static int scanline_csv(Article* a, FILE* input, char* buff){
     if(fgets(buff, MAX_INPUT_LEN, input)==NULL)
         return -1;                    
@@ -227,10 +243,6 @@ static int scanline_csv(Article* a, FILE* input, char* buff){
                         err_exit("Некорректный ввод данных: превышена длина фамилии автора");
                     strncpy(a->author_surname, buff + curr_index, size);
                     a->author_surname[MAX_SURN_LEN-1] = '\0';
-                    // for(int i = 0; a->author_surname[i]; ++i){
-                    //     fwprintf(stdout, L"%02x ", (unsigned char)a->author_surname[i]);
-                    // }
-                    // puts(a->author_surname);
                     break;
                 }
                 case(INIT):{

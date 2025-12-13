@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №3: Исходный файл src/core/article_internal.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №3
+   </div>
+   <div id="projectbrief">Двусвязный список, быстрая сортировка, сортировка выбором, сравнение времени сортивроки от количества данных, структура-запись - Научная публикация</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('article__internal_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">article_internal.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="article__internal_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="article__internal_8h.html#a7525f5805e627c4539a3ad5b9c82ce6e">    6</a></span><span class="preprocessor">#define MAX_SURN_LEN 18*2 </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="article__internal_8h.html#af82da5531f10b7e0dc84918c524bc054">    7</a></span><span class="preprocessor">#define MAX_ARTICLE_NAME_LEN 128*2 </span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="article__internal_8h.html#a7d1a266ca086c13fa273c2444ec50439">    8</a></span><span class="preprocessor">#define MAX_MAGAZINE_NAME_LEN 80*2 </span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="article__internal_8h.html#a9f229c1bb0873339c49bf30bb52c0b0f">    9</a></span><span class="preprocessor">#define MAX_INITIALS_LEN 12 </span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="article__internal_8h.html#a59bcbb5f6896e44dfd79fa63508cfec3">   10</a></span><span class="preprocessor">#define MAX_YEAR 9999</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="article__internal_8h.html#ae0972659f278bcc3e8ea702b2c78217e">   11</a></span><span class="preprocessor">#define MAX_CITATIONS 1000000</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="article__internal_8h.html#a5191aff7ba21d7863df87206a27d4013">   13</a></span><span class="preprocessor">#define NUM_OF_FIELDS 9 </span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="" data-end="">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="article__internal_8h.html#adab78e36112ef2ace73c0e96b5f67bbc">   15</a></span><span class="preprocessor">#define MAX_ARTICLE_SIZE MAX_ARTICLE_NAME_LEN + MAX_SURN_LEN +      \</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">        MAX_INITIALS_LEN + MAX_MAGAZINE_NAME_LEN + 4 + 6*3 + 7 + 2 + 2  </span></div>
+</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct___article.html">   18</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct___article.html">_Article</a> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="struct___article.html#a01ea80bab397b1a4d4c9a06fae3a7cf1">   19</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct___article.html#a01ea80bab397b1a4d4c9a06fae3a7cf1">article_name</a>[<a class="code hl_define" href="article__internal_8h.html#af82da5531f10b7e0dc84918c524bc054">MAX_ARTICLE_NAME_LEN</a>];</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="struct___article.html#a99294ba6814ac5b2715629db1b1e4075">   20</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct___article.html#a99294ba6814ac5b2715629db1b1e4075">author_surname</a>[<a class="code hl_define" href="article__internal_8h.html#a7525f5805e627c4539a3ad5b9c82ce6e">MAX_SURN_LEN</a>];</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="struct___article.html#a292e1937f796903960b6916cfe989215">   21</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct___article.html#a292e1937f796903960b6916cfe989215">author_initials</a>[<a class="code hl_define" href="article__internal_8h.html#a9f229c1bb0873339c49bf30bb52c0b0f">MAX_INITIALS_LEN</a>];</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="struct___article.html#abf25323a07df8a6ca043f3464fd4f968">   22</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="struct___article.html#abf25323a07df8a6ca043f3464fd4f968">magazine</a>[<a class="code hl_define" href="article__internal_8h.html#a7d1a266ca086c13fa273c2444ec50439">MAX_MAGAZINE_NAME_LEN</a>];</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="struct___article.html#a3cc6bc132bb24cec75ee779455b32b59">   23</a></span>    uint16_t <a class="code hl_variable" href="struct___article.html#a3cc6bc132bb24cec75ee779455b32b59">year</a>;        <span class="comment">// 0 &lt;= year &lt;= 9999</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct___article.html#aab2e21f8b45b7f63628105011877e8f6">   24</a></span>    uint16_t <a class="code hl_variable" href="struct___article.html#aab2e21f8b45b7f63628105011877e8f6">mag_vol</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct___article.html#ad34cba75b097bae7cad0caad0f20f61f">   25</a></span>    uint16_t <a class="code hl_variable" href="struct___article.html#ad34cba75b097bae7cad0caad0f20f61f">pages</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct___article.html#acab11a739cfcf53d623eaa12c2a39981">   26</a></span>    uint32_t <a class="code hl_variable" href="struct___article.html#acab11a739cfcf53d623eaa12c2a39981">citations</a>;   <span class="comment">// &lt;1 000 000</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="struct___article.html#aece09c1043fa93763c5a7a8fa5ee0bc4">   27</a></span>    uint8_t <a class="code hl_variable" href="struct___article.html#aece09c1043fa93763c5a7a8fa5ee0bc4">in_RSCI</a>;      <span class="comment">// 0/1</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="article__internal_8h.html#a8915ce47c400509d1a16f9b30f33a118">   28</a></span>} <a class="code hl_typedef" href="article__internal_8h.html#a8915ce47c400509d1a16f9b30f33a118">Article</a>;</div>
+</div>
+<div class="ttc" id="aarticle__internal_8h_html_a7525f5805e627c4539a3ad5b9c82ce6e"><div class="ttname"><a href="article__internal_8h.html#a7525f5805e627c4539a3ad5b9c82ce6e">MAX_SURN_LEN</a></div><div class="ttdeci">#define MAX_SURN_LEN</div><div class="ttdoc">максимальный размер в байтах строки с фамилией</div><div class="ttdef"><b>Определения</b> article_internal.h:6</div></div>
+<div class="ttc" id="aarticle__internal_8h_html_a7d1a266ca086c13fa273c2444ec50439"><div class="ttname"><a href="article__internal_8h.html#a7d1a266ca086c13fa273c2444ec50439">MAX_MAGAZINE_NAME_LEN</a></div><div class="ttdeci">#define MAX_MAGAZINE_NAME_LEN</div><div class="ttdoc">максимальный размер в байтах строки с названием журнала</div><div class="ttdef"><b>Определения</b> article_internal.h:8</div></div>
+<div class="ttc" id="aarticle__internal_8h_html_a8915ce47c400509d1a16f9b30f33a118"><div class="ttname"><a href="article__internal_8h.html#a8915ce47c400509d1a16f9b30f33a118">Article</a></div><div class="ttdeci">struct _Article Article</div></div>
+<div class="ttc" id="aarticle__internal_8h_html_a9f229c1bb0873339c49bf30bb52c0b0f"><div class="ttname"><a href="article__internal_8h.html#a9f229c1bb0873339c49bf30bb52c0b0f">MAX_INITIALS_LEN</a></div><div class="ttdeci">#define MAX_INITIALS_LEN</div><div class="ttdoc">максимальный размер в байтах строки с инициалами автора</div><div class="ttdef"><b>Определения</b> article_internal.h:9</div></div>
+<div class="ttc" id="aarticle__internal_8h_html_af82da5531f10b7e0dc84918c524bc054"><div class="ttname"><a href="article__internal_8h.html#af82da5531f10b7e0dc84918c524bc054">MAX_ARTICLE_NAME_LEN</a></div><div class="ttdeci">#define MAX_ARTICLE_NAME_LEN</div><div class="ttdoc">максимальный размер в байтах строки с названием статьи</div><div class="ttdef"><b>Определения</b> article_internal.h:7</div></div>
+<div class="ttc" id="astruct___article_html"><div class="ttname"><a href="struct___article.html">_Article</a></div><div class="ttdef"><b>Определения</b> article_internal.h:18</div></div>
+<div class="ttc" id="astruct___article_html_a01ea80bab397b1a4d4c9a06fae3a7cf1"><div class="ttname"><a href="struct___article.html#a01ea80bab397b1a4d4c9a06fae3a7cf1">_Article::article_name</a></div><div class="ttdeci">char article_name[MAX_ARTICLE_NAME_LEN]</div><div class="ttdef"><b>Определения</b> article_internal.h:19</div></div>
+<div class="ttc" id="astruct___article_html_a292e1937f796903960b6916cfe989215"><div class="ttname"><a href="struct___article.html#a292e1937f796903960b6916cfe989215">_Article::author_initials</a></div><div class="ttdeci">char author_initials[MAX_INITIALS_LEN]</div><div class="ttdef"><b>Определения</b> article_internal.h:21</div></div>
+<div class="ttc" id="astruct___article_html_a3cc6bc132bb24cec75ee779455b32b59"><div class="ttname"><a href="struct___article.html#a3cc6bc132bb24cec75ee779455b32b59">_Article::year</a></div><div class="ttdeci">uint16_t year</div><div class="ttdef"><b>Определения</b> article_internal.h:23</div></div>
+<div class="ttc" id="astruct___article_html_a99294ba6814ac5b2715629db1b1e4075"><div class="ttname"><a href="struct___article.html#a99294ba6814ac5b2715629db1b1e4075">_Article::author_surname</a></div><div class="ttdeci">char author_surname[MAX_SURN_LEN]</div><div class="ttdef"><b>Определения</b> article_internal.h:20</div></div>
+<div class="ttc" id="astruct___article_html_aab2e21f8b45b7f63628105011877e8f6"><div class="ttname"><a href="struct___article.html#aab2e21f8b45b7f63628105011877e8f6">_Article::mag_vol</a></div><div class="ttdeci">uint16_t mag_vol</div><div class="ttdef"><b>Определения</b> article_internal.h:24</div></div>
+<div class="ttc" id="astruct___article_html_abf25323a07df8a6ca043f3464fd4f968"><div class="ttname"><a href="struct___article.html#abf25323a07df8a6ca043f3464fd4f968">_Article::magazine</a></div><div class="ttdeci">char magazine[MAX_MAGAZINE_NAME_LEN]</div><div class="ttdef"><b>Определения</b> article_internal.h:22</div></div>
+<div class="ttc" id="astruct___article_html_acab11a739cfcf53d623eaa12c2a39981"><div class="ttname"><a href="struct___article.html#acab11a739cfcf53d623eaa12c2a39981">_Article::citations</a></div><div class="ttdeci">uint32_t citations</div><div class="ttdef"><b>Определения</b> article_internal.h:26</div></div>
+<div class="ttc" id="astruct___article_html_ad34cba75b097bae7cad0caad0f20f61f"><div class="ttname"><a href="struct___article.html#ad34cba75b097bae7cad0caad0f20f61f">_Article::pages</a></div><div class="ttdeci">uint16_t pages</div><div class="ttdef"><b>Определения</b> article_internal.h:25</div></div>
+<div class="ttc" id="astruct___article_html_aece09c1043fa93763c5a7a8fa5ee0bc4"><div class="ttname"><a href="struct___article.html#aece09c1043fa93763c5a7a8fa5ee0bc4">_Article::in_RSCI</a></div><div class="ttdeci">uint8_t in_RSCI</div><div class="ttdef"><b>Определения</b> article_internal.h:27</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a href="article__internal_8h.html">article_internal.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

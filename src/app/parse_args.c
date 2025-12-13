@@ -20,9 +20,9 @@ static Argument arguments[] = {
 static void help_arg(Argument* a);
 static void help_all();
 
-static void process_arg(Argument* a, void* value, State* state);
+static void process_arg(Argument* a, void* value, State* state); 
 static void process_state(State* state);
-static char** format_argv(int argc, char** argv);
+static char** format_argv(int argc, char** argv); 
 void parse_args(int argc, char** argv){
     if (argc == 1){
         help_all();
@@ -67,6 +67,12 @@ void parse_args(int argc, char** argv){
     free(state);
 }
 
+/** 
+ * @brief Обработка аргумента командной строки. Заполнение информации о состоянии приложения
+ * @param a аргумент 
+ * @param value указатель на значение аргумента
+ * @param state указатель на состояние приложения
+ */ 
 static void process_arg(Argument* a, void* value, State* state){    
     switch(a->tag){
         case GEN:{
@@ -181,6 +187,10 @@ static void process_arg(Argument* a, void* value, State* state){
     }
 }
 
+/** 
+ * @brief Обработка состояния приложения
+ * @param state указатель на состояние приложения
+ */ 
 static void process_state(State* state){
     switch (state->task){
         case GEN:{
@@ -194,15 +204,16 @@ static void process_state(State* state){
                 if(state->task_value.sort_value.sort_alg == SEL)
                     sel_sort(list, cmp);
                 else
-                    quick_sort(list, cmp, 0, get_size(list) - 1);
+                    quick_sort(list, cmp);
             }
             if(state->task_value.sort_value.sort_type == DESC){
                 if(state->task_value.sort_value.sort_alg == SEL)
                     sel_sort(list, cmp_d);
                 else
-                    quick_sort(list, cmp_d, 0, get_size(list) - 1);
+                    quick_sort(list, cmp_d);
             }
             print_csv(list, state->output);
+            kill_list(list);
             break;
         }
         case PRINT:{
@@ -215,13 +226,22 @@ static void process_state(State* state){
 }
 
 static char* copy_str_trim(char* src, char divider);
+/**
+ * @brief Форматирование аргументов командной строки
+ * @param argc количество исходных аргументов
+ * @param argv массив строк исходных аргументов
+ * @return массив строк отформатированных аргументов
+ */
 static char** format_argv(int argc, char** argv){
     char** f_argv = malloc((MAX_F_ARGC+1)*sizeof(char*));
     mem_check_exit(f_argv);
+
     f_argv[0] = strdup(argv[0]);
+    
     unsigned char found_splits = 0;
     for(size_t s = 1; s < argc; ++s){
         f_argv[s+found_splits] = strdup(argv[s]);
+    
         for(size_t c = 0; argv[s][c] != '\0'; ++c){
             if(argv[s][c] == '='){
                 free(f_argv[s+found_splits]);
@@ -236,9 +256,16 @@ static char** format_argv(int argc, char** argv){
         }
     }
     f_argv[argc + found_splits] = NULL;
+    
     return f_argv;
 }
 
+/**
+ * @brief Копирование строки от src до первого разделителя (divider)
+ * @param src указатель на начало строки источника
+ * @param divider разделитель
+ * @return указатель на обрезанную строку 
+ */
 static char* copy_str_trim(char* src, char divider){
     size_t div_i;
     for (div_i = 1; src[div_i] != divider && src[div_i] != '\0'; ++div_i);

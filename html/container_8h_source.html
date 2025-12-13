@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №3: Исходный файл includes/container.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №3
+   </div>
+   <div id="projectbrief">Двусвязный список, быстрая сортировка, сортировка выбором, сравнение времени сортивроки от количества данных, структура-запись - Научная публикация</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('container_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">container.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="container_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">    6</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct___d_l_list.html">_DLList</a> <a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* <a class="code hl_function" href="container_8h.html#a890d7bcffe441d2c583ff0a56159b883">init_DLList</a>(<span class="keywordtype">size_t</span> <a class="code hl_variable" href="struct___d_l_list.html#a8674ff6f71b57c30e5143593ee164456">element_size</a>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="container_8h.html#a3e24b0b18ba091c3c9790479fa220078">get_size</a>(<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">void</span>* <a class="code hl_function" href="container_8h.html#aba109c33c173b2c7fafeee0de1003257">get_element</a>(<span class="keywordtype">size_t</span> index, <a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#a640447d08a8f86c4f3f30f446509c9f7">insert_start</a>(<span class="keywordtype">void</span>* info, <a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#a5b99f43e6aba72e96e64d274135796a4">insert_end</a>(<span class="keywordtype">void</span>* info, <a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#a1e4bb7ca01390f65fc8f684ca942b5cb">insert_</a>(<span class="keywordtype">size_t</span> index, <span class="keywordtype">void</span>* info, <a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#ae38aee683e0c59fc2f585cb78156ae2a">remove_start</a>(<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#a84ccf5bf62c1f3eb2160ebb6dcc939ef">remove_end</a>(<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#ab1b7cff3ee1a31bc7dd3edcc424acf9b">remove_</a>(<span class="keywordtype">size_t</span> index, <a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#ae204af15824f1679c6cb31e266c15b6a">clear_list</a>(<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#a398be75cc282425832722146393a2279">kill_list</a>(<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#a1a26c36b9dd511142e12546c220223e0">swap</a>(<span class="keywordtype">size_t</span> index_1, <span class="keywordtype">size_t</span> index_2, <a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keywordtype">void</span>* <a class="code hl_function" href="container_8h.html#a18918091c9764350963437ec49738025">convert_list_to_array</a>(<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* <a class="code hl_function" href="container_8h.html#a38ed6d40d00e30d1085d57d4e01ff6a4">convert_array_to_list</a>(<span class="keywordtype">void</span>* arr, <span class="keywordtype">size_t</span> count, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="struct___d_l_list.html#a8674ff6f71b57c30e5143593ee164456">element_size</a>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#a28b4f769123c344bbad43936b9ee8d59">sel_sort</a>(<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list, <span class="keywordtype">int</span> (*<a class="code hl_function" href="article_8h.html#a9aa5e447c1d62cd4c015fdf3766aa021">cmp</a>)(<span class="keywordtype">void</span>* l, <span class="keywordtype">void</span>*r));</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#afe9ac3d5d6673769ddfd00bc85c54fe8">quick_sort</a>(<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* list, <span class="keywordtype">int</span> (*<a class="code hl_function" href="article_8h.html#a9aa5e447c1d62cd4c015fdf3766aa021">cmp</a>)(<span class="keywordtype">void</span>* l, <span class="keywordtype">void</span>*r));</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">  107</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct___iterator.html">_Iterator</a> <a class="code hl_typedef" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keywordtype">int</span> <a class="code hl_function" href="container_8h.html#a8f3a8de9656bbe9b9fec74ebd0912e50">next</a>(<a class="code hl_typedef" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a>* i);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="container_8h.html#ae1c04207371bda8db783f6e01197ffd2">get_pos</a>(<a class="code hl_typedef" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a>* i);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="keywordtype">void</span>* <a class="code hl_function" href="container_8h.html#a91899d1bc39fc1de17e1d595d9db656a">iterator_get</a>(<a class="code hl_typedef" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a>* i);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#a8c5f2cb04dde4bd612e2bf2ae72388ab">set</a>(<span class="keywordtype">void</span>* value, <a class="code hl_typedef" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a>* i);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><a class="code hl_typedef" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a>* <a class="code hl_function" href="container_8h.html#a546d49e1f2f65e15adc4bfc03d53352f">begin</a>(<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* <a class="code hl_variable" href="struct___iterator.html#ab07fdf3f21ae4dbc25fca16b2d63b7be">list</a>);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="keywordtype">void</span> <a class="code hl_function" href="container_8h.html#a0d884642eb9800f1f9c673f3935049a7">free_iterator</a>(<a class="code hl_typedef" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a>* i);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">// void* get_head(DLList* list);</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">// void* get_tail(DLList* list);</span></div>
+<div class="ttc" id="aarticle_8h_html_a9aa5e447c1d62cd4c015fdf3766aa021"><div class="ttname"><a href="article_8h.html#a9aa5e447c1d62cd4c015fdf3766aa021">cmp</a></div><div class="ttdeci">int cmp(void *left, void *right)</div><div class="ttdoc">Сравнение двух элементов (по возрастанию).</div><div class="ttdef"><b>Определения</b> article.c:7</div></div>
+<div class="ttc" id="acontainer_8h_html_a0d884642eb9800f1f9c673f3935049a7"><div class="ttname"><a href="container_8h.html#a0d884642eb9800f1f9c673f3935049a7">free_iterator</a></div><div class="ttdeci">void free_iterator(Iterator *i)</div><div class="ttdoc">Завершить работу итератора</div><div class="ttdef"><b>Определения</b> container.c:311</div></div>
+<div class="ttc" id="acontainer_8h_html_a180e5ba6905f9b685d0fce708ec3c4df"><div class="ttname"><a href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a></div><div class="ttdeci">struct _Iterator Iterator</div><div class="ttdef"><b>Определения</b> container.h:107</div></div>
+<div class="ttc" id="acontainer_8h_html_a18918091c9764350963437ec49738025"><div class="ttname"><a href="container_8h.html#a18918091c9764350963437ec49738025">convert_list_to_array</a></div><div class="ttdeci">void * convert_list_to_array(DLList *list)</div><div class="ttdoc">Конвертация списка в массив с содержимым элементов списка</div><div class="ttdef"><b>Определения</b> container.c:254</div></div>
+<div class="ttc" id="acontainer_8h_html_a1a26c36b9dd511142e12546c220223e0"><div class="ttname"><a href="container_8h.html#a1a26c36b9dd511142e12546c220223e0">swap</a></div><div class="ttdeci">void swap(size_t index_1, size_t index_2, DLList *list)</div><div class="ttdoc">Замена местами двух элементов списка</div><div class="ttdef"><b>Определения</b> container.c:163</div></div>
+<div class="ttc" id="acontainer_8h_html_a1e4bb7ca01390f65fc8f684ca942b5cb"><div class="ttname"><a href="container_8h.html#a1e4bb7ca01390f65fc8f684ca942b5cb">insert_</a></div><div class="ttdeci">void insert_(size_t index, void *info, DLList *list)</div><div class="ttdoc">Вставка элемента в список в указанный индекс</div><div class="ttdef"><b>Определения</b> container.c:92</div></div>
+<div class="ttc" id="acontainer_8h_html_a28b4f769123c344bbad43936b9ee8d59"><div class="ttname"><a href="container_8h.html#a28b4f769123c344bbad43936b9ee8d59">sel_sort</a></div><div class="ttdeci">void sel_sort(DLList *list, int(*cmp)(void *l, void *r))</div><div class="ttdoc">Сортировка списка Выбором</div><div class="ttdef"><b>Определения</b> container.c:315</div></div>
+<div class="ttc" id="acontainer_8h_html_a38ed6d40d00e30d1085d57d4e01ff6a4"><div class="ttname"><a href="container_8h.html#a38ed6d40d00e30d1085d57d4e01ff6a4">convert_array_to_list</a></div><div class="ttdeci">DLList * convert_array_to_list(void *arr, size_t count, size_t element_size)</div><div class="ttdoc">Конвертация массива в список</div><div class="ttdef"><b>Определения</b> container.c:267</div></div>
+<div class="ttc" id="acontainer_8h_html_a398be75cc282425832722146393a2279"><div class="ttname"><a href="container_8h.html#a398be75cc282425832722146393a2279">kill_list</a></div><div class="ttdeci">void kill_list(DLList *list)</div><div class="ttdoc">Удаление списка, всех его элементов и их содержимого</div><div class="ttdef"><b>Определения</b> container.c:49</div></div>
+<div class="ttc" id="acontainer_8h_html_a3e24b0b18ba091c3c9790479fa220078"><div class="ttname"><a href="container_8h.html#a3e24b0b18ba091c3c9790479fa220078">get_size</a></div><div class="ttdeci">size_t get_size(DLList *list)</div><div class="ttdoc">Получение количества элементов в списке</div><div class="ttdef"><b>Определения</b> container.c:32</div></div>
+<div class="ttc" id="acontainer_8h_html_a546d49e1f2f65e15adc4bfc03d53352f"><div class="ttname"><a href="container_8h.html#a546d49e1f2f65e15adc4bfc03d53352f">begin</a></div><div class="ttdeci">Iterator * begin(DLList *list)</div><div class="ttdoc">Запуск итератора по списку</div><div class="ttdef"><b>Определения</b> container.c:301</div></div>
+<div class="ttc" id="acontainer_8h_html_a5b99f43e6aba72e96e64d274135796a4"><div class="ttname"><a href="container_8h.html#a5b99f43e6aba72e96e64d274135796a4">insert_end</a></div><div class="ttdeci">void insert_end(void *info, DLList *list)</div><div class="ttdoc">Вставка элемента в конец списка</div><div class="ttdef"><b>Определения</b> container.c:74</div></div>
+<div class="ttc" id="acontainer_8h_html_a640447d08a8f86c4f3f30f446509c9f7"><div class="ttname"><a href="container_8h.html#a640447d08a8f86c4f3f30f446509c9f7">insert_start</a></div><div class="ttdeci">void insert_start(void *info, DLList *list)</div><div class="ttdoc">Вставка элемента в начало списка</div><div class="ttdef"><b>Определения</b> container.c:56</div></div>
+<div class="ttc" id="acontainer_8h_html_a84ccf5bf62c1f3eb2160ebb6dcc939ef"><div class="ttname"><a href="container_8h.html#a84ccf5bf62c1f3eb2160ebb6dcc939ef">remove_end</a></div><div class="ttdeci">void remove_end(DLList *list)</div><div class="ttdoc">Удаление последнего элемента списка</div><div class="ttdef"><b>Определения</b> container.c:130</div></div>
+<div class="ttc" id="acontainer_8h_html_a890d7bcffe441d2c583ff0a56159b883"><div class="ttname"><a href="container_8h.html#a890d7bcffe441d2c583ff0a56159b883">init_DLList</a></div><div class="ttdeci">DLList * init_DLList(size_t element_size)</div><div class="ttdoc">Инициализация списка</div><div class="ttdef"><b>Определения</b> container.c:5</div></div>
+<div class="ttc" id="acontainer_8h_html_a8c5f2cb04dde4bd612e2bf2ae72388ab"><div class="ttname"><a href="container_8h.html#a8c5f2cb04dde4bd612e2bf2ae72388ab">set</a></div><div class="ttdeci">void set(void *value, Iterator *i)</div><div class="ttdoc">Установить указатель на содержимое текущего элемента итератора</div><div class="ttdef"><b>Определения</b> container.c:297</div></div>
+<div class="ttc" id="acontainer_8h_html_a8f3a8de9656bbe9b9fec74ebd0912e50"><div class="ttname"><a href="container_8h.html#a8f3a8de9656bbe9b9fec74ebd0912e50">next</a></div><div class="ttdeci">int next(Iterator *i)</div><div class="ttdoc">Переход итератора на следующий элемент</div><div class="ttdef"><b>Определения</b> container.c:288</div></div>
+<div class="ttc" id="acontainer_8h_html_a91899d1bc39fc1de17e1d595d9db656a"><div class="ttname"><a href="container_8h.html#a91899d1bc39fc1de17e1d595d9db656a">iterator_get</a></div><div class="ttdeci">void * iterator_get(Iterator *i)</div><div class="ttdoc">Получение содержимого текущего элемента итератора</div><div class="ttdef"><b>Определения</b> container.c:295</div></div>
+<div class="ttc" id="acontainer_8h_html_ab1b7cff3ee1a31bc7dd3edcc424acf9b"><div class="ttname"><a href="container_8h.html#ab1b7cff3ee1a31bc7dd3edcc424acf9b">remove_</a></div><div class="ttdeci">void remove_(size_t index, DLList *list)</div><div class="ttdoc">Удаление элемента списка по указанному индексу</div><div class="ttdef"><b>Определения</b> container.c:146</div></div>
+<div class="ttc" id="acontainer_8h_html_aba109c33c173b2c7fafeee0de1003257"><div class="ttname"><a href="container_8h.html#aba109c33c173b2c7fafeee0de1003257">get_element</a></div><div class="ttdeci">void * get_element(size_t index, DLList *list)</div><div class="ttdoc">Получение содержимого элемента списка по индексу</div><div class="ttdef"><b>Определения</b> container.c:35</div></div>
+<div class="ttc" id="acontainer_8h_html_ae1c04207371bda8db783f6e01197ffd2"><div class="ttname"><a href="container_8h.html#ae1c04207371bda8db783f6e01197ffd2">get_pos</a></div><div class="ttdeci">size_t get_pos(Iterator *i)</div><div class="ttdoc">Получение позиции (индекса) итератора</div><div class="ttdef"><b>Определения</b> container.c:293</div></div>
+<div class="ttc" id="acontainer_8h_html_ae204af15824f1679c6cb31e266c15b6a"><div class="ttname"><a href="container_8h.html#ae204af15824f1679c6cb31e266c15b6a">clear_list</a></div><div class="ttdeci">void clear_list(DLList *list)</div><div class="ttdoc">Удаление всех элементов списка и их содержимого</div><div class="ttdef"><b>Определения</b> container.c:37</div></div>
+<div class="ttc" id="acontainer_8h_html_ae38aee683e0c59fc2f585cb78156ae2a"><div class="ttname"><a href="container_8h.html#ae38aee683e0c59fc2f585cb78156ae2a">remove_start</a></div><div class="ttdeci">void remove_start(DLList *list)</div><div class="ttdoc">Удаление первого элемента списка</div><div class="ttdef"><b>Определения</b> container.c:114</div></div>
+<div class="ttc" id="acontainer_8h_html_af0f193fa2208f66d732b67dcad504453"><div class="ttname"><a href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a></div><div class="ttdeci">struct _DLList DLList</div><div class="ttdoc">двусвязный список</div><div class="ttdef"><b>Определения</b> container.h:6</div></div>
+<div class="ttc" id="acontainer_8h_html_afe9ac3d5d6673769ddfd00bc85c54fe8"><div class="ttname"><a href="container_8h.html#afe9ac3d5d6673769ddfd00bc85c54fe8">quick_sort</a></div><div class="ttdeci">void quick_sort(DLList *list, int(*cmp)(void *l, void *r))</div><div class="ttdoc">Сортировка списка Быстрая (Хоара).</div><div class="ttdef"><b>Определения</b> container.c:351</div></div>
+<div class="ttc" id="astruct___d_l_list_html"><div class="ttname"><a href="struct___d_l_list.html">_DLList</a></div><div class="ttdef"><b>Определения</b> container_internal.h:31</div></div>
+<div class="ttc" id="astruct___d_l_list_html_a8674ff6f71b57c30e5143593ee164456"><div class="ttname"><a href="struct___d_l_list.html#a8674ff6f71b57c30e5143593ee164456">_DLList::element_size</a></div><div class="ttdeci">size_t element_size</div><div class="ttdoc">размер хранимого элемента (в байтах)</div><div class="ttdef"><b>Определения</b> container_internal.h:35</div></div>
+<div class="ttc" id="astruct___iterator_html"><div class="ttname"><a href="struct___iterator.html">_Iterator</a></div><div class="ttdef"><b>Определения</b> container.c:283</div></div>
+<div class="ttc" id="astruct___iterator_html_ab07fdf3f21ae4dbc25fca16b2d63b7be"><div class="ttname"><a href="struct___iterator.html#ab07fdf3f21ae4dbc25fca16b2d63b7be">_Iterator::list</a></div><div class="ttdeci">DLList * list</div><div class="ttdef"><b>Определения</b> container.c:284</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_09e761304027c904456130627fd4dcf5.html">includes</a></li><li class="navelem"><a href="container_8h.html">container.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

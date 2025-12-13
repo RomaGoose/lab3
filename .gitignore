@@ -8,3 +8,4 @@ wordlists/wordsOEM.txt
 wordlists/fixing_list.c
 .vscode
 *.csv
+data

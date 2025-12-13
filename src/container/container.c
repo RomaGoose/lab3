@@ -30,8 +30,8 @@ static Node* get_node(size_t index, DLList* list) {
 }
 
 size_t get_size(DLList* list) { return list->size; }
-void* get_head(DLList* list) { return (void*)list->head; }
-void* get_tail(DLList* list) { return (void*)list->tail; }
+// void* get_head(DLList* list) { return (void*)list->head; }
+// void* get_tail(DLList* list) { return (void*)list->tail; }
 void* get_element(size_t index, DLList* list){ return get_node(index, list)->info; }
 
 void clear_list(DLList* list){
@@ -290,11 +290,9 @@ int next(Iterator* i){
     return 0;
 }
 
-size_t get_pos(Iterator* i) {return i->pos;}
+size_t get_pos(Iterator* i) { return i->pos; }
 
-void* get(Iterator* i){
-    return get_element(i->pos, i->list);
-}
+void* iterator_get(Iterator* i){ return get_element(i->pos, i->list); }
 
 void set(void* value, Iterator* i){
     get_node(i->pos, i->list)->info = value;
@@ -310,7 +308,7 @@ Iterator* begin(DLList* list){
     return i;
 }
 
-void end(Iterator* i) { free(i); }
+void free_iterator(Iterator* i) { free(i); }
 
 #pragma endregion
 
@@ -324,16 +322,17 @@ void sel_sort(DLList* list, int (*cmp)(void* l, void*r)){
         sorted = 1;
         i = begin(list);
         for (next(i); get_pos(i) < list_size - run; next(i)){
-            if(cmp(get_element(pos_of_max, list), get(i)) < 0) 
+            if(cmp(get_element(pos_of_max, list), iterator_get(i)) < 0) 
                 pos_of_max = get_pos(i);
             else sorted = 0;
         }
+        free_iterator(i);
         if (sorted) return;
         swap(pos_of_max, list_size-1 - run, list);
     }
 }
 
-void quick_sort(DLList* list, int (*cmp)(void* l, void*r), size_t l, size_t r){
+static void quick_sort_lr(DLList* list, int (*cmp)(void* l, void*r), size_t l, size_t r){
     if(l>=r) return;
     void* pivot = get_element((l+r)/2, list);
     size_t i = l, j = r;
@@ -346,6 +345,10 @@ void quick_sort(DLList* list, int (*cmp)(void* l, void*r), size_t l, size_t r){
             if (j > 0) --j; else break;
         }
     }
-    quick_sort(list, cmp, l, j);
-    quick_sort(list, cmp, i, r);
+    quick_sort_lr(list, cmp, l, j);
+    quick_sort_lr(list, cmp, i, r);
+}
+
+void quick_sort(DLList* list, int(*cmp)(void* l, void* r)) {
+    quick_sort_lr(list, cmp, 0, list->size - 1);
 }

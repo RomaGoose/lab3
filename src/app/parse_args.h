@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MAX_F_ARGC 10
+#define MAX_F_ARGC 10 ///< максимальное количество отформатированных элемнтов командной строки 
 #define mem_check_exit(x) do {                             \
     if(x == NULL) {                                        \
         fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
@@ -25,17 +25,21 @@ typedef enum {
     END
 } arg_tag;
 
+/**
+ * @typedef State
+ * @brief Состояние приложения. Вся информация о режиме работы приложения.
+ */
 typedef struct _State {
-    arg_tag task;
+    arg_tag task;                    ///< задача, режим работы приложения 
     union {
-        size_t N;
+        size_t N;                    ///< количество записей для генерации
         struct {
-            sort_type_tag sort_type;
-            sort_alg_tag sort_alg;
-        } sort_value;
-    } task_value;
-    FILE* input;
-    FILE* output;
+            sort_type_tag sort_type; ///< тип сортивроки (возр/убыв)
+            sort_alg_tag sort_alg;   ///< алгоритм сортивроки (выборов/быстрая)
+        } sort_value;                ///< информация о сортировке
+    } task_value;                    ///< информация о задаче
+    FILE* input;                     ///< поток ввода 
+    FILE* output;                    ///< поток вывода
 } State;
 
 typedef struct _Argument {
@@ -47,4 +51,10 @@ typedef struct _Argument {
     const char* description;
 } Argument;
 
+
+/**
+ * @brief Обработка аргументов командной строки. Исполнение приложения 
+ * @param argc количество введенных аргументов командной строки 
+ * @param argv массив строк с аргументами командной строки
+ */
 void parse_args(int argc, char** argv);

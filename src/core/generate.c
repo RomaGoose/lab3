@@ -14,6 +14,12 @@ static uint32_t _rand(){
     return rand()*rand();
 }
 
+/**
+ * @brief Генерирация набора слов из wordlist, не превосходящяя по длине size  
+ * @param size максимальная длина набора слов
+ * @param wordlist массив строк слов
+ * @return строка с набором слов 
+ */
 static char* word_gen(size_t size, char** wordlist){
     int word_num = _rand() % (MAX_WORD_NUM(size)) + 1;
     int cur_len = 0;
@@ -41,7 +47,7 @@ static char* word_gen(size_t size, char** wordlist){
 static char** words;
 static char** surnames;
 
-char** read_list(wordlist_t type){
+static char** read_list(wordlist_t type){
     setlocale(LC_ALL, "RU_ru.UTF-8");
     char* path;
     size_t file_len;
