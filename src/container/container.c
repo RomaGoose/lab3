@@ -32,9 +32,6 @@ static Node* get_node(size_t index, DLList* list) {
 
 size_t get_size(DLList* list) { return list->size; }
 void* get_element(size_t index, DLList* list){ return get_node(index, list)->info; }
-// void* get_head(DLList* list) { return (void*)list->head; }
-// void* get_tail(DLList* list) { return (void*)list->tail; }
-
 
 void clear_list(DLList* list){
     Node* tmp;
@@ -237,6 +234,10 @@ static void swap_distant(size_t index_1, size_t index_2, DLList* list){
 #pragma endregion
 
 #pragma region converts and memory
+
+#ifndef __GNUC__
+    #error "Unsupported type: __uint128_t. Use gcc or clang."
+#endif
 
 static void copy_element(void* src, void* destination, size_t size){
     size_t num_of_16bytes = size/16;

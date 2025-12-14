@@ -1,6 +1,6 @@
 CC=gcc
 TARGET=lab3.exe
-CFLAGS=-c -g
+CFLAGS=
 LOGLVL=0
 
 SRCDIR=src/
@@ -14,7 +14,7 @@ $(TARGET): $(OBJ)
 	$(CC) $^ -o $@
 
 $(OBJDIR)%.o: $(SRCDIR)%.c | $(OBJDIR) 
-	$(CC) $(CFLAGS) -I$(INCLUDEDIR) -DLOGLVL=$(LOGLVL) $< -o $@
+	$(CC) -c $(CFLAGS) -I$(INCLUDEDIR) -DLOGLVL=$(LOGLVL) $< -o $@
 
 
 WINOBJDIR=$(subst /,\,$(OBJDIR))

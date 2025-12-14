@@ -81,7 +81,7 @@ void swap(size_t index_1, size_t index_2, DLList* list);
 /**
  * @brief Конвертация списка в массив с содержимым элементов списка
  * @param list указатель на список
- * @return массив с содержимым
+ * @return указатель на начало массива с содержимым
  */
 void* convert_list_to_array(DLList* list);
 /**
@@ -144,7 +144,3 @@ Iterator* begin(DLList* list);
  * @param i указатель на итератор 
  */
 void free_iterator(Iterator* i);
-
-
-// void* get_head(DLList* list);
-// void* get_tail(DLList* list);
