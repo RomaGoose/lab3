@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №3: Файл src/core/article_internal.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №3
+   </div>
+   <div id="projectbrief">Двусвязный список, быстрая сортировка, сортировка выбором, сравнение времени сортивроки от количества данных, структура-запись - Научная публикация</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('article__internal_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл article_internal.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+</div>
+<p><a href="article__internal_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Структуры данных</h2></td></tr>
+<tr class="memitem:_5FArticle" id="r__5FArticle"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___article.html">_Article</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a7525f5805e627c4539a3ad5b9c82ce6e" id="r_a7525f5805e627c4539a3ad5b9c82ce6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7525f5805e627c4539a3ad5b9c82ce6e">MAX_SURN_LEN</a>&#160;&#160;&#160;18*2</td></tr>
+<tr class="memdesc:a7525f5805e627c4539a3ad5b9c82ce6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">максимальный размер в байтах строки с фамилией  <br /></td></tr>
+<tr class="memitem:af82da5531f10b7e0dc84918c524bc054" id="r_af82da5531f10b7e0dc84918c524bc054"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af82da5531f10b7e0dc84918c524bc054">MAX_ARTICLE_NAME_LEN</a>&#160;&#160;&#160;128*2</td></tr>
+<tr class="memdesc:af82da5531f10b7e0dc84918c524bc054"><td class="mdescLeft">&#160;</td><td class="mdescRight">максимальный размер в байтах строки с названием статьи  <br /></td></tr>
+<tr class="memitem:a7d1a266ca086c13fa273c2444ec50439" id="r_a7d1a266ca086c13fa273c2444ec50439"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d1a266ca086c13fa273c2444ec50439">MAX_MAGAZINE_NAME_LEN</a>&#160;&#160;&#160;80*2</td></tr>
+<tr class="memdesc:a7d1a266ca086c13fa273c2444ec50439"><td class="mdescLeft">&#160;</td><td class="mdescRight">максимальный размер в байтах строки с названием журнала  <br /></td></tr>
+<tr class="memitem:a9f229c1bb0873339c49bf30bb52c0b0f" id="r_a9f229c1bb0873339c49bf30bb52c0b0f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f229c1bb0873339c49bf30bb52c0b0f">MAX_INITIALS_LEN</a>&#160;&#160;&#160;12</td></tr>
+<tr class="memdesc:a9f229c1bb0873339c49bf30bb52c0b0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">максимальный размер в байтах строки с инициалами автора  <br /></td></tr>
+<tr class="memitem:a59bcbb5f6896e44dfd79fa63508cfec3" id="r_a59bcbb5f6896e44dfd79fa63508cfec3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59bcbb5f6896e44dfd79fa63508cfec3">MAX_YEAR</a>&#160;&#160;&#160;9999</td></tr>
+<tr class="memitem:ae0972659f278bcc3e8ea702b2c78217e" id="r_ae0972659f278bcc3e8ea702b2c78217e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0972659f278bcc3e8ea702b2c78217e">MAX_CITATIONS</a>&#160;&#160;&#160;1000000</td></tr>
+<tr class="memitem:a5191aff7ba21d7863df87206a27d4013" id="r_a5191aff7ba21d7863df87206a27d4013"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5191aff7ba21d7863df87206a27d4013">NUM_OF_FIELDS</a>&#160;&#160;&#160;9</td></tr>
+<tr class="memitem:adab78e36112ef2ace73c0e96b5f67bbc" id="r_adab78e36112ef2ace73c0e96b5f67bbc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adab78e36112ef2ace73c0e96b5f67bbc">MAX_ARTICLE_SIZE</a></td></tr>
+<tr class="memdesc:adab78e36112ef2ace73c0e96b5f67bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">максимальный размер в байтах строки со всеми полями структуры  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:a8915ce47c400509d1a16f9b30f33a118" id="r_a8915ce47c400509d1a16f9b30f33a118"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct___article.html">_Article</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8915ce47c400509d1a16f9b30f33a118">Article</a></td></tr>
+</table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Макросы</h2>
+<a id="af82da5531f10b7e0dc84918c524bc054" name="af82da5531f10b7e0dc84918c524bc054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af82da5531f10b7e0dc84918c524bc054">&#9670;&#160;</a></span>MAX_ARTICLE_NAME_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_ARTICLE_NAME_LEN&#160;&#160;&#160;128*2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>максимальный размер в байтах строки с названием статьи </p>
+
+</div>
+</div>
+<a id="adab78e36112ef2ace73c0e96b5f67bbc" name="adab78e36112ef2ace73c0e96b5f67bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adab78e36112ef2ace73c0e96b5f67bbc">&#9670;&#160;</a></span>MAX_ARTICLE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_ARTICLE_SIZE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Макроопределение:</b><div class="fragment"><div class="line">        <a class="code hl_define" href="#af82da5531f10b7e0dc84918c524bc054">MAX_ARTICLE_NAME_LEN</a> + <a class="code hl_define" href="#a7525f5805e627c4539a3ad5b9c82ce6e">MAX_SURN_LEN</a> +      \</div>
+<div class="line">        <a class="code hl_define" href="#a9f229c1bb0873339c49bf30bb52c0b0f">MAX_INITIALS_LEN</a> + <a class="code hl_define" href="#a7d1a266ca086c13fa273c2444ec50439">MAX_MAGAZINE_NAME_LEN</a> + 4 + 6*3 + 7 + 2 + 2</div>
+<div class="ttc" id="aarticle__internal_8h_html_a7525f5805e627c4539a3ad5b9c82ce6e"><div class="ttname"><a href="#a7525f5805e627c4539a3ad5b9c82ce6e">MAX_SURN_LEN</a></div><div class="ttdeci">#define MAX_SURN_LEN</div><div class="ttdoc">максимальный размер в байтах строки с фамилией</div><div class="ttdef"><b>Определения</b> article_internal.h:6</div></div>
+<div class="ttc" id="aarticle__internal_8h_html_a7d1a266ca086c13fa273c2444ec50439"><div class="ttname"><a href="#a7d1a266ca086c13fa273c2444ec50439">MAX_MAGAZINE_NAME_LEN</a></div><div class="ttdeci">#define MAX_MAGAZINE_NAME_LEN</div><div class="ttdoc">максимальный размер в байтах строки с названием журнала</div><div class="ttdef"><b>Определения</b> article_internal.h:8</div></div>
+<div class="ttc" id="aarticle__internal_8h_html_a9f229c1bb0873339c49bf30bb52c0b0f"><div class="ttname"><a href="#a9f229c1bb0873339c49bf30bb52c0b0f">MAX_INITIALS_LEN</a></div><div class="ttdeci">#define MAX_INITIALS_LEN</div><div class="ttdoc">максимальный размер в байтах строки с инициалами автора</div><div class="ttdef"><b>Определения</b> article_internal.h:9</div></div>
+<div class="ttc" id="aarticle__internal_8h_html_af82da5531f10b7e0dc84918c524bc054"><div class="ttname"><a href="#af82da5531f10b7e0dc84918c524bc054">MAX_ARTICLE_NAME_LEN</a></div><div class="ttdeci">#define MAX_ARTICLE_NAME_LEN</div><div class="ttdoc">максимальный размер в байтах строки с названием статьи</div><div class="ttdef"><b>Определения</b> article_internal.h:7</div></div>
+</div><!-- fragment -->
+<p>максимальный размер в байтах строки со всеми полями структуры </p>
+
+</div>
+</div>
+<a id="ae0972659f278bcc3e8ea702b2c78217e" name="ae0972659f278bcc3e8ea702b2c78217e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0972659f278bcc3e8ea702b2c78217e">&#9670;&#160;</a></span>MAX_CITATIONS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_CITATIONS&#160;&#160;&#160;1000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f229c1bb0873339c49bf30bb52c0b0f" name="a9f229c1bb0873339c49bf30bb52c0b0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f229c1bb0873339c49bf30bb52c0b0f">&#9670;&#160;</a></span>MAX_INITIALS_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_INITIALS_LEN&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>максимальный размер в байтах строки с инициалами автора </p>
+
+</div>
+</div>
+<a id="a7d1a266ca086c13fa273c2444ec50439" name="a7d1a266ca086c13fa273c2444ec50439"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d1a266ca086c13fa273c2444ec50439">&#9670;&#160;</a></span>MAX_MAGAZINE_NAME_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_MAGAZINE_NAME_LEN&#160;&#160;&#160;80*2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>максимальный размер в байтах строки с названием журнала </p>
+
+</div>
+</div>
+<a id="a7525f5805e627c4539a3ad5b9c82ce6e" name="a7525f5805e627c4539a3ad5b9c82ce6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7525f5805e627c4539a3ad5b9c82ce6e">&#9670;&#160;</a></span>MAX_SURN_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_SURN_LEN&#160;&#160;&#160;18*2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>максимальный размер в байтах строки с фамилией </p>
+
+</div>
+</div>
+<a id="a59bcbb5f6896e44dfd79fa63508cfec3" name="a59bcbb5f6896e44dfd79fa63508cfec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59bcbb5f6896e44dfd79fa63508cfec3">&#9670;&#160;</a></span>MAX_YEAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_YEAR&#160;&#160;&#160;9999</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5191aff7ba21d7863df87206a27d4013" name="a5191aff7ba21d7863df87206a27d4013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5191aff7ba21d7863df87206a27d4013">&#9670;&#160;</a></span>NUM_OF_FIELDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_OF_FIELDS&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Типы</h2>
+<a id="a8915ce47c400509d1a16f9b30f33a118" name="a8915ce47c400509d1a16f9b30f33a118"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8915ce47c400509d1a16f9b30f33a118">&#9670;&#160;</a></span>Article</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct___article.html">_Article</a> <a class="el" href="#a8915ce47c400509d1a16f9b30f33a118">Article</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a href="article__internal_8h.html">article_internal.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

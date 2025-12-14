@@ -15,8 +15,11 @@ int main(int argc, char** argv){
     read_lists();
 
     if (argc == 1){
-        FILE* quick_log = fopen("quick_log.csv", "w"); 
-        FILE* select_log = fopen("select_log.csv", "w"); 
+        char* quick_log_path = "quick_log.csv";
+        char* select_log_path = "select_log.csv";
+        char* gen_path = "gen.csv";
+        FILE* quick_log = fopen(quick_log_path, "w"); 
+        FILE* select_log = fopen(select_log_path, "w"); 
         FILE* gen;
 
         unsigned int data_num[] = {
@@ -31,22 +34,27 @@ int main(int argc, char** argv){
         DLList* list;
         for(int d = 0; d < sizeof(data_num)/sizeof(data_num[0]); ++d){
             for(int i = 0; i < NUM_OF_ITERATIONS; ++i){
-                gen = fopen("gen.csv", "w");
+                gen = fopen(gen_path, "w");
                 generate(data_num[d], gen);
                 fclose(gen);
-                gen = fopen("gen.csv", "r");
+
+                gen = fopen(gen_path, "r");
+                file_check_exit(gen, gen_path);
+                
                 DLList* list = scan_csv(gen);
                 fclose(gen);
 
                 start = clock();
                 sel_sort(list, cmp);
                 end = clock();
+
                 fprintf(select_log, "%u,%llu\n", data_num[d], (size_t)(end-start));
                 fflush(select_log);
 
                 start = clock();
                 quick_sort(list, cmp);
                 end = clock();
+                
                 fprintf(quick_log, "%u,%llu\n", data_num[d], (size_t)(end-start));
                 fflush(quick_log);
             }
@@ -60,6 +68,6 @@ int main(int argc, char** argv){
     parse_args(argc, argv);
     }
     free_lists();
-    puts("success");
+    LDBG("Успешное завершение программы");
     return 0;
 }

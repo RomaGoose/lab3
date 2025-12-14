@@ -3,25 +3,27 @@
 #include <stdlib.h>
 
 
-typedef struct _DLList DLList;
+typedef struct _DLList DLList; ///< двусвязный список
 
 /**
  * @brief Инициализация списка
  * @param element_size размер хранимого элемента
- * @return указатель на иницализированный список
+ * @return указатель на инициализированный список
  */
 DLList* init_DLList(size_t element_size);
 /**
  * @brief Получение количества элементов в списке
  * @param list указатель на список
- * @return количество элементов 
+ * @return количество элементов в списке
  */
 size_t get_size(DLList* list);
 /**
  * @brief Получение содержимого элемента списка по индексу
  * @param list указатель на список
  * @param index индекс элемента
- * @return указатель на содержимое элемента, NULL в случае выхода за пределы списка
+ * @return указатель на содержимое элемента
+ * 
+ * @note NULL в случае выхода за пределы списка
  */
 void* get_element(size_t index, DLList* list);
 /**
@@ -104,7 +106,7 @@ void sel_sort(DLList* list, int (*cmp)(void* l, void*r));
 void quick_sort(DLList* list, int (*cmp)(void* l, void*r));
 
 
-typedef struct _Iterator Iterator;
+typedef struct _Iterator Iterator; ///< итератор двусвязного списка
 /**
  * @brief Переход итератора на следующий элемент
  * @param i указатель на итератор 
@@ -120,7 +122,9 @@ size_t get_pos(Iterator* i);
 /**
  * @brief Получение содержимого текущего элемента итератора 
  * @param i указатель на итератор 
- * @return указатель на содержимое, NULL в случае выхода за пределы списка
+ * @return указатель на содержимое
+ * 
+ * @note NULL в случае выхода за пределы списка
  */
 void* iterator_get(Iterator* i);
 /**

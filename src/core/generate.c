@@ -8,6 +8,7 @@
 
 #include "article_internal.h"
 #include "inout_internal.h"
+#include "inout.h"
 #include "generate.h"   
 
 static uint32_t _rand(){
@@ -69,10 +70,7 @@ static char** read_list(wordlist_t type){
 
     FILE* file = fopen(path, "r");
 
-    if (!file) {
-        fprintf(stderr, "%s:%s", "Не удалось открыть файл:", path); 
-        exit(1);
-    }
+    file_check_exit(file, path);
     
     char** words = malloc(file_len * sizeof(char*));
     mem_check_exit(words);

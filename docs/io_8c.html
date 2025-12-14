@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №3: Файл src/core/io.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №3
+   </div>
+   <div id="projectbrief">Двусвязный список, быстрая сортировка, сортировка выбором, сравнение времени сортивроки от количества данных, структура-запись - Научная публикация</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('io_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл io.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;wchar.h&gt;</code><br />
+<code>#include &lt;locale.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="article__internal_8h_source.html">article_internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="container_8h_source.html">container.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inout__internal_8h_source.html">inout_internal.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ac51e656eb2dd90b12f200e0cc7d33960" id="r_ac51e656eb2dd90b12f200e0cc7d33960"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac51e656eb2dd90b12f200e0cc7d33960">print_field_csv</a> (char *field, FILE *output)</td></tr>
+<tr class="memdesc:ac51e656eb2dd90b12f200e0cc7d33960"><td class="mdescLeft">&#160;</td><td class="mdescRight">форматированный вывод поля с возможными разделителями, в формате .csv  <br /></td></tr>
+<tr class="memitem:acc6a39c1fa5e4fefb564ac06fae13b7d" id="r_acc6a39c1fa5e4fefb564ac06fae13b7d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc6a39c1fa5e4fefb564ac06fae13b7d">clean_string</a> (char *str)</td></tr>
+<tr class="memitem:a3a2673a03043a1e122589abdddcd5182" id="r_a3a2673a03043a1e122589abdddcd5182"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a2673a03043a1e122589abdddcd5182">printline_csv</a> (<a class="el" href="article__internal_8h.html#a8915ce47c400509d1a16f9b30f33a118">Article</a> *a, FILE *output)</td></tr>
+<tr class="memitem:a1e984654a77ce7b368f7aa5f07248c4f" id="r_a1e984654a77ce7b368f7aa5f07248c4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e984654a77ce7b368f7aa5f07248c4f">print_csv</a> (<a class="el" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a> *list, FILE *output)</td></tr>
+<tr class="memdesc:a1e984654a77ce7b368f7aa5f07248c4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит список в формате .csv.  <br /></td></tr>
+<tr class="memitem:a172f6015f5d06794129ac7b5be5a723f" id="r_a172f6015f5d06794129ac7b5be5a723f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a172f6015f5d06794129ac7b5be5a723f">scanline_csv</a> (<a class="el" href="article__internal_8h.html#a8915ce47c400509d1a16f9b30f33a118">Article</a> *a, FILE *input, char *buff)</td></tr>
+<tr class="memdesc:a172f6015f5d06794129ac7b5be5a723f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Чтение данных и заполнение ими структуры статьи из формате .csv.  <br /></td></tr>
+<tr class="memitem:a6b6fb9331acb659bed0695295e2539c8" id="r_a6b6fb9331acb659bed0695295e2539c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b6fb9331acb659bed0695295e2539c8">scan_csv</a> (FILE *input)</td></tr>
+<tr class="memdesc:a6b6fb9331acb659bed0695295e2539c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сканирует данные в формате .csv, создает список на основе данных из файла  <br /></td></tr>
+<tr class="memitem:ae6b38522c85c2283fd36d8758e0aa89e" id="r_ae6b38522c85c2283fd36d8758e0aa89e"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6b38522c85c2283fd36d8758e0aa89e">count_digits</a> (size_t n)</td></tr>
+<tr class="memitem:ab31d5a2b74312581385aa892e615cac1" id="r_ab31d5a2b74312581385aa892e615cac1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab31d5a2b74312581385aa892e615cac1">print_table</a> (<a class="el" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a> *list, FILE *output)</td></tr>
+<tr class="memdesc:ab31d5a2b74312581385aa892e615cac1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит список в формате таблицы с фиксированной шириной  <br /></td></tr>
+<tr class="memitem:a61225cecdc9bc7fc648ef3d227e34e49" id="r_a61225cecdc9bc7fc648ef3d227e34e49"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61225cecdc9bc7fc648ef3d227e34e49">count_char</a> (char *str, char character)</td></tr>
+<tr class="memitem:a9d4b92947526174101248da8d1615dca" id="r_a9d4b92947526174101248da8d1615dca"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d4b92947526174101248da8d1615dca">str_to_ull</a> (char *str)</td></tr>
+<tr class="memdesc:a9d4b92947526174101248da8d1615dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конвертация строки в число  <br /></td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="acc6a39c1fa5e4fefb564ac06fae13b7d" name="acc6a39c1fa5e4fefb564ac06fae13b7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc6a39c1fa5e4fefb564ac06fae13b7d">&#9670;&#160;</a></span>clean_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clean_string </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61225cecdc9bc7fc648ef3d227e34e49" name="a61225cecdc9bc7fc648ef3d227e34e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61225cecdc9bc7fc648ef3d227e34e49">&#9670;&#160;</a></span>count_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t count_char </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>character</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6b38522c85c2283fd36d8758e0aa89e" name="ae6b38522c85c2283fd36d8758e0aa89e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6b38522c85c2283fd36d8758e0aa89e">&#9670;&#160;</a></span>count_digits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t count_digits </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e984654a77ce7b368f7aa5f07248c4f" name="a1e984654a77ce7b368f7aa5f07248c4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e984654a77ce7b368f7aa5f07248c4f">&#9670;&#160;</a></span>print_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_csv </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выводит список в формате .csv. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>список для вывода </td></tr>
+    <tr><td class="paramname">output</td><td>поток вывода </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac51e656eb2dd90b12f200e0cc7d33960" name="ac51e656eb2dd90b12f200e0cc7d33960"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac51e656eb2dd90b12f200e0cc7d33960">&#9670;&#160;</a></span>print_field_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_field_csv </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>field</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>форматированный вывод поля с возможными разделителями, в формате .csv </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td>поле </td></tr>
+    <tr><td class="paramname">output</td><td>поток вывода </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab31d5a2b74312581385aa892e615cac1" name="ab31d5a2b74312581385aa892e615cac1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab31d5a2b74312581385aa892e615cac1">&#9670;&#160;</a></span>print_table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_table </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выводит список в формате таблицы с фиксированной шириной </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>список для вывода </td></tr>
+    <tr><td class="paramname">output</td><td>поток вывода </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3a2673a03043a1e122589abdddcd5182" name="a3a2673a03043a1e122589abdddcd5182"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a2673a03043a1e122589abdddcd5182">&#9670;&#160;</a></span>printline_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printline_csv </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="article__internal_8h.html#a8915ce47c400509d1a16f9b30f33a118">Article</a> *</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6b6fb9331acb659bed0695295e2539c8" name="a6b6fb9331acb659bed0695295e2539c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b6fb9331acb659bed0695295e2539c8">&#9670;&#160;</a></span>scan_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a> * scan_csv </td>
+          <td>(</td>
+          <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сканирует данные в формате .csv, создает список на основе данных из файла </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>поток ввода </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>указатель на созданный список </dd></dl>
+
+</div>
+</div>
+<a id="a172f6015f5d06794129ac7b5be5a723f" name="a172f6015f5d06794129ac7b5be5a723f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a172f6015f5d06794129ac7b5be5a723f">&#9670;&#160;</a></span>scanline_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int scanline_csv </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="article__internal_8h.html#a8915ce47c400509d1a16f9b30f33a118">Article</a> *</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buff</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Чтение данных и заполнение ими структуры статьи из формате .csv. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>указатель на статью </td></tr>
+    <tr><td class="paramname">input</td><td>поток ввода </td></tr>
+    <tr><td class="paramname">buff</td><td>буфер для чтения строки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>-1 если достигнут конец файла, 0 в противном случае </dd></dl>
+
+</div>
+</div>
+<a id="a9d4b92947526174101248da8d1615dca" name="a9d4b92947526174101248da8d1615dca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d4b92947526174101248da8d1615dca">&#9670;&#160;</a></span>str_to_ull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t str_to_ull </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конвертация строки в число </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>строка </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>число </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a href="io_8c.html">io.c</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

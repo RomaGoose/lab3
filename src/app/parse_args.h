@@ -4,12 +4,7 @@
 #include <stdio.h>
 
 #define MAX_F_ARGC 10 ///< максимальное количество отформатированных элемнтов командной строки 
-#define mem_check_exit(x) do {                             \
-    if(x == NULL) {                                        \
-        fprintf(stderr, "%s", "UNABLE TO ALLOCATE MEMORY");\
-        exit(1);                                           \
-    }} while (0)
-#define clear() do{char c; while((c=getchar())!=EOF && c != '\n');} while(0)
+
 
 typedef enum { ASC, DESC } sort_type_tag;
 typedef enum { SEL, QUICK } sort_alg_tag;
@@ -43,12 +38,12 @@ typedef struct _State {
 } State;
 
 typedef struct _Argument {
-    arg_tag tag;
-    const char* long_name;
-    char name;
-    const char* long_arg_value;
-    const char* short_arg_value;
-    const char* description;
+    arg_tag tag;                ///< тэг аргумента
+    const char* long_name;      ///< полное имя флага
+    char name;                  ///< сокращенное до одной буквы имя флага
+    const char* long_arg_value; ///< полный вариант принимаемого значения
+    const char* short_arg_value;///< сокращенный до одной буквы вариант принимаемого значения
+    const char* description;    ///< описание действия флага
 } Argument;
 
 

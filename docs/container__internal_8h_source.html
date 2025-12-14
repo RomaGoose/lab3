@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №3: Исходный файл src/container/container_internal.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №3
+   </div>
+   <div id="projectbrief">Двусвязный список, быстрая сортировка, сортировка выбором, сравнение времени сортивроки от количества данных, структура-запись - Научная публикация</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('container__internal_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">container_internal.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="container__internal_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="container__internal_8h.html#a8ff62746a396b270606ff04818b7e4ac">    6</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct___node.html">_Node</a> <a class="code hl_typedef" href="container__internal_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a>;</div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct___node.html">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct___node.html">_Node</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="struct___node.html#a06b6d7b2d2c597b3404fd5860eb05eff">   12</a></span>    <span class="keywordtype">void</span>* <a class="code hl_variable" href="struct___node.html#a06b6d7b2d2c597b3404fd5860eb05eff">info</a>;  </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct___node.html#ac29d217af6ca5bc1e3f06fa1360dd68c">   13</a></span>    <a class="code hl_typedef" href="container__internal_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a>* <a class="code hl_variable" href="struct___node.html#ac29d217af6ca5bc1e3f06fa1360dd68c">next</a>;  </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct___node.html#a704cf98ebc6ce6e7f8d56e851f77ed51">   14</a></span>    <a class="code hl_typedef" href="container__internal_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a>* <a class="code hl_variable" href="struct___node.html#a704cf98ebc6ce6e7f8d56e851f77ed51">prev</a>;  </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>} <a class="code hl_typedef" href="container__internal_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a>;</div>
+</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct___d_l_list.html">   17</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct___d_l_list.html">_DLList</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct___d_l_list.html#ab59dff183968aa949b9d8e2bd1398d01">   18</a></span>    <a class="code hl_typedef" href="container__internal_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a>* <a class="code hl_variable" href="struct___d_l_list.html#ab59dff183968aa949b9d8e2bd1398d01">head</a>;         </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="struct___d_l_list.html#a36cce9b2b3f10d4234f163769be4d311">   19</a></span>    <a class="code hl_typedef" href="container__internal_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a>* <a class="code hl_variable" href="struct___d_l_list.html#a36cce9b2b3f10d4234f163769be4d311">tail</a>;         </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="struct___d_l_list.html#ad02ed36058019bec6924d369d557b62d">   20</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="struct___d_l_list.html#ad02ed36058019bec6924d369d557b62d">size</a>;        </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="struct___d_l_list.html#a8674ff6f71b57c30e5143593ee164456">   21</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="struct___d_l_list.html#a8674ff6f71b57c30e5143593ee164456">element_size</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}<a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>;</div>
+</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct___iterator.html">   24</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct___iterator.html">_Iterator</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct___iterator.html#ab07fdf3f21ae4dbc25fca16b2d63b7be">   25</a></span>    <a class="code hl_typedef" href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a>* <a class="code hl_variable" href="struct___iterator.html#ab07fdf3f21ae4dbc25fca16b2d63b7be">list</a>;   </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct___iterator.html#a3a8f6382dbb7cd0766ffb050810c04dd">   26</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="struct___iterator.html#a3a8f6382dbb7cd0766ffb050810c04dd">pos</a>;     </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="container__internal_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">   27</a></span>} <a class="code hl_typedef" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a>;</div>
+</div>
+<div class="ttc" id="acontainer_8h_html_a180e5ba6905f9b685d0fce708ec3c4df"><div class="ttname"><a href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a></div><div class="ttdeci">struct _Iterator Iterator</div><div class="ttdoc">итератор двусвязного списка</div><div class="ttdef"><b>Определения</b> container.h:109</div></div>
+<div class="ttc" id="acontainer_8h_html_af0f193fa2208f66d732b67dcad504453"><div class="ttname"><a href="container_8h.html#af0f193fa2208f66d732b67dcad504453">DLList</a></div><div class="ttdeci">struct _DLList DLList</div><div class="ttdoc">двусвязный список</div><div class="ttdef"><b>Определения</b> container.h:6</div></div>
+<div class="ttc" id="acontainer__internal_8h_html_a8ff62746a396b270606ff04818b7e4ac"><div class="ttname"><a href="container__internal_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a></div><div class="ttdeci">struct _Node Node</div><div class="ttdoc">элемент двусвязного списка</div><div class="ttdef"><b>Определения</b> container_internal.h:6</div></div>
+<div class="ttc" id="astruct___d_l_list_html"><div class="ttname"><a href="struct___d_l_list.html">_DLList</a></div><div class="ttdef"><b>Определения</b> container_internal.h:17</div></div>
+<div class="ttc" id="astruct___d_l_list_html_a36cce9b2b3f10d4234f163769be4d311"><div class="ttname"><a href="struct___d_l_list.html#a36cce9b2b3f10d4234f163769be4d311">_DLList::tail</a></div><div class="ttdeci">Node * tail</div><div class="ttdoc">указатель на последний элемент списка</div><div class="ttdef"><b>Определения</b> container_internal.h:19</div></div>
+<div class="ttc" id="astruct___d_l_list_html_a8674ff6f71b57c30e5143593ee164456"><div class="ttname"><a href="struct___d_l_list.html#a8674ff6f71b57c30e5143593ee164456">_DLList::element_size</a></div><div class="ttdeci">size_t element_size</div><div class="ttdoc">размер хранимого элемента (в байтах)</div><div class="ttdef"><b>Определения</b> container_internal.h:21</div></div>
+<div class="ttc" id="astruct___d_l_list_html_ab59dff183968aa949b9d8e2bd1398d01"><div class="ttname"><a href="struct___d_l_list.html#ab59dff183968aa949b9d8e2bd1398d01">_DLList::head</a></div><div class="ttdeci">Node * head</div><div class="ttdoc">указатель на первый элемент списка</div><div class="ttdef"><b>Определения</b> container_internal.h:18</div></div>
+<div class="ttc" id="astruct___d_l_list_html_ad02ed36058019bec6924d369d557b62d"><div class="ttname"><a href="struct___d_l_list.html#ad02ed36058019bec6924d369d557b62d">_DLList::size</a></div><div class="ttdeci">size_t size</div><div class="ttdoc">количество элементов в списке</div><div class="ttdef"><b>Определения</b> container_internal.h:20</div></div>
+<div class="ttc" id="astruct___iterator_html"><div class="ttname"><a href="struct___iterator.html">_Iterator</a></div><div class="ttdef"><b>Определения</b> container_internal.h:24</div></div>
+<div class="ttc" id="astruct___iterator_html_a3a8f6382dbb7cd0766ffb050810c04dd"><div class="ttname"><a href="struct___iterator.html#a3a8f6382dbb7cd0766ffb050810c04dd">_Iterator::pos</a></div><div class="ttdeci">size_t pos</div><div class="ttdoc">позиция (индекс) итератора</div><div class="ttdef"><b>Определения</b> container_internal.h:26</div></div>
+<div class="ttc" id="astruct___iterator_html_ab07fdf3f21ae4dbc25fca16b2d63b7be"><div class="ttname"><a href="struct___iterator.html#ab07fdf3f21ae4dbc25fca16b2d63b7be">_Iterator::list</a></div><div class="ttdeci">DLList * list</div><div class="ttdoc">указатель на список, по которому идет итерация</div><div class="ttdef"><b>Определения</b> container_internal.h:25</div></div>
+<div class="ttc" id="astruct___node_html"><div class="ttname"><a href="struct___node.html">_Node</a></div><div class="ttdef"><b>Определения</b> container_internal.h:11</div></div>
+<div class="ttc" id="astruct___node_html_a06b6d7b2d2c597b3404fd5860eb05eff"><div class="ttname"><a href="struct___node.html#a06b6d7b2d2c597b3404fd5860eb05eff">_Node::info</a></div><div class="ttdeci">void * info</div><div class="ttdoc">указатель на блок информации</div><div class="ttdef"><b>Определения</b> container_internal.h:12</div></div>
+<div class="ttc" id="astruct___node_html_a704cf98ebc6ce6e7f8d56e851f77ed51"><div class="ttname"><a href="struct___node.html#a704cf98ebc6ce6e7f8d56e851f77ed51">_Node::prev</a></div><div class="ttdeci">Node * prev</div><div class="ttdoc">указатель на предыдущий элемент</div><div class="ttdef"><b>Определения</b> container_internal.h:14</div></div>
+<div class="ttc" id="astruct___node_html_ac29d217af6ca5bc1e3f06fa1360dd68c"><div class="ttname"><a href="struct___node.html#ac29d217af6ca5bc1e3f06fa1360dd68c">_Node::next</a></div><div class="ttdeci">Node * next</div><div class="ttdoc">указатель на следующий элемент</div><div class="ttdef"><b>Определения</b> container_internal.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_1b313d86a3cedf427c8a82c0995b1bb6.html">container</a></li><li class="navelem"><a href="container__internal_8h.html">container_internal.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

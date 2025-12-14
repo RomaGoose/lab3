@@ -54,9 +54,9 @@ void parse_args(int argc, char** argv){
         else{
             if(value_expected) value_expected = 0;
             else{
-            puts("Ошибка аргументов командной строки");
-            help_all();
-            exit(1);
+                puts("Ошибка аргументов командной строки");
+                help_all();
+                exit(1);
             }
         }
     }
@@ -148,40 +148,11 @@ static void process_arg(Argument* a, void* value, State* state){
         }
         case IN:{
             state->input = fopen(value, "r");
-            if(state->input == NULL){
-                if(*(char*)value == '-'){
-                    puts("Введено некорректное название файла для ввода.");
-                    help_arg(arguments + IN);
-                    exit(1);
-                }
-                else if(*(char*)value == '"'){
-                    state->input = fopen((char* )value + 1, "r");
-                    if (state->input == NULL){
-                        puts("Введено некорректное название файла для ввода");
-                        help_arg(arguments + IN);
-                        exit(1);
-                    }
-                }
-            }
+            file_check_exit(state->input, value);
             break;
         }
         case OUT:{
             state->output = fopen(value, "w");
-            if(state->output == NULL){
-                if(*(char*)value == '-'){
-                    puts("Введено некорректное название файла для вывода.");
-                    help_arg(arguments + IN);
-                    exit(1);
-                }
-                else if(*(char*)value == '"'){
-                    state->output = fopen((char* )value + 1, "w");
-                    if (state->output == NULL){
-                        puts("Введено некорректное название файла для вывода");
-                        help_arg(arguments + IN);
-                        exit(1);
-                    }
-                }
-            }
             break;
         }
     }
@@ -195,7 +166,7 @@ static void process_state(State* state){
     switch (state->task){
         case GEN:{
             generate(state->task_value.N, state->output);
-            puts("Успешно сгенерировал");
+            LDBGF("Успешная генерация %llu записей", state->task_value.N);
             break;
         }
         case SORT:{
@@ -212,13 +183,16 @@ static void process_state(State* state){
                 else
                     quick_sort(list, cmp_d);
             }
+            LDBG("Успешная сортировка");
             print_csv(list, state->output);
+            LDBG("Успешый вывод");
             kill_list(list);
             break;
         }
         case PRINT:{
             DLList* list = scan_csv(state->input);
             print_table(list, state->output);
+            LDBG("Успешый вывод");
             kill_list(list);
             break;
         }

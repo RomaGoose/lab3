@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "container_internal.h"
+#include "inout.h"
 
 DLList* init_DLList(size_t element_size){
     DLList* new = malloc(sizeof(DLList));
@@ -13,7 +14,7 @@ DLList* init_DLList(size_t element_size){
 }
 
 static Node* get_node(size_t index, DLList* list) {
-    if (index >= list->size) return NULL;
+    if (index >= list->size) { LDBG("Выход за предел списка: получение элемента по индексу"); return NULL; }
     
     Node* curr_node;
     if (index > list->size / 2) {
@@ -30,9 +31,10 @@ static Node* get_node(size_t index, DLList* list) {
 }
 
 size_t get_size(DLList* list) { return list->size; }
+void* get_element(size_t index, DLList* list){ return get_node(index, list)->info; }
 // void* get_head(DLList* list) { return (void*)list->head; }
 // void* get_tail(DLList* list) { return (void*)list->tail; }
-void* get_element(size_t index, DLList* list){ return get_node(index, list)->info; }
+
 
 void clear_list(DLList* list){
     Node* tmp;
@@ -90,9 +92,9 @@ void insert_end(void* info, DLList* list){
 }
 
 void insert_(size_t index, void* info, DLList* list){
-    if (index >= list->size) {return;}  //как ошибки такие обрабатывать?
-    if (index == 0) {insert_start(info, list); return;}
-    if (index == list->size-1) {insert_end(info, list); return;}
+    if (index >= list->size) { LWARN("Выход за пределы списка: вставка по индексу"); return; }  
+    if (index == 0) { insert_start(info, list); return; }
+    if (index == list->size-1) { insert_end(info, list); return; }
 
     Node* new = malloc(sizeof(Node));
     mem_check_exit(new);
@@ -279,11 +281,6 @@ DLList* convert_array_to_list(void* arr, size_t count, size_t element_size){
 #pragma endregion 
 
 #pragma region iterator
-
-typedef struct _Iterator {
-    DLList* list;
-    size_t pos;
-} Iterator;
 
 int next(Iterator* i){
     if (++i->pos >= i->list->size) return 1;

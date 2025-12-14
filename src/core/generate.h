@@ -11,10 +11,4 @@
 
 #define MAX_WORD_NUM(size) size/14 ///< максимальное количество слов в строке длиной size
 
-#define mem_check_exit(x) do {                          \
-    if(x == NULL) {                                     \
-    fprintf(stderr, "%s", "Не удалось выделить память");\
-        exit(1);                                        \
-    }} while (0)
-
 typedef enum _wordlist_t { WORDS, SURNS } wordlist_t;
