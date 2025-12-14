@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "Лабораторная работа №3", "index.html", [
+    [ "Лабораторная работа 3", "index.html", "index" ],
     [ "Структуры данных", "annotated.html", [
       [ "Структуры данных", "annotated.html", "annotated_dup" ],
       [ "Алфавитный указатель структур данных", "classes.html", null ],

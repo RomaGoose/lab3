@@ -1,10 +1,24 @@
 var searchData=
 [
-  ['n_0',['N',['../struct___state.html#a16ee0eb2024e823d846ca5df255bf3de',1,'_State']]],
-  ['name_1',['NAME',['../inout__internal_8h.html#ab852778f05021939b0a16e0d6090ad7da67bc2ced260a8e43805d2480a785d312',1,'inout_internal.h']]],
-  ['name_2',['name',['../struct___argument.html#a1ff482df7e149f20c20be22239cd335e',1,'_Argument']]],
-  ['next_3',['next',['../struct___node.html#ac29d217af6ca5bc1e3f06fa1360dd68c',1,'_Node::next'],['../container_8h.html#a8f3a8de9656bbe9b9fec74ebd0912e50',1,'next(Iterator *i):&#160;container.c'],['../container_8c.html#a8f3a8de9656bbe9b9fec74ebd0912e50',1,'next(Iterator *i):&#160;container.c']]],
-  ['node_4',['Node',['../container__internal_8h.html#a8ff62746a396b270606ff04818b7e4ac',1,'container_internal.h']]],
-  ['num_5fof_5ffields_5',['NUM_OF_FIELDS',['../article__internal_8h.html#a5191aff7ba21d7863df87206a27d4013',1,'article_internal.h']]],
-  ['num_5fof_5fiterations_6',['NUM_OF_ITERATIONS',['../main_8c.html#abc7d8d27c5e4e1cb5b12ef24dba27a0f',1,'main.c']]]
+  ['mag_5fvol_0',['mag_vol',['../struct___article.html#aab2e21f8b45b7f63628105011877e8f6',1,'_Article']]],
+  ['magazine_1',['magazine',['../struct___article.html#abf25323a07df8a6ca043f3464fd4f968',1,'_Article']]],
+  ['magname_2',['MAGNAME',['../inout__internal_8h.html#ab852778f05021939b0a16e0d6090ad7dac82aba777f6c4665b47ff61493ef3bd5',1,'inout_internal.h']]],
+  ['magvol_3',['MAGVOL',['../inout__internal_8h.html#ab852778f05021939b0a16e0d6090ad7da641cc3b78da169f38619161ebda2ddfb',1,'inout_internal.h']]],
+  ['main_4',['main',['../main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.c']]],
+  ['main_2ec_5',['main.c',['../main_8c.html',1,'']]],
+  ['makefile_6',['makefile',['../index.html#autotoc_md3',1,'Использование makefile'],['../index.html#autotoc_md4',1,'Переменные сборки makefile'],['../index.html#autotoc_md5',1,'Цели makefile']]],
+  ['max_5farticle_5fname_5flen_7',['MAX_ARTICLE_NAME_LEN',['../article__internal_8h.html#af82da5531f10b7e0dc84918c524bc054',1,'article_internal.h']]],
+  ['max_5farticle_5fsize_8',['MAX_ARTICLE_SIZE',['../article__internal_8h.html#adab78e36112ef2ace73c0e96b5f67bbc',1,'article_internal.h']]],
+  ['max_5fcitations_9',['MAX_CITATIONS',['../article__internal_8h.html#ae0972659f278bcc3e8ea702b2c78217e',1,'article_internal.h']]],
+  ['max_5ff_5fargc_10',['MAX_F_ARGC',['../parse__args_8h.html#a3efe624963e857bf7d208280f1094ca1',1,'parse_args.h']]],
+  ['max_5finitials_5flen_11',['MAX_INITIALS_LEN',['../article__internal_8h.html#a9f229c1bb0873339c49bf30bb52c0b0f',1,'article_internal.h']]],
+  ['max_5finput_5flen_12',['MAX_INPUT_LEN',['../inout__internal_8h.html#a0ce016067dd23b0042727970db7ec763',1,'inout_internal.h']]],
+  ['max_5fmagazine_5fname_5flen_13',['MAX_MAGAZINE_NAME_LEN',['../article__internal_8h.html#a7d1a266ca086c13fa273c2444ec50439',1,'article_internal.h']]],
+  ['max_5fmagazine_5fwidth_14',['MAX_MAGAZINE_WIDTH',['../inout__internal_8h.html#a2fd8dc96a32f67823a2069be77c9dc46',1,'inout_internal.h']]],
+  ['max_5fname_5fwidth_15',['MAX_NAME_WIDTH',['../inout__internal_8h.html#a14cc5dd63ea1a6120c9cccdcf4aafd94',1,'inout_internal.h']]],
+  ['max_5fsurn_5flen_16',['MAX_SURN_LEN',['../article__internal_8h.html#a7525f5805e627c4539a3ad5b9c82ce6e',1,'MAX_SURN_LEN:&#160;article_internal.h'],['../generate_8h.html#a7525f5805e627c4539a3ad5b9c82ce6e',1,'MAX_SURN_LEN:&#160;generate.h']]],
+  ['max_5fword_5flen_17',['MAX_WORD_LEN',['../generate_8h.html#acd24df7121adef94ef8ff697ad56fb4f',1,'generate.h']]],
+  ['max_5fword_5fnum_18',['MAX_WORD_NUM',['../generate_8h.html#a9f07cf81cbb72d3f6e0939847ac4fba3',1,'generate.h']]],
+  ['max_5fyear_19',['MAX_YEAR',['../article__internal_8h.html#a59bcbb5f6896e44dfd79fa63508cfec3',1,'article_internal.h']]],
+  ['mem_5fcheck_5fexit_20',['mem_check_exit',['../inout_8h.html#a65d7ed86134965e93ad8f16561be7e56',1,'inout.h']]]
 ];
