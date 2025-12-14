@@ -100,12 +100,16 @@ $(function(){initNavTree('container__internal_8h.html','',''); });
 Структуры данных</h2></td></tr>
 <tr class="memitem:_5FNode" id="r__5FNode"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___node.html">_Node</a></td></tr>
 <tr class="memitem:_5FDLList" id="r__5FDLList"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___d_l_list.html">_DLList</a></td></tr>
+<tr class="memitem:_5FIteratorVFTable" id="r__5FIteratorVFTable"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___iterator_v_f_table.html">_IteratorVFTable</a></td></tr>
 <tr class="memitem:_5FIterator" id="r__5FIterator"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___iterator.html">_Iterator</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Определения типов</h2></td></tr>
 <tr class="memitem:a8ff62746a396b270606ff04818b7e4ac" id="r_a8ff62746a396b270606ff04818b7e4ac"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct___node.html">_Node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ff62746a396b270606ff04818b7e4ac">Node</a></td></tr>
 <tr class="memdesc:a8ff62746a396b270606ff04818b7e4ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">элемент двусвязного списка  <br /></td></tr>
+<tr class="memitem:a4fffcad7c6de33346708465eaf8cb191" id="r_a4fffcad7c6de33346708465eaf8cb191"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fffcad7c6de33346708465eaf8cb191">next_func</a>) (<a class="el" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td></tr>
+<tr class="memitem:a9f208b0763937199c36fc9f10e2310b5" id="r_a9f208b0763937199c36fc9f10e2310b5"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f208b0763937199c36fc9f10e2310b5">prev_func</a>) (<a class="el" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td></tr>
+<tr class="memitem:a195ee6e070e20c7be85b4bf73a7e05f3" id="r_a195ee6e070e20c7be85b4bf73a7e05f3"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct___iterator_v_f_table.html">_IteratorVFTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a195ee6e070e20c7be85b4bf73a7e05f3">IteratorVFTable</a></td></tr>
 <tr class="memitem:a180e5ba6905f9b685d0fce708ec3c4df" id="r_a180e5ba6905f9b685d0fce708ec3c4df"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct___iterator.html">_Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a></td></tr>
 </table>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Типы</h2>
@@ -117,6 +121,34 @@ $(function(){initNavTree('container__internal_8h.html','',''); });
       <table class="memname">
         <tr>
           <td class="memname">typedef struct <a class="el" href="struct___iterator.html">_Iterator</a> <a class="el" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a195ee6e070e20c7be85b4bf73a7e05f3" name="a195ee6e070e20c7be85b4bf73a7e05f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a195ee6e070e20c7be85b4bf73a7e05f3">&#9670;&#160;</a></span>IteratorVFTable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct___iterator_v_f_table.html">_IteratorVFTable</a> <a class="el" href="#a195ee6e070e20c7be85b4bf73a7e05f3">IteratorVFTable</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fffcad7c6de33346708465eaf8cb191" name="a4fffcad7c6de33346708465eaf8cb191"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fffcad7c6de33346708465eaf8cb191">&#9670;&#160;</a></span>next_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* next_func) (<a class="el" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -136,6 +168,20 @@ $(function(){initNavTree('container__internal_8h.html','',''); });
 </div><div class="memdoc">
 
 <p>элемент двусвязного списка </p>
+
+</div>
+</div>
+<a id="a9f208b0763937199c36fc9f10e2310b5" name="a9f208b0763937199c36fc9f10e2310b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f208b0763937199c36fc9f10e2310b5">&#9670;&#160;</a></span>prev_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* prev_func) (<a class="el" href="container_8h.html#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

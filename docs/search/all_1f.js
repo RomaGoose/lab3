@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['цели_20makefile_0',['Цели makefile',['../index.html#autotoc_md5',1,'']]]
+  ['списки_20слов_20для_20генерации_0',['Списки слов для генерации',['../index.html#autotoc_md6',1,'']]],
+  ['сборки_20makefile_1',['Переменные сборки makefile',['../index.html#autotoc_md4',1,'']]],
+  ['слов_20для_20генерации_2',['Списки слов для генерации',['../index.html#autotoc_md6',1,'']]]
 ];

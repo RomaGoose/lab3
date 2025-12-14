@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Лабораторная работа №3: Лабораторная работа 3</title>
+<title>Лабораторная работа №3: Структура _IteratorVFTable</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('index.html','',''); });
+$(function(){initNavTree('struct___iterator_v_f_table.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -88,82 +88,71 @@ $(function(){initNavTree('index.html','',''); });
 </div>
 </div>
 
-<div><div class="header">
-  <div class="headertitle"><div class="title">Лабораторная работа 3 </div></div>
+<div class="header">
+  <div class="headertitle"><div class="title">Структура _IteratorVFTable</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
-Описание</h1>
-<p>В работе реализовано:</p><ol type="1">
-<li>Двусвязный список<ul>
-<li>вставка, удаление, очистка</li>
-<li>получение элемента по индексу <br  />
-</li>
-<li>конвертация списка в массив, массив в список</li>
-<li>сортировка выбором и быстрая (Хоара)</li>
-<li>итератор прямой и обратный</li>
+
+<p><code>#include &lt;<a class="el" href="container__internal_8h_source.html">container_internal.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Поля данных</h2></td></tr>
+<tr class="memitem:a349d368442ba5915e5cb7fa9362a4593" id="r_a349d368442ba5915e5cb7fa9362a4593"><td class="memItemLeft" align="right" valign="top"><a class="el" href="container__internal_8h.html#a4fffcad7c6de33346708465eaf8cb191">next_func</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a349d368442ba5915e5cb7fa9362a4593">next</a></td></tr>
+<tr class="memdesc:a349d368442ba5915e5cb7fa9362a4593"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; виртуальная таблица функций итератора  <br /></td></tr>
+<tr class="memitem:a5fce0e153e9e6f5c4dfdc2aed140df53" id="r_a5fce0e153e9e6f5c4dfdc2aed140df53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="container__internal_8h.html#a9f208b0763937199c36fc9f10e2310b5">prev_func</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fce0e153e9e6f5c4dfdc2aed140df53">prev</a></td></tr>
+<tr class="memdesc:a5fce0e153e9e6f5c4dfdc2aed140df53"><td class="mdescLeft">&#160;</td><td class="mdescRight">функция перехода к предыдущему элементу  <br /></td></tr>
+</table>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Поля</h2>
+<a id="a349d368442ba5915e5cb7fa9362a4593" name="a349d368442ba5915e5cb7fa9362a4593"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a349d368442ba5915e5cb7fa9362a4593">&#9670;&#160;</a></span>next</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="container__internal_8h.html#a4fffcad7c6de33346708465eaf8cb191">next_func</a> _IteratorVFTable::next</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>&lt; виртуальная таблица функций итератора </p>
+<p>функция перехода к следующему элементу </p>
+
+</div>
+</div>
+<a id="a5fce0e153e9e6f5c4dfdc2aed140df53" name="a5fce0e153e9e6f5c4dfdc2aed140df53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fce0e153e9e6f5c4dfdc2aed140df53">&#9670;&#160;</a></span>prev</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="container__internal_8h.html#a9f208b0763937199c36fc9f10e2310b5">prev_func</a> _IteratorVFTable::prev</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>функция перехода к предыдущему элементу </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>src/container/<a class="el" href="container__internal_8h_source.html">container_internal.h</a></li>
 </ul>
-</li>
-<li>Режимы работы приложения через аргументы командной строки<ul>
-<li>генерация <br  />
-</li>
-<li>сортировка и ее параметры:<ul>
-<li>тип сортировки (возрастание/убывание)</li>
-<li>алгоритм сортировки</li>
-</ul>
-</li>
-<li>вывод</li>
-<li>выбор файлов для ввода и вывода</li>
-</ul>
-</li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
-Документация</h1>
-<p>Оффлайн документация доступна в директории <b>docs/</b> <br  />
- Онлайн документация досутпна на <a href="https://romagoose.github.io/lab3/">GitHub Pages</a></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
-Использование makefile</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
-Переменные сборки makefile</h2>
-<ol type="1">
-<li>CFLAGS - флаги компилятора <div class="fragment"><div class="line">#режим отладки:</div>
-<div class="line">make CFLAGS=-g</div>
-</div><!-- fragment --></li>
-<li><p class="startli">LOGLVL - уровень журналирования</p>
-<div class="fragment"><div class="line">make LOGLVL=2</div>
-</div><!-- fragment --></li>
-<li><p class="startli">СС - компилятор <br  />
- <b>Примечание:</b> в приложении используется тип данных <span class="tt">__uint128_t</span>, поэтому следует использовать gcc или clang</p>
-<div class="fragment"><div class="line">make CC=clang</div>
-</div><!-- fragment --><p class="startli">0 - откл. журналирование <br  />
- 1 - ошибки <br  />
- 2 - ошибки + предупреждения <br  />
- 3 - ошибки + предупреждения + отдладочная информация</p>
-</li>
-</ol>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
-Цели makefile</h2>
-<ol type="1">
-<li>make - сборка (переменные см. Переменные makefile) <div class="fragment"><div class="line">make</div>
-</div><!-- fragment --></li>
-<li>make cleanall - очистить все объектные файлы и исполняемый файл <div class="fragment"><div class="line">make cleanall</div>
-</div><!-- fragment --></li>
-</ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
-Списки слов для генерации</h1>
-<p>В директории wordlists лежат два файла:</p><ol type="1">
-<li>words.txt - список русских слов в алфавитном порядке</li>
-<li>surnames.txt - список русских фамилий в алфавитном порядке </li>
-</ol>
-</div></div><!-- PageDoc -->
-<a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a href="struct___iterator_v_f_table.html">_IteratorVFTable</a></li>
     <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
   </ul>
 </div>

@@ -93,6 +93,7 @@ $(function(){initNavTree('container_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 </div>
 <p><a href="container_8h_source.html">См. исходные тексты.</a></p>
 <table class="memberdecls">
@@ -139,16 +140,22 @@ $(function(){initNavTree('container_8h.html','',''); });
 <tr class="memdesc:afe9ac3d5d6673769ddfd00bc85c54fe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сортировка списка Быстрая (Хоара).  <br /></td></tr>
 <tr class="memitem:a8f3a8de9656bbe9b9fec74ebd0912e50" id="r_a8f3a8de9656bbe9b9fec74ebd0912e50"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f3a8de9656bbe9b9fec74ebd0912e50">next</a> (<a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td></tr>
 <tr class="memdesc:a8f3a8de9656bbe9b9fec74ebd0912e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Переход итератора на следующий элемент  <br /></td></tr>
-<tr class="memitem:ae1c04207371bda8db783f6e01197ffd2" id="r_ae1c04207371bda8db783f6e01197ffd2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1c04207371bda8db783f6e01197ffd2">get_pos</a> (<a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td></tr>
-<tr class="memdesc:ae1c04207371bda8db783f6e01197ffd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение позиции (индекса) итератора  <br /></td></tr>
+<tr class="memitem:afda13fd4f6bcd1a3d06fb346520f83c7" id="r_afda13fd4f6bcd1a3d06fb346520f83c7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afda13fd4f6bcd1a3d06fb346520f83c7">iterator_get_pos</a> (<a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td></tr>
+<tr class="memdesc:afda13fd4f6bcd1a3d06fb346520f83c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение позиции итератора  <br /></td></tr>
 <tr class="memitem:a91899d1bc39fc1de17e1d595d9db656a" id="r_a91899d1bc39fc1de17e1d595d9db656a"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91899d1bc39fc1de17e1d595d9db656a">iterator_get</a> (<a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td></tr>
 <tr class="memdesc:a91899d1bc39fc1de17e1d595d9db656a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение содержимого текущего элемента итератора  <br /></td></tr>
-<tr class="memitem:a8c5f2cb04dde4bd612e2bf2ae72388ab" id="r_a8c5f2cb04dde4bd612e2bf2ae72388ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c5f2cb04dde4bd612e2bf2ae72388ab">set</a> (void *value, <a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td></tr>
-<tr class="memdesc:a8c5f2cb04dde4bd612e2bf2ae72388ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установить указатель на содержимое текущего элемента итератора  <br /></td></tr>
+<tr class="memitem:ac0fdc540368b0c138d7365c57867db08" id="r_ac0fdc540368b0c138d7365c57867db08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0fdc540368b0c138d7365c57867db08">iterator_set</a> (void *value, <a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td></tr>
+<tr class="memdesc:ac0fdc540368b0c138d7365c57867db08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установить указатель на содержимое текущего элемента итератора  <br /></td></tr>
+<tr class="memitem:aeb36750fe94b9ca2ce0328fe1c2e5620" id="r_aeb36750fe94b9ca2ce0328fe1c2e5620"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb36750fe94b9ca2ce0328fe1c2e5620">eq</a> (<a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i_1, <a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i_2)</td></tr>
+<tr class="memdesc:aeb36750fe94b9ca2ce0328fe1c2e5620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сравнение двух итераторов  <br /></td></tr>
 <tr class="memitem:a546d49e1f2f65e15adc4bfc03d53352f" id="r_a546d49e1f2f65e15adc4bfc03d53352f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a546d49e1f2f65e15adc4bfc03d53352f">begin</a> (<a class="el" href="#af0f193fa2208f66d732b67dcad504453">DLList</a> *list)</td></tr>
-<tr class="memdesc:a546d49e1f2f65e15adc4bfc03d53352f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Запуск итератора по списку  <br /></td></tr>
-<tr class="memitem:a0d884642eb9800f1f9c673f3935049a7" id="r_a0d884642eb9800f1f9c673f3935049a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d884642eb9800f1f9c673f3935049a7">free_iterator</a> (<a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *i)</td></tr>
-<tr class="memdesc:a0d884642eb9800f1f9c673f3935049a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Завершить работу итератора  <br /></td></tr>
+<tr class="memdesc:a546d49e1f2f65e15adc4bfc03d53352f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Прямой итератор списка  <br /></td></tr>
+<tr class="memitem:a0050d5551258f10b479eb34af337cd06" id="r_a0050d5551258f10b479eb34af337cd06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0050d5551258f10b479eb34af337cd06">rbegin</a> (<a class="el" href="#af0f193fa2208f66d732b67dcad504453">DLList</a> *list)</td></tr>
+<tr class="memdesc:a0050d5551258f10b479eb34af337cd06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обратный итератор списка  <br /></td></tr>
+<tr class="memitem:ac6bce8b871e88a3b5a9b1b9c6bd81cb2" id="r_ac6bce8b871e88a3b5a9b1b9c6bd81cb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6bce8b871e88a3b5a9b1b9c6bd81cb2">end</a> (<a class="el" href="#af0f193fa2208f66d732b67dcad504453">DLList</a> *list)</td></tr>
+<tr class="memdesc:ac6bce8b871e88a3b5a9b1b9c6bd81cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конец прямого итератора  <br /></td></tr>
+<tr class="memitem:ae8dd23e64fc1c805945e2ba4685c3af0" id="r_ae8dd23e64fc1c805945e2ba4685c3af0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8dd23e64fc1c805945e2ba4685c3af0">rend</a> (<a class="el" href="#af0f193fa2208f66d732b67dcad504453">DLList</a> *list)</td></tr>
+<tr class="memdesc:ae8dd23e64fc1c805945e2ba4685c3af0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конец обратного итератора  <br /></td></tr>
 </table>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Типы</h2>
 <a id="af0f193fa2208f66d732b67dcad504453" name="af0f193fa2208f66d732b67dcad504453"></a>
@@ -199,7 +206,7 @@ $(function(){initNavTree('container_8h.html','',''); });
       </table>
 </div><div class="memdoc">
 
-<p>Запуск итератора по списку </p>
+<p>Прямой итератор списка </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
     <tr><td class="paramname">list</td><td>указатель на список </td></tr>
@@ -298,28 +305,60 @@ $(function(){initNavTree('container_8h.html','',''); });
 
 </div>
 </div>
-<a id="a0d884642eb9800f1f9c673f3935049a7" name="a0d884642eb9800f1f9c673f3935049a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d884642eb9800f1f9c673f3935049a7">&#9670;&#160;</a></span>free_iterator()</h2>
+<a id="ac6bce8b871e88a3b5a9b1b9c6bd81cb2" name="ac6bce8b871e88a3b5a9b1b9c6bd81cb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6bce8b871e88a3b5a9b1b9c6bd81cb2">&#9670;&#160;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void free_iterator </td>
+          <td class="memname"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> * end </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *</td>          <td class="paramname"><span class="paramname"><em>i</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#af0f193fa2208f66d732b67dcad504453">DLList</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Завершить работу итератора </p>
+<p>Конец прямого итератора </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">i</td><td>указатель на итератор </td></tr>
+    <tr><td class="paramname">list</td><td>указатель на список </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Возвращает</dt><dd>указатель на итератор </dd></dl>
+
+</div>
+</div>
+<a id="aeb36750fe94b9ca2ce0328fe1c2e5620" name="aeb36750fe94b9ca2ce0328fe1c2e5620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb36750fe94b9ca2ce0328fe1c2e5620">&#9670;&#160;</a></span>eq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t eq </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *</td>          <td class="paramname"><span class="paramname"><em>i_1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *</td>          <td class="paramname"><span class="paramname"><em>i_2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сравнение двух итераторов </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i_1</td><td>первый итератор </td></tr>
+    <tr><td class="paramname">i_2</td><td>второй итератор </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если равны 0 если не равны </dd></dl>
 
 </div>
 </div>
@@ -352,32 +391,6 @@ $(function(){initNavTree('container_8h.html','',''); });
 </dl>
 <dl class="section return"><dt>Возвращает</dt><dd>указатель на содержимое элемента</dd></dl>
 <dl class="section note"><dt>Заметки</dt><dd>NULL в случае выхода за пределы списка </dd></dl>
-
-</div>
-</div>
-<a id="ae1c04207371bda8db783f6e01197ffd2" name="ae1c04207371bda8db783f6e01197ffd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1c04207371bda8db783f6e01197ffd2">&#9670;&#160;</a></span>get_pos()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t get_pos </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *</td>          <td class="paramname"><span class="paramname"><em>i</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Получение позиции (индекса) итератора </p>
-<dl class="params"><dt>Аргументы</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i</td><td>указатель на итератор </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Возвращает</dt><dd>позиция (индекс) итератора </dd></dl>
 
 </div>
 </div>
@@ -556,6 +569,62 @@ $(function(){initNavTree('container_8h.html','',''); });
 
 </div>
 </div>
+<a id="afda13fd4f6bcd1a3d06fb346520f83c7" name="afda13fd4f6bcd1a3d06fb346520f83c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afda13fd4f6bcd1a3d06fb346520f83c7">&#9670;&#160;</a></span>iterator_get_pos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t iterator_get_pos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *</td>          <td class="paramname"><span class="paramname"><em>i</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получение позиции итератора </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>указатель на итератор </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>позиция итератора </dd></dl>
+
+</div>
+</div>
+<a id="ac0fdc540368b0c138d7365c57867db08" name="ac0fdc540368b0c138d7365c57867db08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0fdc540368b0c138d7365c57867db08">&#9670;&#160;</a></span>iterator_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iterator_set </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *</td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Установить указатель на содержимое текущего элемента итератора </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>указатель на содержимое </td></tr>
+    <tr><td class="paramname">i</td><td>указатель на итератор </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a398be75cc282425832722146393a2279" name="a398be75cc282425832722146393a2279"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a398be75cc282425832722146393a2279">&#9670;&#160;</a></span>kill_list()</h2>
 
@@ -597,13 +666,14 @@ $(function(){initNavTree('container_8h.html','',''); });
 </div><div class="memdoc">
 
 <p>Переход итератора на следующий элемент </p>
+<p>Переход итератора на предыдущий элемент</p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
     <tr><td class="paramname">i</td><td>указатель на итератор </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Возвращает</dt><dd>1 если после перехода итератор оказался за пределами списка, 0 в противном случае </dd></dl>
+<dl class="section return"><dt>Возвращает</dt><dd>1 если после перехода итератор оказался за пределами списка 0 в противном случае </dd></dl>
 
 </div>
 </div>
@@ -634,6 +704,32 @@ $(function(){initNavTree('container_8h.html','',''); });
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a0050d5551258f10b479eb34af337cd06" name="a0050d5551258f10b479eb34af337cd06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0050d5551258f10b479eb34af337cd06">&#9670;&#160;</a></span>rbegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> * rbegin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#af0f193fa2208f66d732b67dcad504453">DLList</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обратный итератор списка </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>указатель на список </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>указатель на итератор </dd></dl>
 
 </div>
 </div>
@@ -717,6 +813,32 @@ $(function(){initNavTree('container_8h.html','',''); });
 
 </div>
 </div>
+<a id="ae8dd23e64fc1c805945e2ba4685c3af0" name="ae8dd23e64fc1c805945e2ba4685c3af0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8dd23e64fc1c805945e2ba4685c3af0">&#9670;&#160;</a></span>rend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> * rend </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#af0f193fa2208f66d732b67dcad504453">DLList</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конец обратного итератора </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>указатель на список </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>указатель на итератор </dd></dl>
+
+</div>
+</div>
 <a id="a28b4f769123c344bbad43936b9ee8d59" name="a28b4f769123c344bbad43936b9ee8d59"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a28b4f769123c344bbad43936b9ee8d59">&#9670;&#160;</a></span>sel_sort()</h2>
 
@@ -741,36 +863,6 @@ $(function(){initNavTree('container_8h.html','',''); });
   <table class="params">
     <tr><td class="paramname">list</td><td>указатель на список </td></tr>
     <tr><td class="paramname">cmp</td><td>указатель на функцию-компаратор </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a8c5f2cb04dde4bd612e2bf2ae72388ab" name="a8c5f2cb04dde4bd612e2bf2ae72388ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c5f2cb04dde4bd612e2bf2ae72388ab">&#9670;&#160;</a></span>set()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void set </td>
-          <td>(</td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="#a180e5ba6905f9b685d0fce708ec3c4df">Iterator</a> *</td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Установить указатель на содержимое текущего элемента итератора </p>
-<dl class="params"><dt>Аргументы</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>указатель на содержимое </td></tr>
-    <tr><td class="paramname">i</td><td>указатель на итератор </td></tr>
   </table>
   </dd>
 </dl>

@@ -6,6 +6,5 @@ var searchData=
   ['generate_2eh_3',['generate.h',['../generate_8h.html',1,'']]],
   ['get_5felement_4',['get_element',['../container_8h.html#aba109c33c173b2c7fafeee0de1003257',1,'get_element(size_t index, DLList *list):&#160;container.c'],['../container_8c.html#aba109c33c173b2c7fafeee0de1003257',1,'get_element(size_t index, DLList *list):&#160;container.c']]],
   ['get_5fnode_5',['get_node',['../container_8c.html#abe9e946d5932c1365515c3c5a0c44cd2',1,'container.c']]],
-  ['get_5fpos_6',['get_pos',['../container_8h.html#ae1c04207371bda8db783f6e01197ffd2',1,'get_pos(Iterator *i):&#160;container.c'],['../container_8c.html#ae1c04207371bda8db783f6e01197ffd2',1,'get_pos(Iterator *i):&#160;container.c']]],
-  ['get_5fsize_7',['get_size',['../container_8h.html#a3e24b0b18ba091c3c9790479fa220078',1,'get_size(DLList *list):&#160;container.c'],['../container_8c.html#a3e24b0b18ba091c3c9790479fa220078',1,'get_size(DLList *list):&#160;container.c']]]
+  ['get_5fsize_6',['get_size',['../container_8h.html#a3e24b0b18ba091c3c9790479fa220078',1,'get_size(DLList *list):&#160;container.c'],['../container_8c.html#a3e24b0b18ba091c3c9790479fa220078',1,'get_size(DLList *list):&#160;container.c']]]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['format_5fargv_0',['format_argv',['../parse__args_8c.html#ab25a63ef5bc8400f5f530a4602bc53eb',1,'parse_args.c']]],
-  ['free_5fiterator_1',['free_iterator',['../container_8h.html#a0d884642eb9800f1f9c673f3935049a7',1,'free_iterator(Iterator *i):&#160;container.c'],['../container_8c.html#a0d884642eb9800f1f9c673f3935049a7',1,'free_iterator(Iterator *i):&#160;container.c']]],
-  ['free_5flists_2',['free_lists',['../inout_8h.html#aa6a164037631cf3c5fc1cb6ce926edaa',1,'free_lists():&#160;generate.c'],['../generate_8c.html#aa6a164037631cf3c5fc1cb6ce926edaa',1,'free_lists():&#160;generate.c']]]
+  ['end_0',['end',['../container_8h.html#ac6bce8b871e88a3b5a9b1b9c6bd81cb2',1,'end(DLList *list):&#160;container.c'],['../container_8c.html#ac6bce8b871e88a3b5a9b1b9c6bd81cb2',1,'end(DLList *list):&#160;container.c']]],
+  ['eq_1',['eq',['../container_8h.html#aeb36750fe94b9ca2ce0328fe1c2e5620',1,'eq(Iterator *i_1, Iterator *i_2):&#160;container.c'],['../container_8c.html#aeb36750fe94b9ca2ce0328fe1c2e5620',1,'eq(Iterator *i_1, Iterator *i_2):&#160;container.c']]]
 ];
