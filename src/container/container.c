@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 
 #include "container_internal.h"
 #include "inout.h"
@@ -283,18 +284,44 @@ DLList* convert_array_to_list(void* arr, size_t count, size_t element_size){
 
 #pragma region iterator
 
-int next(Iterator* i){
-    if (++i->pos >= i->list->size) return 1;
+size_t iterator_get_pos(Iterator* i) { return i->pos; }
+
+void* iterator_get(Iterator* i){ return i->elem->info; }
+
+void iterator_set(void* value, Iterator* i){ i->elem->info = value; }
+
+uint8_t eq(Iterator* i_1, Iterator* i_2) { return i_1->elem == i_2->elem; }
+
+static int next_f(Iterator* i){
+    i->elem = i->elem->next;
+    ++i->pos;
+    if (i->elem == NULL) return 1;
     return 0;
 }
 
-size_t get_pos(Iterator* i) { return i->pos; }
-
-void* iterator_get(Iterator* i){ return get_element(i->pos, i->list); }
-
-void set(void* value, Iterator* i){
-    get_node(i->pos, i->list)->info = value;
+static int rnext_f(Iterator* i){
+    i->elem = i->elem->prev;
+    --i->pos;
+    if (i->elem == NULL) return 1;
+    return 0;
 }
+
+static int prev_f(Iterator* i){
+    i->elem = i->elem->prev;
+    --i->pos;
+    if (i->elem == NULL) return 1;
+    return 0;
+}
+
+static int rprev_f(Iterator* i){
+    i->elem = i->elem->next;
+    ++i->pos;
+    if (i->elem == NULL) return 1;
+    return 0;
+}
+
+int next(Iterator* i) { return i->vft.next(i); }
+int prev(Iterator* i) { return i->vft.prev(i); }
 
 Iterator* begin(DLList* list){
     Iterator* i = malloc(sizeof(Iterator));
@@ -302,11 +329,56 @@ Iterator* begin(DLList* list){
 
     i->list = list;
     i->pos = 0;
+    i->elem = list->head;
+
+    i->vft.next = next_f;
+    i->vft.prev = prev_f;
+    // i->vft.get_pos = iterator_get_pos;
+    // i->vft.get_element = iterator_get;
+    // i->vft.set_element = iterator_set;
 
     return i;
 }
 
-void free_iterator(Iterator* i) { free(i); }
+Iterator* end(DLList* list) {
+    Iterator* i = malloc(sizeof(Iterator));
+    mem_check_exit(i);
+
+    i->list = list;
+    i->pos = list->size;
+    i->elem = NULL;
+
+    return i;
+}
+
+Iterator* rbegin(DLList* list){
+    Iterator* i = malloc(sizeof(Iterator));
+    mem_check_exit(i);
+
+    i->list = list;
+    i->pos = 0;
+    i->elem = list->tail;
+
+    i->vft.next = rnext_f;
+    i->vft.prev = rprev_f;
+    // i->vft.get_pos = iterator_get_pos;
+    // i->vft.get_element = iterator_get;
+    // i->vft.set_element = iterator_set;
+
+    return i;
+}
+
+Iterator* rend(DLList* list) {
+    Iterator* i = malloc(sizeof(Iterator));
+    mem_check_exit(i);
+
+    i->list = list;
+    i->pos = ULLONG_MAX;
+    i->elem = NULL;
+
+    return i;
+}
+
 
 #pragma endregion
 
@@ -319,12 +391,12 @@ void sel_sort(DLList* list, int (*cmp)(void* l, void*r)){
         pos_of_max = 0;
         sorted = 1;
         i = begin(list);
-        for (next(i); get_pos(i) < list_size - run; next(i)){
+        for (next(i); iterator_get_pos(i) < list_size - run; next(i)){
             if(cmp(get_element(pos_of_max, list), iterator_get(i)) < 0) 
-                pos_of_max = get_pos(i);
+                pos_of_max = iterator_get_pos(i);
             else sorted = 0;
         }
-        free_iterator(i);
+        free(i);
         if (sorted) return;
         swap(pos_of_max, list_size-1 - run, list);
     }

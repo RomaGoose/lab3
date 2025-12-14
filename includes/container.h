@@ -1,9 +1,13 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stdint.h>
 
-
-typedef struct _DLList DLList; ///< двусвязный список
+/**
+ * @typedef DLList 
+ * @brief двусвязный список
+ */ 
+typedef struct _DLList DLList; 
 
 /**
  * @brief Инициализация списка
@@ -105,20 +109,31 @@ void sel_sort(DLList* list, int (*cmp)(void* l, void*r));
  */
 void quick_sort(DLList* list, int (*cmp)(void* l, void*r));
 
-
-typedef struct _Iterator Iterator; ///< итератор двусвязного списка
+/**
+ * @typedef Iterator 
+ * @brief итератор двусвязного списка
+ */ 
+typedef struct _Iterator Iterator; 
 /**
  * @brief Переход итератора на следующий элемент
  * @param i указатель на итератор 
- * @return 1 если после перехода итератор оказался за пределами списка, 0 в противном случае
+ * @return 1 если после перехода итератор оказался за пределами списка
+ *         0 в противном случае
  */
 int next(Iterator* i);
 /**
- * @brief Получение позиции (индекса) итератора 
+ * @brief Переход итератора на предыдущий элемент
  * @param i указатель на итератор 
- * @return позиция (индекс) итератора
+ * @return 1 если после перехода итератор оказался за пределами списка 
+ *         0 в противном случае
  */
-size_t get_pos(Iterator* i);
+int next(Iterator* i);
+/**
+ * @brief Получение позиции итератора 
+ * @param i указатель на итератор 
+ * @return позиция итератора
+ */
+size_t iterator_get_pos(Iterator* i);
 /**
  * @brief Получение содержимого текущего элемента итератора 
  * @param i указатель на итератор 
@@ -132,15 +147,36 @@ void* iterator_get(Iterator* i);
  * @param value указатель на содержимое
  * @param i указатель на итератор 
  */
-void set(void* value, Iterator* i);
+void iterator_set(void* value, Iterator* i);
 /**
- * @brief Запуск итератора по списку 
+ * @brief Сравнение двух итераторов
+ * @param i_1 первый итератор
+ * @param i_2 второй итератор 
+ * @return 1 если равны
+ *         0 если не равны
+ */
+uint8_t eq(Iterator* i_1, Iterator* i_2);
+/**
+ * @brief Прямой итератор списка
  * @param list указатель на список 
  * @return указатель на итератор
  */
 Iterator* begin(DLList* list);
 /**
- * @brief Завершить работу итератора
- * @param i указатель на итератор 
+ * @brief Обратный итератор списка
+ * @param list указатель на список 
+ * @return указатель на итератор
  */
-void free_iterator(Iterator* i);
+Iterator* rbegin(DLList* list);
+/**
+ * @brief Конец прямого итератора 
+ * @param list указатель на список 
+ * @return указатель на итератор
+ */
+Iterator* end(DLList* list);
+/**
+ * @brief Конец обратного итератора 
+ * @param list указатель на список 
+ * @return указатель на итератор
+ */
+Iterator* rend(DLList* list);

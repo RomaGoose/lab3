@@ -62,10 +62,12 @@ void printline_csv(Article* a, FILE* output){
 
 void print_csv(DLList* list, FILE* output){
     Iterator* i;
+    Iterator* _end = end(list);
     fprintf(output, "%s", "\"Название статьи\",Фамилия,Инициалы,Журнал,\"Год выпуска\",Том,Страницы,Цитирования,\"В РИНЦ\"\n");
-    for(i = begin(list); get_pos(i) < get_size(list); next(i))
+    for(i = begin(list); !eq(i, _end); next(i))
         printline_csv(iterator_get(i), output);
-    free_iterator(i);
+    free(i);
+    free(_end);
 }
 
 static int scanline_csv(Article* a, FILE* input, char* buff);
@@ -113,12 +115,13 @@ void print_table(DLList* list, FILE* output){
 
     Article* a;
     Iterator* i;
+    Iterator* _end = end(list);
     wchar_t name[MAX_ARTICLE_NAME_LEN];
     wchar_t sur[MAX_SURN_LEN];
     wchar_t init[MAX_INITIALS_LEN];
     wchar_t mag[MAX_MAGAZINE_NAME_LEN];
     
-    for(i = begin(list); get_pos(i) < get_size(list); next(i)){
+    for(i = begin(list); !eq(i, _end); next(i)){
 
         a = iterator_get(i);
         
@@ -145,7 +148,7 @@ void print_table(DLList* list, FILE* output){
         }
         
         fwprintf(output, L" %*llu %-40.40ls %ls %ls%*ls %-30.30ls %*d %*d %*d %*d %-4ls\n", 
-            max_num_len, get_pos(i) + 1, 
+            max_num_len, iterator_get_pos(i) + 1, 
             name, 
             sur, 
             init, 23 - wcslen(sur) - wcslen(init) - 1, L" ",
@@ -156,7 +159,7 @@ void print_table(DLList* list, FILE* output){
             6, a->citations,
             a->in_RSCI ? L"YES" : L"NO");
     }
-    free_iterator(i);
+    free(i);
 }
 
 static uint8_t count_char(char* str, char character){
